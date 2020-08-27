@@ -1,0 +1,42 @@
+[package]
+name = "atsam4-hal"
+description = "HAL and Peripheral access API for ATSAM4E microcontroller family"
+version = "0.1.0"
+authors = ["Wilfried Chauveau <wilfried.chauveau@ithinuel.me>"]
+edition = "2018"
+license = "MIT OR Apache-2.0"
+keywords = ["no-std", "arm", "cortex-m", "embedded-hal"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+sam4e8c = ["atsam4e8c/rt"]
+sam4e8e = ["atsam4e8e/rt"]
+sam4e16c = ["atsam4e16c/rt"]
+sam4e16e = ["atsam4e16e/rt"]
+
+[dependencies]
+paste = "1"
+cortex-m = "0.6"
+embedded-hal = { version = "0.2", features = ['unproven'] }
+nb = "*"
+
+[dependencies.atsam4e8c]
+path = "../pac/atsam4e8c"
+version = "*"
+optional = true
+
+[dependencies.atsam4e8e]
+path = "../pac/atsam4e8e"
+version = "*"
+optional = true
+
+[dependencies.atsam4e16c]
+path = "../pac/atsam4e16c"
+version = "*"
+optional = true
+
+[dependencies.atsam4e16e]
+path = "../pac/atsam4e16e"
+version = "*"
+optional = true
