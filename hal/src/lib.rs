@@ -5,6 +5,17 @@ use paste::paste;
 
 mod math;
 
+#[cfg(feature = "debug_on_uart0")]
+#[macro_use]
+pub mod debug;
+
+#[cfg(not(feature = "debug_on_uart0"))]
+#[macro_export]
+#[doc(hidden)]
+macro_rules! dbgprint {
+    ($($arg:tt)*) => {{}};
+}
+
 #[cfg(feature = "sam4e8c")]
 pub use atsam4e8c as pac;
 
@@ -22,3 +33,4 @@ pub mod gpio;
 pub mod pmc;
 pub mod serial;
 pub mod time;
+pub mod usb;

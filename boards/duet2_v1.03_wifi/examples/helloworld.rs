@@ -6,8 +6,8 @@ use panic_halt as _;
 use atsam4_hal::delay::Delay;
 use atsam4_hal::gpio::GpioExt;
 use atsam4_hal::pmc::{MainClock, PmcExt};
-use atsam4_hal::time::U32Ext;
 use atsam4_hal::serial::{self, Serial};
+use atsam4_hal::time::U32Ext;
 use embedded_hal::blocking::delay::DelayMs;
 use embedded_hal::digital::v2::ToggleableOutputPin;
 
@@ -46,7 +46,7 @@ fn main() -> ! {
     .map(|serial| serial.split())
     .unwrap_or_else(|_| unreachable!());
     writeln!(tx, "hello world !").unwrap_or_else(|_| unreachable!());
-    
+
     let pioc = p.PIOC.split();
 
     let mut delay = Delay::new(cp.SYST, clocks).ok().unwrap();
