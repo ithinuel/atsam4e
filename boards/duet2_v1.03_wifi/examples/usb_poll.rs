@@ -47,7 +47,7 @@ fn main() -> ! {
     let (tx, _) = Serial::uart0(
         p.UART0,
         (tx, NoRx),
-        config::Config::default().baudrate(115_200.bps()),
+        config::Config::default().baudrate(1_875_000.bps()),
         clocks,
     )
     .map(Serial::<atsam4_hal::pac::UART0, _>::split)

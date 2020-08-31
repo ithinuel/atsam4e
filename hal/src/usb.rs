@@ -8,6 +8,9 @@ use crate::pac::udp::csr::{EPTYPE_A, W as CSRWrite};
 
 use crate::pmc::Clocks;
 
+use core::cell::RefCell;
+use cortex_m::interrupt::Mutex;
+
 fn usb() -> &'static crate::pac::udp::RegisterBlock {
     unsafe { &*crate::pac::UDP::ptr() }
 }
@@ -58,6 +61,7 @@ impl AllEndpoints {
         // EP6    dual bank    64   Bulk/Isochonous/Interrupt
         // EP7    dual bank    64   Bulk/Isochonous/Interrupt
 
+        // TODO: check max_packet_size
         if ep_type == EndpointType::Isochronous && ep_addr.index() == 3 {
             return Err(UsbError::Unsupported);
         }
@@ -97,8 +101,15 @@ impl AllEndpoints {
     }
 }
 
+struct Inner {
+    clear_txcomp: bool,
+    /// (isr, csr)
+    prev: (u32, u32),
+}
+
 pub struct UsbBus {
     endpoints: AllEndpoints,
+    inner: Mutex<RefCell<Inner>>,
 }
 
 impl UsbBus {
@@ -114,6 +125,10 @@ impl UsbBus {
 
         Self {
             endpoints: AllEndpoints([EndpointInfo::default(); 8]),
+            inner: Mutex::new(RefCell::new(Inner {
+                clear_txcomp: true,
+                prev: (0, 0),
+            })),
         }
     }
 }
@@ -128,7 +143,7 @@ impl UsbBusTrait for UsbBus {
         _interval: u8,
     ) -> UsbResult<EndpointAddress> {
         dbgprint!(
-            "UsbBus::alloc_ep dir={:?} addr={:?} type={:?} max_packet_size={} interval={}\n",
+            "UsbBus::alloc_ep dir={:?} addr={:?} type={:?} max_packet_size={} interval={} -> ",
             ep_dir,
             ep_addr,
             ep_type,
@@ -164,8 +179,12 @@ impl UsbBusTrait for UsbBus {
         usb().txvc.modify(|_, w| w.txvdis().clear_bit());
     }
 
-    fn set_device_address(&self, _addr: u8) {
-        todo!()
+    fn set_device_address(&self, addr: u8) {
+        dbgprint!("UsbBus::set_device_address({})\n", addr);
+        usb()
+            .faddr
+            .modify(|_, w| unsafe { w.fadd().bits(addr).fen().set_bit() });
+        usb().glb_stat.write_with_zero(|w| w.fadden().set_bit());
     }
 
     fn write(&self, ep_addr: EndpointAddress, buf: &[u8]) -> UsbResult<usize> {
@@ -191,6 +210,15 @@ impl UsbBusTrait for UsbBus {
 
         // TODO: check that buf is not too long for this EP
 
+        // If ctrl ep: switch direction
+        if ep_addr.index() == 0 {
+            dbgprint!("(csr: {:b}) ", csr_val.bits());
+            if csr_val.dir().bit_is_clear() {
+                csr.modify(|_, w| no_effect(w).dir().set_bit());
+                while csr.read().dir().bit_is_clear() {}
+            }
+        }
+
         let fdr = &usb().fdr[ep_addr.index()];
         for b in buf {
             fdr.write_with_zero(|w| unsafe { w.fifo_data().bits(*b) });
@@ -198,6 +226,16 @@ impl UsbBusTrait for UsbBus {
 
         csr.modify(|_, w| no_effect(w).txpktrdy().set_bit());
         while csr.read().txpktrdy().bit_is_clear() {}
+        csr.modify(|_, w| no_effect(w).txcomp().clear_bit());
+        while csr.read().txcomp().bit_is_set() {}
+
+        if ep_addr.index() == 0 {
+            cortex_m::interrupt::free(|cs| {
+                let mut inner = self.inner.borrow(cs).borrow_mut();
+                // TODO: replace buf.len() with MAX_CTRL_EP_LEN
+                inner.clear_txcomp = buf.len() != 8;
+            });
+        }
 
         dbgprint!("{}\n", buf.len());
         Ok(buf.len())
@@ -226,13 +264,16 @@ impl UsbBusTrait for UsbBus {
             return Err(UsbError::BufferOverflow);
         }
 
+        if ep_addr.index() == 0 {
+            dbgprint!("(csr: {:b}) ", csr_val.bits());
+        }
+
         let fdr = &usb().fdr[ep_addr.index()];
         for (_, pbyte) in (0..bytecnt).zip(buf.iter_mut()) {
             *pbyte = fdr.read().fifo_data().bits();
         }
 
         if csr_val.rxsetup().bit_is_set() {
-            // shall we check here what's the dir ?
             csr.modify(|_, w| no_effect(w).rxsetup().clear_bit());
             while csr.read().rxsetup().bit_is_set() {}
         } else if csr_val.rx_data_bk0().bit_is_set() {
@@ -319,11 +360,6 @@ impl UsbBusTrait for UsbBus {
             return PollResult::Reset;
         }
 
-        /*dbgprint!(
-            "frm: {:x} isr: {:b}",
-            usb.frm_num.read().bits(),
-            usb.isr.read().bits() & 0xFF
-        );*/
         let mut ep_out = 0;
         let mut ep_in_complete = 0;
         let mut ep_setup = 0;
@@ -337,32 +373,52 @@ impl UsbBusTrait for UsbBus {
                 continue;
             }
 
-            //dbgprint!(" csr{}: {:b}", ep_idx, csr_val.bits() & 0xFF);
+            if ep_idx == 0
+                && cortex_m::interrupt::free(|cs| {
+                    let mut inner = self.inner.borrow(cs).borrow_mut();
+                    let new = (isr_val.bits(), csr_val.bits());
+                    if inner.prev != new {
+                        inner.prev = new;
+                        true
+                    } else {
+                        false
+                    }
+                })
+            {
+                dbgprint!(
+                    "frm: {} isr: {:b} csr{}: {:b}\n",
+                    usb.frm_num.read().bits() & 0x7FF,
+                    isr_val.bits(),
+                    ep_idx,
+                    csr_val.bits()
+                );
+            }
             if csr_val.rxsetup().bit_is_set() {
                 ep_setup |= mask;
             }
             if csr_val.txcomp().bit_is_set() {
-                csr.modify(|_, w| no_effect(w).txcomp().clear_bit());
-                while csr.read().txcomp().bit_is_set() {}
+                cortex_m::interrupt::free(|cs| {
+                    if ep_idx != 0 || self.inner.borrow(cs).borrow().clear_txcomp {
+                        csr.modify(|_, w| no_effect(w).txcomp().clear_bit());
+                        while csr.read().txcomp().bit_is_set() {}
+                    }
+                });
                 ep_in_complete |= mask;
             }
-            if csr_val.rx_data_bk0().bit_is_set()
-            /*|| csr_val.rx_data_bk1().bit_is_set()*/
-            {
+            if csr_val.rx_data_bk0().bit_is_set() {
                 ep_out |= mask;
             }
         }
 
-        //dbgprint!("\n");
         if ep_out == 0 && ep_in_complete == 0 && ep_setup == 0 {
             return PollResult::None;
         }
 
         dbgprint!(
-            "ep_out: {:b} ep_in_complete: {:b} ep_setup: {:b}\n",
-            ep_out,
+            "ep_setup: {:b} ep_in_complete: {:b} ep_out: {:b}\n",
+            ep_setup,
             ep_in_complete,
-            ep_setup
+            ep_out,
         );
 
         PollResult::Data {
