@@ -10,7 +10,7 @@ keywords = ["no-std", "arm", "cortex-m", "embedded-hal"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-atsam4-hal = { version = "*", features = ["sam4e8e", "debug_on_uart0"] }
+atsam4e-hal = { version = "*", features = ["sam4e8e", "debug_on_uart0"] }
 cortex-m-rt = "*"
 cortex-m = "*"
 embedded-hal = "*"

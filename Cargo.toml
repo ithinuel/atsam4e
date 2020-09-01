@@ -3,7 +3,7 @@ members = ['boards/*']
 exclude = ['hal', 'pac']
 
 [patch.crates-io]
-atsam4-hal = { path = 'hal' }
+atsam4e-hal = { path = 'hal' }
 
 [profile.release]
 codegen-units = 1 # better optimizations

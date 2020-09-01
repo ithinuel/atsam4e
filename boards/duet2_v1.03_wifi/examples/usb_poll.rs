@@ -7,15 +7,15 @@
 //use panic_halt as _;
 #[panic_handler]
 fn on_panic(info: &core::panic::PanicInfo) -> ! {
-    atsam4_hal::dbgprint!("Woops: {:?}", info);
+    atsam4e_hal::dbgprint!("Woops: {:?}", info);
     loop {}
 }
 
-use atsam4_hal::gpio::GpioExt;
-use atsam4_hal::pmc::{MainClock, PmcExt};
-use atsam4_hal::serial::*;
-use atsam4_hal::time::U32Ext;
-use atsam4_hal::usb::*;
+use atsam4e_hal::gpio::GpioExt;
+use atsam4e_hal::pmc::{MainClock, PmcExt};
+use atsam4e_hal::serial::*;
+use atsam4e_hal::time::U32Ext;
+use atsam4e_hal::usb::*;
 
 use embedded_hal::digital::v2::OutputPin;
 use usb_device::prelude::*;
@@ -24,7 +24,7 @@ use usbd_serial::{SerialPort, USB_CLASS_CDC};
 #[cortex_m_rt::entry]
 fn main() -> ! {
     // Get access to the device specific peripherals from the peripheral access crate
-    let p = atsam4_hal::pac::Peripherals::take().unwrap_or_else(|| unreachable!());
+    let p = atsam4e_hal::pac::Peripherals::take().unwrap_or_else(|| unreachable!());
     //let cp = cortex_m::Peripherals::take().unwrap_or_else(|| unreachable!());
 
     p.WDT.mr.write(|w| w.wddis().set_bit());
@@ -47,12 +47,12 @@ fn main() -> ! {
     let (tx, _) = Serial::uart0(
         p.UART0,
         (tx, NoRx),
-        config::Config::default().baudrate(1_875_000.bps()),
+        config::Config::default().baudrate(3_750_000.bps()),
         clocks,
     )
-    .map(Serial::<atsam4_hal::pac::UART0, _>::split)
+    .map(Serial::<atsam4e_hal::pac::UART0, _>::split)
     .unwrap_or_else(|_| unreachable!());
-    atsam4_hal::debug::wire_uart(tx);
+    atsam4e_hal::debug::wire_uart(tx);
 
     let usb_bus = usb_device::bus::UsbBusAllocator::new(UsbBus::new(p.UDP, (), (), clocks));
 
