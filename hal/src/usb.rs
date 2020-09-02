@@ -17,15 +17,15 @@ fn usb() -> &'static crate::pac::udp::RegisterBlock {
 
 #[inline]
 fn no_effect(w: &mut CSRWrite) -> &mut CSRWrite {
-    w.rxsetup()
-        .set_bit()
-        .stallsent()
+    w.txcomp()
         .set_bit()
         .rx_data_bk0()
         .set_bit()
-        .rx_data_bk1()
+        .rxsetup()
         .set_bit()
-        .txcomp()
+        .stallsent()
+        .set_bit()
+        .rx_data_bk1()
         .set_bit()
 }
 
@@ -324,8 +324,13 @@ impl UsbBusTrait for UsbBus {
             };
 
             let csr = &usb().csr()[ep_addr.index()];
-
             let csr_val = csr.read();
+
+            dbgprint!(
+                "(csr: {:08b}:{}) ",
+                csr_val.bits() & 0xFF,
+                csr_val.rxbytecnt().bits()
+            );
 
             if csr_val.txpktrdy().bit_is_set() {
                 return Err(UsbError::WouldBlock);
@@ -334,8 +339,7 @@ impl UsbBusTrait for UsbBus {
             // TODO: check that buf is not too long for this EP
 
             // If ctrl ep: switch direction
-            if ep_addr.index() == 0 {
-                dbgprint!("(csr: {:b}) ", csr_val.bits());
+            if ep_info.ep_type == EPTYPE_A::CTRL {
                 if csr_val.dir().bit_is_clear() {
                     csr.modify(|_, w| no_effect(w).dir().set_bit());
                     while csr.read().dir().bit_is_clear() {}
@@ -355,6 +359,12 @@ impl UsbBusTrait for UsbBus {
             // TODO: replace buf.len() with MAX_CTRL_EP_LEN
             ep_info.expect_more_writes = buf.len() == ep_info.max_packet_size.into();
 
+            let csr_val = csr.read();
+            dbgprint!(
+                "(csr: {:08b}:{}) ",
+                csr_val.bits() & 0xFF,
+                csr_val.rxbytecnt().bits()
+            );
             Ok(buf.len())
         });
         dbgprint!("{:?}\n", ret);
@@ -362,15 +372,22 @@ impl UsbBusTrait for UsbBus {
     }
     fn read(&self, ep_addr: EndpointAddress, buf: &mut [u8]) -> UsbResult<usize> {
         dbgprint!(
-            "UsbBus::read({}-{:?}) -> ",
+            "UsbBus::read({}-{:?}, {}) -> ",
             ep_addr.index(),
-            ep_addr.direction()
+            ep_addr.direction(),
+            buf.len()
         );
 
         let ret = interrupt::free(|_| {
             let csr = &usb().csr()[ep_addr.index()];
-
             let csr_val = csr.read();
+
+            dbgprint!(
+                "(csr: {:08b}:{}) ",
+                csr_val.bits() & 0xFF,
+                csr_val.rxbytecnt().bits()
+            );
+
             if csr_val.epeds().bit_is_clear() || !ep_addr.is_out() {
                 return Err(UsbError::InvalidEndpoint);
             }
@@ -380,13 +397,7 @@ impl UsbBusTrait for UsbBus {
 
             let bytecnt = csr_val.rxbytecnt().bits().into();
             if bytecnt > buf.len() {
-                dbgprint!("bytecnt: {} buf.len(): {}) ", bytecnt, buf.len());
-
                 return Err(UsbError::BufferOverflow);
-            }
-
-            if ep_addr.index() == 0 {
-                dbgprint!("(csr: {:b}) ", csr_val.bits());
             }
 
             let fdr = &usb().fdr[ep_addr.index()];
@@ -401,6 +412,14 @@ impl UsbBusTrait for UsbBus {
                 csr.modify(|_, w| no_effect(w).rx_data_bk0().clear_bit());
                 while csr.read().rx_data_bk0().bit_is_set() {}
             }
+
+            let csr_val = csr.read();
+            dbgprint!(
+                "(csr: {:08b}:{}) ",
+                csr_val.bits() & 0xFF,
+                csr_val.rxbytecnt().bits()
+            );
+
             Ok(&buf[..bytecnt])
         });
 
