@@ -19,7 +19,7 @@ use atsam4e_hal::usb::*;
 
 use embedded_hal::digital::v2::OutputPin;
 use usb_device::prelude::*;
-use usbd_serial::{SerialPort, USB_CLASS_CDC};
+use usbd_serial::{SerialPort, /* CDC_SUBCLASS_ACM,*/ USB_CLASS_CDC};
 
 #[cortex_m_rt::entry]
 fn main() -> ! {
@@ -65,9 +65,18 @@ fn main() -> ! {
         .product("Serial port")
         .serial_number("TEST")
         .device_class(USB_CLASS_CDC)
+        //.device_class(CDC_SUBCLASS_ACM)
+        .device_class(2)
         .build();
 
+    let mut prev = usb_dev.ctrl_pipe_state();
     loop {
+        let new = usb_dev.ctrl_pipe_state();
+        if prev != new {
+            prev = new;
+            //atsam4e_hal::dbgprint!("{:?}\n", prev)
+        }
+
         if !usb_dev.poll(&mut [&mut serial]) {
             continue;
         }

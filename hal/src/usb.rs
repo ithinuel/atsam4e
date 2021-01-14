@@ -102,11 +102,48 @@ const EP_METADATA: [EndpointMetadata; 8] = [
 ];
 
 #[derive(Debug, Copy, Clone)]
+enum Bank {
+    Bank0,
+    Bank1,
+}
+
+#[derive(Debug, Copy, Clone)]
 struct EndpointInfo {
     ep_type: EPTYPE_A,
     max_packet_size: u16,
+
+    /// indicates if last write was max_packet_size. In such case more write operations are
+    /// expected and txcomp must not be cleared until the next write occurs.
     expect_more_writes: bool,
+    active_bank: Bank,
+
+    /// Used for debug purposes
     last_csr: u32,
+}
+impl EndpointInfo {
+    fn data_ready(&self, csr_val: &crate::pac::udp::csr::R) -> bool {
+        match self.active_bank {
+            Bank::Bank0 => csr_val.rx_data_bk0().bit_is_set(),
+            Bank::Bank1 => csr_val.rx_data_bk1().bit_is_set(),
+        }
+    }
+    fn clear_data_ready(&mut self, csr: &crate::pac::udp::CSR) {
+        match self.active_bank {
+            Bank::Bank0 => {
+                csr.modify(|_, w| no_effect(w).rx_data_bk0().clear_bit());
+                while csr.read().rx_data_bk0().bit_is_set() {}
+
+                if self.ep_type != EPTYPE_A::CTRL {
+                    self.active_bank = Bank::Bank1
+                }
+            }
+            Bank::Bank1 => {
+                csr.modify(|_, w| no_effect(w).rx_data_bk1().clear_bit());
+                while csr.read().rx_data_bk1().bit_is_set() {}
+                self.active_bank = Bank::Bank0
+            }
+        };
+    }
 }
 
 #[derive(Debug)]
@@ -179,6 +216,7 @@ impl AllEndpoints {
             ep_type,
             max_packet_size,
             expect_more_writes: false,
+            active_bank: Bank::Bank0,
             last_csr: 0,
         });
 
@@ -190,10 +228,7 @@ impl AllEndpoints {
             .0
             .iter()
             .enumerate()
-            .filter_map(|(idx, maybe_ep_info)| match maybe_ep_info {
-                Some(ep_info) => Some((idx, ep_info)),
-                None => None,
-            })
+            .filter_map(|(idx, opt_ep_info)| opt_ep_info.map(|ep_info| (idx, ep_info)))
         {
             let csr = &usb().csr()[i];
             csr.modify(|_, w| {
@@ -215,6 +250,42 @@ struct Inner {
     endpoints: AllEndpoints,
     /// Previous isr
     last_isr: u32,
+}
+impl Inner {
+    fn enumerate_active_ep_mut<'a>(
+        &'a mut self,
+    ) -> impl Iterator<Item = (usize, &'a mut EndpointInfo)> {
+        self.endpoints
+            .0
+            .iter_mut()
+            .enumerate()
+            .filter_map(|(idx, opt_ep_info)| match opt_ep_info {
+                None => None,
+                Some(ep_info) => Some((idx, ep_info)),
+            })
+    }
+    fn enumerate_active_ep<'a>(&'a self) -> impl Iterator<Item = (usize, &'a EndpointInfo)> {
+        self.endpoints
+            .0
+            .iter()
+            .enumerate()
+            .filter_map(|(idx, opt_ep_info)| match opt_ep_info {
+                None => None,
+                Some(ep_info) => Some((idx, ep_info)),
+            })
+    }
+    fn get_ep_mut(&mut self, ep_addr: EndpointAddress) -> Option<&mut EndpointInfo> {
+        self.endpoints
+            .0
+            .get_mut(ep_addr.index())
+            .and_then(Option::as_mut)
+    }
+    fn get_ep(&self, ep_addr: EndpointAddress) -> Option<&EndpointInfo> {
+        self.endpoints
+            .0
+            .get(ep_addr.index())
+            .and_then(Option::as_ref)
+    }
 }
 
 pub struct UsbBus {
@@ -275,7 +346,7 @@ impl UsbBusTrait for UsbBus {
                 "EP{}-{:?}: {:?}\n",
                 ep_addr.index(),
                 ep_addr.direction(),
-                inner.endpoints.0[ep_addr.index()]
+                inner.get_ep(ep_addr)
             );
             Ok(ep_addr)
         })
@@ -299,10 +370,31 @@ impl UsbBusTrait for UsbBus {
 
     fn set_device_address(&self, addr: u8) {
         dbgprint!("UsbBus::set_device_address({})\n", addr);
-        usb()
-            .faddr
+        let usb = usb();
+        usb.faddr
             .modify(|_, w| unsafe { w.fadd().bits(addr).fen().set_bit() });
-        usb().glb_stat.write_with_zero(|w| w.fadden().set_bit());
+        usb.glb_stat
+            .write_with_zero(|w| w.fadden().set_bit().confg().set_bit());
+
+        /*interrupt::free(|cs| {
+            let inner = self.inner.borrow(cs).borrow();
+            // skip ep 0
+            for ep_idx in inner.enumerate_active_ep().skip(1).map(|(idx, _)| idx) {
+                usb.ier.write_with_zero(|w| match ep_idx {
+                    1 => w.ep1int().set_bit(),
+                    2 => w.ep2int().set_bit(),
+                    3 => w.ep3int().set_bit(),
+                    4 => w.ep4int().set_bit(),
+                    5 => w.ep5int().set_bit(),
+                    6 => w.ep6int().set_bit(),
+                    7 => w.ep7int().set_bit(),
+                    _ => {
+                        dbgprint!("idx: {}", ep_idx);
+                        unreachable!()
+                    }
+                })
+            }
+        })*/
     }
 
     fn write(&self, ep_addr: EndpointAddress, buf: &[u8]) -> UsbResult<usize> {
@@ -316,7 +408,7 @@ impl UsbBusTrait for UsbBus {
         let ret = cortex_m::interrupt::free(|cs| {
             let mut inner = self.inner.borrow(cs).borrow_mut();
 
-            let mut ep_info = match inner.endpoints.0[ep_addr.index()].as_mut() {
+            let ep_info = match inner.get_ep_mut(ep_addr) {
                 Some(ep_info) if ep_addr.is_in() => ep_info,
                 _ => {
                     return Err(UsbError::InvalidEndpoint);
@@ -378,20 +470,32 @@ impl UsbBusTrait for UsbBus {
             buf.len()
         );
 
-        let ret = interrupt::free(|_| {
+        let ret = interrupt::free(|cs| {
+            let mut inner = self.inner.borrow(cs).borrow_mut();
+
+            let ep_info = match inner.get_ep_mut(ep_addr) {
+                Some(ep_info) if ep_addr.is_out() => ep_info,
+                _ => return Err(UsbError::InvalidEndpoint),
+            };
+
             let csr = &usb().csr()[ep_addr.index()];
             let csr_val = csr.read();
 
             dbgprint!(
-                "(csr: {:08b}:{}) ",
+                "({:?} csr: {:08b}:{}) ",
+                ep_info.active_bank,
                 csr_val.bits() & 0xFF,
                 csr_val.rxbytecnt().bits()
             );
 
-            if csr_val.epeds().bit_is_clear() || !ep_addr.is_out() {
-                return Err(UsbError::InvalidEndpoint);
+            if !ep_info.data_ready(&csr_val) && csr_val.rxsetup().bit_is_clear() {
+                return Err(UsbError::WouldBlock);
             }
-            if csr_val.rx_data_bk0().bit_is_clear() && csr_val.rxsetup().bit_is_clear() {
+
+            // filter Time-of-check cases where ZLP OUT might be discarded by hardware by a setup
+            // packet between UsbBus::poll and UsbBus::read
+            if ep_info.ep_type == EPTYPE_A::CTRL && buf.is_empty() {
+                ep_info.clear_data_ready(csr);
                 return Err(UsbError::WouldBlock);
             }
 
@@ -408,9 +512,8 @@ impl UsbBusTrait for UsbBus {
             if csr_val.rxsetup().bit_is_set() {
                 csr.modify(|_, w| no_effect(w).rxsetup().clear_bit());
                 while csr.read().rxsetup().bit_is_set() {}
-            } else if csr_val.rx_data_bk0().bit_is_set() {
-                csr.modify(|_, w| no_effect(w).rx_data_bk0().clear_bit());
-                while csr.read().rx_data_bk0().bit_is_set() {}
+            } else if ep_info.data_ready(&csr_val) {
+                ep_info.clear_data_ready(csr);
             }
 
             let csr_val = csr.read();
@@ -440,7 +543,9 @@ impl UsbBusTrait for UsbBus {
 
         if stalled {
             csr.modify(|_, w| no_effect(w).forcestall().set_bit());
-            while csr.read().forcestall().bit_is_clear() {}
+            // during data stage and status stage on ctrl ep, indicates the request cannot be
+            // completed
+            while csr.read().stallsent().bit_is_clear() {}
         } else {
             csr.modify(|_, w| {
                 no_effect(w)
@@ -468,13 +573,13 @@ impl UsbBusTrait for UsbBus {
     }
 
     fn suspend(&self) {
-        dbgprint!("UsbBus::suspend\n");
+        //dbgprint!("UsbBus::suspend\n");
         // TODO: We need to delegate that to the application as it may not allow to mess with
         // clocks
         //usb().txvc.modify(|_, w| w.txvdis().set_bit());
     }
     fn resume(&self) {
-        dbgprint!("UsbBus::resume\n");
+        //dbgprint!("UsbBus::resume\n");
         // TODO: We need to delegate that to the application as it may not allow to mess with
         // clocks
         //usb().txvc.modify(|_, w| w.txvdis().clear_bit());
@@ -484,6 +589,14 @@ impl UsbBusTrait for UsbBus {
         cortex_m::interrupt::free(|cs| {
             let usb = usb();
             let mut inner = self.inner.borrow(cs).borrow_mut();
+            // ignore sof and wakeup
+            let mut print_dbg = false;
+            let isr_val = usb.isr.read();
+            let new_isr = isr_val.bits() & 0x000037FF;
+            if inner.last_isr != new_isr {
+                inner.last_isr = new_isr;
+                print_dbg = true;
+            }
 
             // ignore sof and wakeup
             usb.icr
@@ -508,31 +621,13 @@ impl UsbBusTrait for UsbBus {
             let mut ep_in_complete = 0;
             let mut ep_setup = 0;
 
-            let mut print_dbg = false;
-
-            let new_isr = isr_val.bits() & 0x000037FF;
-            if inner.last_isr != new_isr {
-                inner.last_isr = new_isr;
-                print_dbg = true;
-            }
-
-            for (ep_idx, ep_info) in
-                inner
-                    .endpoints
-                    .0
-                    .iter_mut()
-                    .enumerate()
-                    .filter_map(|(idx, v)| match v {
-                        None => None,
-                        Some(ep) => Some((idx, ep)),
-                    })
-            {
+            for (ep_idx, mut ep_info) in inner.enumerate_active_ep_mut() {
                 let mask = 1 << ep_idx;
 
                 let csr = &usb.csr()[ep_idx];
                 let csr_val = csr.read();
 
-                if (ep_info.last_csr & 0xFF) != (csr_val.bits() & 0xFF) {
+                if (ep_info.last_csr & 0xFFFF) != (csr_val.bits() & 0xFFFF) {
                     ep_info.last_csr = csr_val.bits();
                     print_dbg = true;
                 }
@@ -547,7 +642,7 @@ impl UsbBusTrait for UsbBus {
                     }
                     ep_in_complete |= mask;
                 }
-                if csr_val.rx_data_bk0().bit_is_set() {
+                if ep_info.data_ready(&csr_val) {
                     ep_out |= mask;
                 }
             }
@@ -559,21 +654,11 @@ impl UsbBusTrait for UsbBus {
                     inner.last_isr
                 );
 
-                for (idx, ep_info) in
-                    inner
-                        .endpoints
-                        .0
-                        .iter()
-                        .enumerate()
-                        .filter_map(|(idx, v)| match v {
-                            None => None,
-                            Some(ep) => Some((idx, ep)),
-                        })
-                {
+                for (idx, ep_info) in inner.enumerate_active_ep() {
                     dbgprint!(
-                        " EP{}:{:08b}:{:>3}",
+                        " EP{}:{:04x}:{:>3}",
                         idx,
-                        ep_info.last_csr & 0xFF,
+                        ep_info.last_csr & 0xFFFF,
                         ep_info.last_csr >> 16
                     );
                 }
