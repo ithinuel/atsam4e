@@ -37,11 +37,11 @@ pub trait FilterSlowClockDivider {
 }
 
 /// Debounce filter is disabled
-pub struct FilterDisabled;
+pub struct Unfiltered;
 /// Debounce filter enabled using the peripheral clock
-pub struct FilterEnabledPClk;
+pub struct FilteredOnPClk;
 /// Debounce filter enabled using the divided slow clock
-pub struct FilterEnabledSlowClock<T: FilterSlowClockDivider> {
+pub struct FilteredOnSlowClock<T: FilterSlowClockDivider> {
     _divider: PhantomData<T>,
 }
 
@@ -201,7 +201,7 @@ macro_rules! port {
 
                 pub struct Parts {
                     $(
-                        pub [<p $port:lower $pin_id>]: [<P $port:lower $pin_id>]<Input, Floating, FilterDisabled>
+                        pub [<p $port:lower $pin_id>]: [<P $port:lower $pin_id>]<Input, Floating, Unfiltered>
                      ),+
                 }
                 impl GpioExt for $crate::pac::[<PIO $port:upper>] {
@@ -226,6 +226,9 @@ macro_rules! port {
         }
     };
 }
+
+// TODO: Pb 4, 5, 6, 7, 10, 11 and 12 are system io by default.
+// It might be better not to obtain them from the port but from the matrix
 
 port!(
     A, 9,  { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31 },

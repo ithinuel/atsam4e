@@ -55,8 +55,8 @@ impl<Filter, Pull> PinRx<USART1> for Pa21<Alternate<PfA>, Filter, Pull> {}
 impl<Filter, Pull> PinTx<USART1> for Pa22<Alternate<PfA>, Filter, Pull> {}
 
 pub struct Serial<SERIAL, PINS> {
-    serial: SERIAL,
-    pins: PINS,
+    _serial: SERIAL,
+    _pins: PINS,
 }
 
 pub struct Rx<SERIAL> {
@@ -145,8 +145,8 @@ macro_rules! impl_uart {
                     });
 
                     Ok(Serial {
-                        serial: uart,
-                        pins
+                        _serial: uart,
+                        _pins: pins
                     })
                 }
 
@@ -160,9 +160,12 @@ macro_rules! impl_uart {
                         }
                     )
                 }
-                pub fn release(self) -> ($name, PINS) {
+                // TODO: this needs to reset the peripheral
+                // also, Tx<_> and Rx<_> may need to carry their respective pin so that a splited
+                // serial can be reconstituted
+                /*pub fn release(self) -> ($name, PINS) {
                     (self.serial, self.pins)
-                }
+                }*/
             }
 
             impl<PINS> Read<u8> for Serial<$name, PINS> {
@@ -197,7 +200,13 @@ macro_rules! impl_uart {
                 type Error = Error;
 
                 fn read(&mut self) -> nb::Result<u8, Self::Error> {
-                    todo!()
+                    let serial = unsafe { &*$name::ptr() };
+
+                    if serial.sr.read().rxrdy().bit_is_clear() {
+                        Err(nb::Error::WouldBlock)
+                    } else {
+                        Ok(serial.rhr.read().rxchr().bits())
+                    }
                 }
             }
 
@@ -205,8 +214,14 @@ macro_rules! impl_uart {
                 type Error = Error;
 
                 fn flush(&mut self) -> nb::Result<(), Self::Error> {
-                    //todo!()
-                    Ok(())
+                    let serial = unsafe { &*$name::ptr() };
+
+                    if serial.sr.read().txrdy().bit_is_clear() {
+                        Err(nb::Error::WouldBlock)
+                    } else {
+                        Ok(())
+                    }
+
                 }
 
                 fn write(&mut self, byte: u8) -> nb::Result<(), Self::Error> {

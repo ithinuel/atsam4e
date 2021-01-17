@@ -176,9 +176,9 @@ impl Pmc {
         // compute mul / div
         let gcd = gcd(pll_freq, main_freq.0);
         let div = main_freq.0 / gcd;
-        let mul = (pll_freq / gcd) - 1;
+        let mul = pll_freq / gcd;
 
-        assert!(div <= 255 && 1 < mul && mul <= 80);
+        assert!(div <= 255 && 1 < mul && mul <= 81);
         // plladiv pllamul plladiv2
         Some(PllConfig {
             div: div as u8,
@@ -247,12 +247,12 @@ impl Pmc {
             if let Some(usb_pres) = pll_config.usb_pres {
                 // usb_pres range has been checked in pll_configuration
                 pmc.pmc_usb
-                    .modify(|_, w| unsafe { w.usbdiv().bits(usb_pres) });
+                    .modify(|_, w| unsafe { w.usbdiv().bits(usb_pres - 1) });
             }
 
             pmc.ckgr_pllar.modify(|_, w| unsafe {
                 w.diva().bits(pll_config.div);
-                w.mula().bits(pll_config.mul);
+                w.mula().bits(pll_config.mul - 1);
                 w.pllacount().bits(0x3f); // maximum value the field can hold
                 w.one().set_bit();
                 w
