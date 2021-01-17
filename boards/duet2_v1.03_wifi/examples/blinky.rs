@@ -3,17 +3,17 @@
 
 use panic_halt as _;
 
-use atsam4_hal::delay::Delay;
-use atsam4_hal::gpio::GpioExt;
-use atsam4_hal::pmc::{MainClock, PmcExt};
-use atsam4_hal::time::U32Ext;
+use atsam4e_hal::delay::Delay;
+use atsam4e_hal::gpio::GpioExt;
+use atsam4e_hal::pmc::{MainClock, PmcExt};
+use atsam4e_hal::time::U32Ext;
 use embedded_hal::blocking::delay::DelayMs;
 use embedded_hal::digital::v2::ToggleableOutputPin;
 
 #[cortex_m_rt::entry]
 fn main() -> ! {
     // Get access to the device specific peripherals from the peripheral access crate
-    let p = atsam4_hal::pac::Peripherals::take().unwrap_or_else(|| unreachable!());
+    let p = atsam4e_hal::pac::Peripherals::take().unwrap_or_else(|| unreachable!());
     let cp = cortex_m::Peripherals::take().unwrap_or_else(|| unreachable!());
 
     p.WDT.mr.write(|w| w.wddis().set_bit());

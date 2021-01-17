@@ -1,5 +1,5 @@
 [package]
-name = "atsam4-hal"
+name = "atsam4e-hal"
 description = "HAL and Peripheral access API for ATSAM4E microcontroller family"
 version = "0.1.0"
 authors = ["Wilfried Chauveau <wilfried.chauveau@ithinuel.me>"]
@@ -15,10 +15,13 @@ sam4e8e = ["atsam4e8e/rt"]
 sam4e16c = ["atsam4e16c/rt"]
 sam4e16e = ["atsam4e16e/rt"]
 
+debug_on_uart0 = []
+
 [dependencies]
 paste = "1"
 cortex-m = "0.6"
 embedded-hal = { version = "0.2", features = ['unproven'] }
+usb-device = "*"
 nb = "*"
 
 [dependencies.atsam4e8c]
