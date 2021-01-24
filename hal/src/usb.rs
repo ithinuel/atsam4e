@@ -9,14 +9,34 @@ use usb_device::{
 };
 
 use crate::pac::udp::csr::{EPTYPE_A, W as CSRWrite};
+use crate::pac::UDP;
 
 use crate::pmc::Clocks;
 
 use core::cell::RefCell;
 use cortex_m::interrupt::{self, Mutex};
 
+pub trait Pins<USB> {}
+pub trait PinDP<USB> {}
+pub trait PinDM<USB> {}
+
+impl<USB, DP, DM> Pins<USB> for (DP, DM)
+where
+    DP: PinDP<USB>,
+    DM: PinDM<USB>,
+{
+}
+
+/// A place holder for DDP until system pins gets implemented in the gpio module.
+pub struct DDP;
+/// A place holder for DDM until system pins gets implemented in the gpio module.
+pub struct DDM;
+
+impl PinDP<UDP> for DDP {}
+impl PinDM<UDP> for DDM {}
+
 fn usb() -> &'static crate::pac::udp::RegisterBlock {
-    unsafe { &*crate::pac::UDP::ptr() }
+    unsafe { &*UDP::ptr() }
 }
 
 #[inline]
@@ -284,31 +304,37 @@ impl Inner {
                 Some(ep_info) => Some((idx, ep_info)),
             })
     }
-    fn get_ep_mut(&mut self, ep_addr: EndpointAddress) -> Option<&mut EndpointInfo> {
-        self.endpoints
-            .0
-            .get_mut(ep_addr.index())
-            .and_then(Option::as_mut)
-    }
+    #[cfg(feature = "debug_on_uart0")]
     fn get_ep(&self, ep_addr: EndpointAddress) -> Option<&EndpointInfo> {
         self.endpoints
             .0
             .get(ep_addr.index())
             .and_then(Option::as_ref)
     }
+    fn get_ep_mut(&mut self, ep_addr: EndpointAddress) -> Option<&mut EndpointInfo> {
+        self.endpoints
+            .0
+            .get_mut(ep_addr.index())
+            .and_then(Option::as_mut)
+    }
 }
 
-pub struct UsbBus {
+pub struct UsbBus<PINS> {
     inner: Mutex<RefCell<Inner>>,
+    _pins: PINS,
 }
 
-impl UsbBus {
+impl<PINS> UsbBus<PINS> {
     // TODO: actually take the pins in the right mode
-    pub fn new(_usb: crate::pac::UDP, _ddp: (), _ddm: (), clocks: Clocks) -> Self {
+    pub fn new(_usb: UDP, pins: PINS, clocks: Clocks) -> Self
+    where
+        PINS: Pins<UDP>,
+    {
         dbgprint!("New USB Bus\n");
         assert!(clocks.usb_clock_enabled);
 
         // enable usb clock on pmc
+
         let pmc = unsafe { &*crate::pac::PMC::ptr() };
         pmc.pmc_scer.write_with_zero(|w| w.udp().set_bit());
         pmc.pmc_pcer1.write_with_zero(|w| w.pid35().set_bit());
@@ -317,11 +343,12 @@ impl UsbBus {
             inner: Mutex::new(RefCell::new(Inner {
                 endpoints: AllEndpoints([None; 8]),
             })),
+            _pins: pins,
         }
     }
 }
 
-impl UsbBusTrait for UsbBus {
+impl<PINS: Sync> UsbBusTrait for UsbBus<PINS> {
     fn alloc_ep(
         &mut self,
         ep_dir: UsbDirection,

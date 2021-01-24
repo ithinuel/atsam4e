@@ -94,6 +94,18 @@
       </enumeratedValues>
     </xsl:copy>
   </xsl:template>
+  <xsl:template match="/device/peripherals/peripheral[name='RSTC']/registers/register[name='CR']/fields/field[name='KEY']">
+    <xsl:copy>
+      <xsl:apply-templates/>
+      <enumeratedValues>
+        <enumeratedValue>
+          <name>PASSWD</name>
+          <description>Password</description>
+          <value>0xA5</value>
+        </enumeratedValue>
+      </enumeratedValues>
+    </xsl:copy>
+  </xsl:template>
   <!-- Adds a variant to allow safe code to enter programable clock prescaler.  -->
   <xsl:template match="/device/peripherals/peripheral[name='PMC']/registers/register[name='PMC_PCK%s']/fields/field[name='PRES']">
     <xsl:copy>

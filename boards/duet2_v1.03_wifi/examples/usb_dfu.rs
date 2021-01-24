@@ -1,5 +1,7 @@
-//! Makes the duet2 appear as a USB serial port loop back device.
+//! Makes the duet2 appear as a USB serial port loop back device with dfu support.
 //! Repeats back all characters sent to it, but in upper case.
+//! Uppon dfu request it gets ready for re-enumeration and writes/reads data from the last
+//! flash sector.
 
 #![no_std]
 #![no_main]
@@ -13,17 +15,18 @@ fn on_panic(info: &core::panic::PanicInfo) -> ! {
     atsam4e_hal::dbgprint!("Woops: {:?}", info);
     loop {}
 }
+#[cfg(feature = "debug_on_uart0")]
+use atsam4e_hal::serial::*;
 
 use atsam4e_hal::gpio::GpioExt;
 use atsam4e_hal::pmc::{MainClock, PmcExt};
 use atsam4e_hal::time::U32Ext;
 use atsam4e_hal::usb::*;
 
-#[cfg(feature = "debug_on_uart0")]
-use atsam4e_hal::serial::*;
-
 use embedded_hal::digital::v2::OutputPin;
 use usb_device::prelude::*;
+use usbd_dfu::runtime::DFURuntimeClass;
+use usbd_dfu_demo::DFURuntimeImpl;
 use usbd_serial::{SerialPort, /* CDC_SUBCLASS_ACM,*/ USB_CLASS_CDC};
 
 #[cortex_m_rt::entry]
@@ -48,6 +51,7 @@ fn main() -> ! {
     #[cfg(feature = "debug_on_uart0")]
     {
         let ioa = p.PIOA.split();
+
         let tx = ioa.pa10.into_function_a();
         let (tx, _) = Serial::uart0(
             p.UART0,
@@ -65,6 +69,9 @@ fn main() -> ! {
 
     let mut serial = SerialPort::new(&usb_bus);
 
+    let dfu = DFURuntimeImpl;
+    let mut dfu = DFURuntimeClass::new(&usb_bus, dfu, 0);
+
     let mut led = p.PIOC.split().pc16.into_push_pull_output(false);
 
     let mut usb_dev = UsbDeviceBuilder::new(&usb_bus, UsbVidPid(0x16c0, 0x27dd))
@@ -73,12 +80,14 @@ fn main() -> ! {
         .serial_number("TEST")
         .max_packet_size_0(64)
         .device_class(USB_CLASS_CDC)
-        //.device_class(CDC_SUBCLASS_ACM)
-        .device_class(2)
+        //.device_sub_class(CDC_SUBCLASS_ACM)
+        .device_sub_class(2)
+        //.device_protocol(CDC_PROTOCOL_NONE)
+        .device_protocol(0)
         .build();
 
     loop {
-        if !usb_dev.poll(&mut [&mut serial]) {
+        if !usb_dev.poll(&mut [&mut serial, &mut dfu]) {
             continue;
         }
 

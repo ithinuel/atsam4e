@@ -30,6 +30,8 @@ pub struct PfA;
 pub struct PfB;
 /// Peripheral Function C
 pub struct PfC;
+/// System Peripheral
+pub struct System;
 
 /// Filter Enabled
 pub trait FilterSlowClockDivider {
@@ -181,7 +183,7 @@ macro_rules! pin {
 }
 
 macro_rules! port {
-    ($($port:ident, $port_id:expr, { $( $pin_id:expr ),+ }),+) => {
+    ($($port:ident, $port_id:expr, { $( $pin_id:tt ),+ }),+) => {
         $crate::paste! {
             $(
             pub mod [<pio $port:lower>] {
@@ -193,7 +195,6 @@ macro_rules! port {
                 use embedded_hal::digital::v2::{InputPin, OutputPin, StatefulOutputPin, toggleable};
 
                 use $crate::pac::[<PIO $port:upper>];
-
 
                 $(
                     pin!($port, $port_id, $pin_id);
@@ -232,7 +233,7 @@ macro_rules! port {
 
 port!(
     A, 9,  { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31 },
-    B, 10, { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14 },
+    B, 10, { 0,1,2,3,13,14 },
     C, 11, { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31 },
     D, 12, { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31 },
     E, 13, { 0,1,2,3,4,5 }

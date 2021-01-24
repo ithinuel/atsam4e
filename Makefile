@@ -1,16 +1,17 @@
-BIN_DIR=target/thumbv7em-none-eabihf/release/examples
+TARGET=thumbv7em-none-eabihf
+BIN_DIR=target/${TARGET}/release/examples
 
 all: usb_poll helloworld blinky
 
-usb_poll helloworld blinky:
-	cargo build --target thumbv7em-none-eabihf --example $@ --release
+usb_dfu usb_poll helloworld blinky:
+	#cargo build --target ${TARGET} --example $@ --release
 
 %.bin: %
-	@arm-none-eabi-objcopy -O binary ${BIN_DIR}/$< ${BIN_DIR}/$@
+	@cargo objcopy --target ${TARGET} --example $< --release -- -O binary ${BIN_DIR}/$@
 	@exa -l ${BIN_DIR}/$@
 
 flash_%: %.bin
-	bossac -e -w -v -p /dev/tty.usbmodem101 -b "${BIN_DIR}/$<"
+	bossac -e -w -v -p /dev/ttyACM0 -b "${BIN_DIR}/$<"
 	#@sam-ba_ 4 /dev/ttyACM0 at91sam4e8-ek ./flash.tcl "${BIN_DIR}/$<"
 
 clean:

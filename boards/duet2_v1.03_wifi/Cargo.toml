@@ -9,11 +9,19 @@ keywords = ["no-std", "arm", "cortex-m", "embedded-hal"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+bootloader = []
+application = []
+debug_on_uart0 = ["atsam4e-hal/debug_on_uart0"]
+
 [dependencies]
-atsam4e-hal = { version = "*", features = ["sam4e8e", "debug_on_uart0"] }
+atsam4e-hal = { version = "*", features = ["sam4e8e"] }
 cortex-m-rt = "*"
 cortex-m = "*"
 embedded-hal = "*"
 panic-halt = "*"
 usb-device = "*"
-usbd-serial = "*"
+usbd-serial = {version = "*"}
+usbd-dfu = {version = "*"}
+usbd-dfu-demo = {version = "*"}
+
