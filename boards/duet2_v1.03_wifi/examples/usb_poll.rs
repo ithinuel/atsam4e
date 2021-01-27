@@ -45,6 +45,8 @@ fn main() -> ! {
         .use_usb()
         .freeze();
 
+    let mut led = p.PIOC.split().pc16.into_push_pull_output(false);
+
     #[cfg(feature = "debug_on_uart0")]
     {
         let ioa = p.PIOA.split();
@@ -62,11 +64,7 @@ fn main() -> ! {
     }
 
     let usb_bus = usb_device::bus::UsbBusAllocator::new(UsbBus::new(p.UDP, (DDP, DDM), clocks));
-
     let mut serial = SerialPort::new(&usb_bus);
-
-    let mut led = p.PIOC.split().pc16.into_push_pull_output(false);
-
     let mut usb_dev = UsbDeviceBuilder::new(&usb_bus, UsbVidPid(0x16c0, 0x27dd))
         .manufacturer("Fake company")
         .product("Serial port")
@@ -84,30 +82,27 @@ fn main() -> ! {
 
         let mut buf = [0u8; 64];
 
-        match serial.read(&mut buf) {
-            Ok(count) if count > 0 => {
-                let _ = led.set_high(); // Turn on
-
-                // Echo back in upper case
-                for c in buf[0..count].iter_mut() {
-                    if 0x61 <= *c && *c <= 0x7a {
-                        *c &= !0x20;
-                    }
-                }
-
-                let mut write_offset = 0;
-                while write_offset < count {
-                    match serial.write(&buf[write_offset..count]) {
-                        Ok(len) if len > 0 => {
-                            write_offset += len;
-                        }
-                        _ => {}
-                    }
-                }
+        let _ = serial.read(&mut buf).map(|count| {
+            if count == 0 {
+                return;
             }
-            _ => {}
-        }
+            let _ = led.set_low(); // Turn on
 
-        let _ = led.set_low(); // Turn off
+            // Echo back in upper case
+            buf.iter_mut().take(count).for_each(|c| {
+                if let 0x61..=0x7a = *c {
+                    *c &= !0x20;
+                }
+            });
+
+            let mut wr_ptr = &buf[..count];
+            while !wr_ptr.is_empty() {
+                let _ = serial.write(wr_ptr).map(|len| {
+                    wr_ptr = &wr_ptr[len..];
+                });
+            }
+        });
+
+        let _ = led.set_high(); // Turn off
     }
 }

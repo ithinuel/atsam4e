@@ -6,9 +6,19 @@
 #![no_std]
 #![no_main]
 
+use atsam4e_hal::gpio::GpioExt;
+use atsam4e_hal::pmc::{MainClock, PmcExt};
+use atsam4e_hal::time::U32Ext;
+use atsam4e_hal::usb::*;
+use cortex_m::peripheral::syst::SystClkSource;
+use embedded_hal::digital::v2::OutputPin;
+use usb_device::prelude::*;
+use usbd_dfu::runtime::DFURuntimeClass;
+use usbd_dfu_demo::DFURuntimeImpl;
+use usbd_serial::{SerialPort, /* CDC_SUBCLASS_ACM,*/ USB_CLASS_CDC};
+
 #[cfg(not(feature = "debug_on_uart0"))]
 use panic_halt as _;
-
 #[cfg(feature = "debug_on_uart0")]
 #[panic_handler]
 fn on_panic(info: &core::panic::PanicInfo) -> ! {
@@ -18,22 +28,11 @@ fn on_panic(info: &core::panic::PanicInfo) -> ! {
 #[cfg(feature = "debug_on_uart0")]
 use atsam4e_hal::serial::*;
 
-use atsam4e_hal::gpio::GpioExt;
-use atsam4e_hal::pmc::{MainClock, PmcExt};
-use atsam4e_hal::time::U32Ext;
-use atsam4e_hal::usb::*;
-
-use embedded_hal::digital::v2::OutputPin;
-use usb_device::prelude::*;
-use usbd_dfu::runtime::DFURuntimeClass;
-use usbd_dfu_demo::DFURuntimeImpl;
-use usbd_serial::{SerialPort, /* CDC_SUBCLASS_ACM,*/ USB_CLASS_CDC};
-
 #[cortex_m_rt::entry]
 fn main() -> ! {
     // Get access to the device specific peripherals from the peripheral access crate
     let p = atsam4e_hal::pac::Peripherals::take().unwrap_or_else(|| unreachable!());
-    //let cp = cortex_m::Peripherals::take().unwrap_or_else(|| unreachable!());
+    let mut cp = cortex_m::Peripherals::take().unwrap_or_else(|| unreachable!());
 
     p.WDT.mr.write(|w| w.wddis().set_bit());
 
@@ -47,6 +46,8 @@ fn main() -> ! {
         .master_clock(120.mhz())
         .use_usb()
         .freeze();
+
+    let mut led = p.PIOC.split().pc16.into_push_pull_output(false);
 
     #[cfg(feature = "debug_on_uart0")]
     {
@@ -65,15 +66,14 @@ fn main() -> ! {
         atsam4e_hal::debug::wire_uart(tx);
     }
 
+    cp.SYST.set_clock_source(SystClkSource::External);
+    cp.SYST.set_reload(clocks.master_clock.0 / (8 * 1_000));
+    cp.SYST.clear_current();
+    cp.SYST.enable_counter();
+
     let usb_bus = usb_device::bus::UsbBusAllocator::new(UsbBus::new(p.UDP, (DDP, DDM), clocks));
-
     let mut serial = SerialPort::new(&usb_bus);
-
-    let dfu = DFURuntimeImpl;
-    let mut dfu = DFURuntimeClass::new(&usb_bus, dfu, 0);
-
-    let mut led = p.PIOC.split().pc16.into_push_pull_output(false);
-
+    let mut dfu = DFURuntimeClass::new(&usb_bus, DFURuntimeImpl);
     let mut usb_dev = UsbDeviceBuilder::new(&usb_bus, UsbVidPid(0x16c0, 0x27dd))
         .manufacturer("Fake company")
         .product("Serial port")
@@ -87,36 +87,37 @@ fn main() -> ! {
         .build();
 
     loop {
+        if cp.SYST.has_wrapped() {
+            dfu.poll(1);
+        }
+
         if !usb_dev.poll(&mut [&mut serial, &mut dfu]) {
             continue;
         }
 
         let mut buf = [0u8; 64];
 
-        match serial.read(&mut buf) {
-            Ok(count) if count > 0 => {
-                let _ = led.set_high(); // Turn on
-
-                // Echo back in upper case
-                for c in buf[0..count].iter_mut() {
-                    if 0x61 <= *c && *c <= 0x7a {
-                        *c &= !0x20;
-                    }
-                }
-
-                let mut write_offset = 0;
-                while write_offset < count {
-                    match serial.write(&buf[write_offset..count]) {
-                        Ok(len) if len > 0 => {
-                            write_offset += len;
-                        }
-                        _ => {}
-                    }
-                }
+        let _ = serial.read(&mut buf).map(|count| {
+            if count == 0 {
+                return;
             }
-            _ => {}
-        }
+            let _ = led.set_low(); // Turn on
 
-        let _ = led.set_low(); // Turn off
+            // Echo back in upper case
+            buf.iter_mut().take(count).for_each(|c| {
+                if let 0x61..=0x7a = *c {
+                    *c &= !0x20;
+                }
+            });
+
+            let mut wr_ptr = &buf[..count];
+            while !wr_ptr.is_empty() {
+                let _ = serial.write(wr_ptr).map(|len| {
+                    wr_ptr = &wr_ptr[len..];
+                });
+            }
+        });
+
+        let _ = led.set_high(); // Turn off
     }
 }

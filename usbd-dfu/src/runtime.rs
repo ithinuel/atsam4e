@@ -1,37 +1,12 @@
-use core::num::Wrapping;
 use usb_device::class_prelude::*;
 use usb_device::Result;
 
 use super::{
-    Request, State, Status, DFU_FUNCTIONAL, DFU_VERSION, USB_CLASS_DFU, USB_PROTOCOL_DFU,
-    USB_SUB_CLASS_DFU,
+    Capabilities, Request, State, DFU_FUNCTIONAL, DFU_VERSION, USB_CLASS_DFU,
+    USB_DFU_RUNTIME_PROTOCOL, USB_SUB_CLASS_DFU,
 };
 
-pub trait DeviceFirmwareUpgrade {
-    /// If true, the device generates a detach-attach sequence on its own upon receipt of a detach
-    /// request. Otherwise the device waits for a USB reset until a time out expires.
-    const WILL_DETACH: bool;
-
-    /// If true, the device is able to handle other DFU task after a download has completed.
-    /// Otherwise the device expects a USB reset.
-    const IS_MANIFESTATION_TOLERANT: bool;
-
-    /// True if the device can send its current firmware to the host.
-    const CAN_UPLOAD: bool;
-
-    /// True if the device can receive a firmware from the host.
-    const CAN_DOWNLOAD: bool;
-
-    /// Time, in milliseconds, that the device will wait after receipt of the detach request. If
-    /// this time elapses without a USB reset, then the device will terminate the reconfiguration
-    /// phase and revert back to normal operation. This represents the maximum time that the device
-    /// can wait (depending on its timers, etc.). The host may specify a shorter timeout in the
-    /// detach request.
-    const DETACH_TIMEOUT: u16;
-
-    /// Maximum number of bytes the device can accept between per control-write transaction.
-    const TRANSFER_SIZE: u16;
-
+pub trait DeviceFirmwareUpgrade: Capabilities {
     /// Called by the USB stack when a reset is triggered by the host.
     fn on_reset(&mut self);
 
@@ -44,26 +19,27 @@ pub trait DeviceFirmwareUpgrade {
 pub struct DFURuntimeClass<D: DeviceFirmwareUpgrade> {
     handler: D,
     interface_number: InterfaceNumber,
-    now: Wrapping<u32>,
     state: State,
 }
 
 impl<H: DeviceFirmwareUpgrade> DFURuntimeClass<H> {
-    pub fn new<B: UsbBus>(alloc: &UsbBusAllocator<B>, handler: H, now: u32) -> Self {
+    pub fn new<B: UsbBus>(alloc: &UsbBusAllocator<B>, handler: H) -> Self {
         Self {
             handler,
             interface_number: alloc.interface(),
-            now: Wrapping(now),
             state: State::AppIdle,
         }
     }
 
-    /// updates the state of the driver. Takes the number of nano-second since last update.
+    /// Updates the state of the driver. Takes the number of nano-second since last update.
+    /// Ideally this method should be called once every millisecond.
     pub fn poll(&mut self, elapsed_ms: u32) {
-        self.now += Wrapping(elapsed_ms);
-        if let State::AppDetach(when) = self.state {
-            if self.now.0 > when {
+        if let State::AppDetach(remaining) = &mut self.state {
+            let rem = remaining.saturating_sub(elapsed_ms);
+            if rem == 0 {
                 self.state = State::AppIdle;
+            } else {
+                *remaining = rem;
             }
         }
     }
@@ -75,7 +51,7 @@ impl<H: DeviceFirmwareUpgrade, B: UsbBus> UsbClass<B> for DFURuntimeClass<H> {
             self.interface_number,
             USB_CLASS_DFU,
             USB_SUB_CLASS_DFU,
-            USB_PROTOCOL_DFU,
+            USB_DFU_RUNTIME_PROTOCOL,
         )?;
 
         let attributes = {
@@ -108,7 +84,7 @@ impl<H: DeviceFirmwareUpgrade, B: UsbBus> UsbClass<B> for DFURuntimeClass<H> {
         let req = xfer.request();
         if !(req.request_type == control::RequestType::Class
             && req.recipient == control::Recipient::Interface
-            && req.index == u8::from(self.interface_number) as u16)
+            && req.index == u8::from(self.interface_number).into())
         {
             return;
         }
@@ -116,9 +92,13 @@ impl<H: DeviceFirmwareUpgrade, B: UsbBus> UsbClass<B> for DFURuntimeClass<H> {
         let _ = match req.request {
             Request::DFU_GETSTATE => xfer.accept_with(&[u8::from(self.state)]),
             Request::DFU_GETSTATUS => {
-                xfer.accept_with(&[Status::Ok as u8, 1, self.state.into(), 0])
+                // there is no error status in runtime dfu
+                xfer.accept_with(&[0, 1, self.state.into(), 0])
             }
-            _ => xfer.reject(),
+            _ => {
+                self.state = State::AppIdle;
+                xfer.reject()
+            }
         };
     }
 
@@ -126,21 +106,22 @@ impl<H: DeviceFirmwareUpgrade, B: UsbBus> UsbClass<B> for DFURuntimeClass<H> {
         let req = xfer.request();
         if !(req.request_type == control::RequestType::Class
             && req.recipient == control::Recipient::Interface
-            && req.index == u8::from(self.interface_number) as u16)
+            && req.index == u8::from(self.interface_number).into())
         {
             return;
         }
 
         if req.request == Request::DFU_DETACH {
             let timeout_ms = xfer.request().value;
-            let end_timestamp = self.now + Wrapping(timeout_ms.into());
 
-            self.state = State::AppDetach(end_timestamp.0);
+            self.state = State::AppDetach(timeout_ms.into());
+
             // propagate the event to the handler
             self.handler.on_detach_request(timeout_ms);
 
             let _ = xfer.accept();
         } else {
+            self.state = State::AppIdle;
             let _ = xfer.reject();
         };
     }

@@ -1,13 +1,18 @@
 TARGET=thumbv7em-none-eabihf
 BIN_DIR=target/${TARGET}/release/examples
 
-all: usb_poll helloworld blinky
+all: usb_poll helloworld blinky bootloader usb_dfu
 
-usb_dfu usb_poll helloworld blinky:
-	#cargo build --target ${TARGET} --example $@ --release
+usb_poll helloworld blinky:
+	cargo build --target ${TARGET} --example $@ --release
+
+bootloader usb_dfu:
+	cargo build --release --target ${TARGET} --example bootloader --features bootloader
+	cargo build --release --target ${TARGET} --example usb_dfu --features application
 
 %.bin: %
-	@cargo objcopy --target ${TARGET} --example $< --release -- -O binary ${BIN_DIR}/$@
+	@rust-objcopy -O binary ${BIN_DIR}/$< ${BIN_DIR}/$@
+	@rust-size ${BIN_DIR}/$<
 	@exa -l ${BIN_DIR}/$@
 
 flash_%: %.bin
