@@ -1,6 +1,24 @@
-#[doc = "Writer for register IER"]
-pub type W = crate::W<u32, super::IER>;
-#[doc = "Write proxy for field `EOC0`"]
+#[doc = "Register `IER` writer"]
+pub struct W(crate::W<IER_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IER_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IER_SPEC>> for W {
+    fn from(writer: crate::W<IER_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `EOC0` writer - End of Conversion Interrupt Enable 0"]
 pub struct EOC0_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> EOC0_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC1`"]
+#[doc = "Field `EOC1` writer - End of Conversion Interrupt Enable 1"]
 pub struct EOC1_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> EOC1_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC2`"]
+#[doc = "Field `EOC2` writer - End of Conversion Interrupt Enable 2"]
 pub struct EOC2_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> EOC2_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC3`"]
+#[doc = "Field `EOC3` writer - End of Conversion Interrupt Enable 3"]
 pub struct EOC3_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> EOC3_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC4`"]
+#[doc = "Field `EOC4` writer - End of Conversion Interrupt Enable 4"]
 pub struct EOC4_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> EOC4_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC5`"]
+#[doc = "Field `EOC5` writer - End of Conversion Interrupt Enable 5"]
 pub struct EOC5_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> EOC5_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC6`"]
+#[doc = "Field `EOC6` writer - End of Conversion Interrupt Enable 6"]
 pub struct EOC6_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> EOC6_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC7`"]
+#[doc = "Field `EOC7` writer - End of Conversion Interrupt Enable 7"]
 pub struct EOC7_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> EOC7_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC8`"]
+#[doc = "Field `EOC8` writer - End of Conversion Interrupt Enable 8"]
 pub struct EOC8_W<'a> {
     w: &'a mut W,
 }
@@ -198,7 +216,7 @@ impl<'a> EOC8_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC9`"]
+#[doc = "Field `EOC9` writer - End of Conversion Interrupt Enable 9"]
 pub struct EOC9_W<'a> {
     w: &'a mut W,
 }
@@ -220,7 +238,7 @@ impl<'a> EOC9_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC10`"]
+#[doc = "Field `EOC10` writer - End of Conversion Interrupt Enable 10"]
 pub struct EOC10_W<'a> {
     w: &'a mut W,
 }
@@ -242,7 +260,7 @@ impl<'a> EOC10_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC11`"]
+#[doc = "Field `EOC11` writer - End of Conversion Interrupt Enable 11"]
 pub struct EOC11_W<'a> {
     w: &'a mut W,
 }
@@ -264,7 +282,7 @@ impl<'a> EOC11_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC12`"]
+#[doc = "Field `EOC12` writer - End of Conversion Interrupt Enable 12"]
 pub struct EOC12_W<'a> {
     w: &'a mut W,
 }
@@ -286,7 +304,7 @@ impl<'a> EOC12_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC13`"]
+#[doc = "Field `EOC13` writer - End of Conversion Interrupt Enable 13"]
 pub struct EOC13_W<'a> {
     w: &'a mut W,
 }
@@ -308,7 +326,7 @@ impl<'a> EOC13_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC14`"]
+#[doc = "Field `EOC14` writer - End of Conversion Interrupt Enable 14"]
 pub struct EOC14_W<'a> {
     w: &'a mut W,
 }
@@ -330,7 +348,7 @@ impl<'a> EOC14_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC15`"]
+#[doc = "Field `EOC15` writer - End of Conversion Interrupt Enable 15"]
 pub struct EOC15_W<'a> {
     w: &'a mut W,
 }
@@ -352,7 +370,7 @@ impl<'a> EOC15_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC16`"]
+#[doc = "Field `EOC16` writer - End of Conversion Interrupt Enable 16"]
 pub struct EOC16_W<'a> {
     w: &'a mut W,
 }
@@ -374,7 +392,7 @@ impl<'a> EOC16_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC17`"]
+#[doc = "Field `EOC17` writer - End of Conversion Interrupt Enable 17"]
 pub struct EOC17_W<'a> {
     w: &'a mut W,
 }
@@ -396,7 +414,7 @@ impl<'a> EOC17_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC18`"]
+#[doc = "Field `EOC18` writer - End of Conversion Interrupt Enable 18"]
 pub struct EOC18_W<'a> {
     w: &'a mut W,
 }
@@ -418,7 +436,7 @@ impl<'a> EOC18_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC19`"]
+#[doc = "Field `EOC19` writer - End of Conversion Interrupt Enable 19"]
 pub struct EOC19_W<'a> {
     w: &'a mut W,
 }
@@ -440,7 +458,7 @@ impl<'a> EOC19_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC20`"]
+#[doc = "Field `EOC20` writer - End of Conversion Interrupt Enable 20"]
 pub struct EOC20_W<'a> {
     w: &'a mut W,
 }
@@ -462,7 +480,7 @@ impl<'a> EOC20_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC21`"]
+#[doc = "Field `EOC21` writer - End of Conversion Interrupt Enable 21"]
 pub struct EOC21_W<'a> {
     w: &'a mut W,
 }
@@ -484,7 +502,7 @@ impl<'a> EOC21_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC22`"]
+#[doc = "Field `EOC22` writer - End of Conversion Interrupt Enable 22"]
 pub struct EOC22_W<'a> {
     w: &'a mut W,
 }
@@ -506,7 +524,7 @@ impl<'a> EOC22_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOC23`"]
+#[doc = "Field `EOC23` writer - End of Conversion Interrupt Enable 23"]
 pub struct EOC23_W<'a> {
     w: &'a mut W,
 }
@@ -528,7 +546,7 @@ impl<'a> EOC23_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `DRDY`"]
+#[doc = "Field `DRDY` writer - Data Ready Interrupt Enable"]
 pub struct DRDY_W<'a> {
     w: &'a mut W,
 }
@@ -550,7 +568,7 @@ impl<'a> DRDY_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `GOVRE`"]
+#[doc = "Field `GOVRE` writer - General Overrun Error Interrupt Enable"]
 pub struct GOVRE_W<'a> {
     w: &'a mut W,
 }
@@ -572,7 +590,7 @@ impl<'a> GOVRE_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `COMPE`"]
+#[doc = "Field `COMPE` writer - Comparison Event Interrupt Enable+"]
 pub struct COMPE_W<'a> {
     w: &'a mut W,
 }
@@ -594,7 +612,7 @@ impl<'a> COMPE_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ENDRX`"]
+#[doc = "Field `ENDRX` writer - End of Receive Buffer Interrupt Enable"]
 pub struct ENDRX_W<'a> {
     w: &'a mut W,
 }
@@ -616,7 +634,7 @@ impl<'a> ENDRX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RXBUFF`"]
+#[doc = "Field `RXBUFF` writer - Receive Buffer Full Interrupt Enable"]
 pub struct RXBUFF_W<'a> {
     w: &'a mut W,
 }
@@ -638,7 +656,7 @@ impl<'a> RXBUFF_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TEMPCHG`"]
+#[doc = "Field `TEMPCHG` writer - Temperature Change Interrupt Enable"]
 pub struct TEMPCHG_W<'a> {
     w: &'a mut W,
 }
@@ -660,7 +678,7 @@ impl<'a> TEMPCHG_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOCAL`"]
+#[doc = "Field `EOCAL` writer - End of Calibration Sequence Interrupt Enable"]
 pub struct EOCAL_W<'a> {
     w: &'a mut W,
 }
@@ -838,4 +856,18 @@ impl W {
     pub fn eocal(&mut self) -> EOCAL_W {
         EOCAL_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Enable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ier](index.html) module"]
+pub struct IER_SPEC;
+impl crate::RegisterSpec for IER_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [ier::W](W) writer structure"]
+impl crate::Writable for IER_SPEC {
+    type Writer = W;
 }

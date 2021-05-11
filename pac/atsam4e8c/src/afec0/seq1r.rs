@@ -1,18 +1,52 @@
-#[doc = "Reader of register SEQ1R"]
-pub type R = crate::R<u32, super::SEQ1R>;
-#[doc = "Writer for register SEQ1R"]
-pub type W = crate::W<u32, super::SEQ1R>;
-#[doc = "Register SEQ1R `reset()`'s with value 0"]
-impl crate::ResetValue for super::SEQ1R {
-    type Type = u32;
+#[doc = "Register `SEQ1R` reader"]
+pub struct R(crate::R<SEQ1R_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<SEQ1R_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `USCH0`"]
-pub type USCH0_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `USCH0`"]
+impl core::convert::From<crate::R<SEQ1R_SPEC>> for R {
+    fn from(reader: crate::R<SEQ1R_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `SEQ1R` writer"]
+pub struct W(crate::W<SEQ1R_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<SEQ1R_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<SEQ1R_SPEC>> for W {
+    fn from(writer: crate::W<SEQ1R_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `USCH0` reader - User Sequence Number 0"]
+pub struct USCH0_R(crate::FieldReader<u8, u8>);
+impl USCH0_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        USCH0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for USCH0_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `USCH0` writer - User Sequence Number 0"]
 pub struct USCH0_W<'a> {
     w: &'a mut W,
 }
@@ -24,9 +58,21 @@ impl<'a> USCH0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `USCH1`"]
-pub type USCH1_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `USCH1`"]
+#[doc = "Field `USCH1` reader - User Sequence Number 1"]
+pub struct USCH1_R(crate::FieldReader<u8, u8>);
+impl USCH1_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        USCH1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for USCH1_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `USCH1` writer - User Sequence Number 1"]
 pub struct USCH1_W<'a> {
     w: &'a mut W,
 }
@@ -38,9 +84,21 @@ impl<'a> USCH1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `USCH2`"]
-pub type USCH2_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `USCH2`"]
+#[doc = "Field `USCH2` reader - User Sequence Number 2"]
+pub struct USCH2_R(crate::FieldReader<u8, u8>);
+impl USCH2_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        USCH2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for USCH2_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `USCH2` writer - User Sequence Number 2"]
 pub struct USCH2_W<'a> {
     w: &'a mut W,
 }
@@ -52,9 +110,21 @@ impl<'a> USCH2_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `USCH3`"]
-pub type USCH3_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `USCH3`"]
+#[doc = "Field `USCH3` reader - User Sequence Number 3"]
+pub struct USCH3_R(crate::FieldReader<u8, u8>);
+impl USCH3_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        USCH3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for USCH3_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `USCH3` writer - User Sequence Number 3"]
 pub struct USCH3_W<'a> {
     w: &'a mut W,
 }
@@ -66,9 +136,21 @@ impl<'a> USCH3_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `USCH4`"]
-pub type USCH4_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `USCH4`"]
+#[doc = "Field `USCH4` reader - User Sequence Number 4"]
+pub struct USCH4_R(crate::FieldReader<u8, u8>);
+impl USCH4_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        USCH4_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for USCH4_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `USCH4` writer - User Sequence Number 4"]
 pub struct USCH4_W<'a> {
     w: &'a mut W,
 }
@@ -80,9 +162,21 @@ impl<'a> USCH4_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `USCH5`"]
-pub type USCH5_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `USCH5`"]
+#[doc = "Field `USCH5` reader - User Sequence Number 5"]
+pub struct USCH5_R(crate::FieldReader<u8, u8>);
+impl USCH5_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        USCH5_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for USCH5_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `USCH5` writer - User Sequence Number 5"]
 pub struct USCH5_W<'a> {
     w: &'a mut W,
 }
@@ -94,9 +188,21 @@ impl<'a> USCH5_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `USCH6`"]
-pub type USCH6_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `USCH6`"]
+#[doc = "Field `USCH6` reader - User Sequence Number 6"]
+pub struct USCH6_R(crate::FieldReader<u8, u8>);
+impl USCH6_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        USCH6_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for USCH6_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `USCH6` writer - User Sequence Number 6"]
 pub struct USCH6_W<'a> {
     w: &'a mut W,
 }
@@ -108,9 +214,21 @@ impl<'a> USCH6_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `USCH7`"]
-pub type USCH7_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `USCH7`"]
+#[doc = "Field `USCH7` reader - User Sequence Number 7"]
+pub struct USCH7_R(crate::FieldReader<u8, u8>);
+impl USCH7_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        USCH7_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for USCH7_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `USCH7` writer - User Sequence Number 7"]
 pub struct USCH7_W<'a> {
     w: &'a mut W,
 }
@@ -204,5 +322,30 @@ impl W {
     #[inline(always)]
     pub fn usch7(&mut self) -> USCH7_W {
         USCH7_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Channel Sequence 1 Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [seq1r](index.html) module"]
+pub struct SEQ1R_SPEC;
+impl crate::RegisterSpec for SEQ1R_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [seq1r::R](R) reader structure"]
+impl crate::Readable for SEQ1R_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [seq1r::W](W) writer structure"]
+impl crate::Writable for SEQ1R_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets SEQ1R to value 0"]
+impl crate::Resettable for SEQ1R_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

@@ -8,6 +8,7 @@ use usb_device::{
     Result as UsbResult, UsbDirection, UsbError,
 };
 
+use crate::pac::generic::Variant;
 use crate::pac::udp::csr::{EPTYPE_A, W as CSRWrite};
 use crate::pac::UDP;
 
@@ -272,7 +273,7 @@ impl AllEndpoints {
                     .eptype()
                     .variant(info.ep_type)
             });
-            while csr.read().eptype() != info.ep_type {}
+            while csr.read().eptype().variant() != Variant::Val(info.ep_type) {}
         }
     }
 }
@@ -284,7 +285,7 @@ enum CtrlEpState {
     DataIn(usize),
     DataOut(usize),
     StatusIn,
-    StatusOut,
+    //StatusOut,
     Stalled,
 }
 
@@ -304,7 +305,8 @@ impl Inner {
                 Some(ep_info) => Some((idx, ep_info)),
             })
     }
-    #[cfg(feature = "debug_on_uart0")]
+    #[cfg(any(feature = "debug_on_uart0", feature = "debug_on_buffer"))]
+    #[allow(dead_code)]
     fn get_ep(&self, ep_addr: EndpointAddress) -> Option<&EndpointInfo> {
         self.endpoints
             .0
@@ -357,14 +359,14 @@ impl<PINS: Sync> UsbBusTrait for UsbBus<PINS> {
         max_packet_size: u16,
         _interval: u8,
     ) -> UsbResult<EndpointAddress> {
-        dbgprint!(
-            "UsbBus::alloc_ep dir={:?} addr={:?} type={:?} max_packet_size={} interval={} -> ",
-            ep_dir,
-            ep_addr,
-            ep_type,
-            max_packet_size,
-            _interval
-        );
+        //dbgprint!(
+        //"UsbBus::alloc_ep dir={:?} addr={:?} type={:?} max_packet_size={} interval={} -> ",
+        //ep_dir,
+        //ep_addr,
+        //ep_type,
+        //max_packet_size,
+        //_interval
+        //);
         interrupt::free(|cs| {
             let mut inner = self.inner.borrow(cs).borrow_mut();
 
@@ -378,22 +380,22 @@ impl<PINS: Sync> UsbBusTrait for UsbBus<PINS> {
             inner
                 .endpoints
                 .allocate(ep_addr, ep_type, max_packet_size)?;
-            dbgprint!(
-                "EP{}-{:?}: {:?}\n",
-                ep_addr.index(),
-                ep_addr.direction(),
-                inner.get_ep(ep_addr)
-            );
+            //dbgprint!(
+            //"EP{}-{:?}: {:?}\n",
+            //ep_addr.index(),
+            //ep_addr.direction(),
+            //inner.get_ep(ep_addr)
+            //);
             Ok(ep_addr)
         })
     }
 
     fn enable(&mut self) {
-        dbgprint!("UsbBus::enable\n");
+        //dbgprint!("UsbBus::enable\n");
         usb().txvc.modify(|_, w| w.puon().set_bit());
     }
     fn reset(&self) {
-        dbgprint!("UsbBus::reset\n");
+        //dbgprint!("UsbBus::reset\n");
         interrupt::free(|cs| {
             let inner = self.inner.borrow(cs).borrow_mut();
 
@@ -406,7 +408,7 @@ impl<PINS: Sync> UsbBusTrait for UsbBus<PINS> {
     }
 
     fn set_device_address(&self, addr: u8) {
-        dbgprint!("UsbBus::set_device_address({})\n", addr);
+        //dbgprint!("UsbBus::set_device_address({})\n", addr);
         let usb = usb();
         usb.faddr
             .modify(|_, w| unsafe { w.fadd().bits(addr).fen().set_bit() });
@@ -435,12 +437,12 @@ impl<PINS: Sync> UsbBusTrait for UsbBus<PINS> {
     }
 
     fn write(&self, ep_addr: EndpointAddress, buf: &[u8]) -> UsbResult<usize> {
-        dbgprint!(
-            "UsbBus::write({}-{:?}, {:x?}) -> ",
-            ep_addr.index(),
-            ep_addr.direction(),
-            buf
-        );
+        //dbgprint!(
+        //"UsbBus::write({}-{:?}, {:x?}) -> ",
+        //ep_addr.index(),
+        //ep_addr.direction(),
+        //buf
+        //);
 
         let ret = cortex_m::interrupt::free(|cs| {
             let mut inner = self.inner.borrow(cs).borrow_mut();
@@ -495,7 +497,7 @@ impl<PINS: Sync> UsbBusTrait for UsbBus<PINS> {
                         }
                     }
                     // TODO: shall we check the payload size ?
-                    CtrlEpState::StatusOut => *state = CtrlEpState::Idle,
+                    //CtrlEpState::StatusOut => *state = CtrlEpState::Idle,
                     _ => return Some(UsbError::InvalidState),
                 }
                 None
@@ -503,16 +505,16 @@ impl<PINS: Sync> UsbBusTrait for UsbBus<PINS> {
 
             Ok(buf.len())
         });
-        dbgprint!("{:?}\n", ret);
+        //dbgprint!("{:?}\n", ret);
         ret
     }
     fn read(&self, ep_addr: EndpointAddress, buf: &mut [u8]) -> UsbResult<usize> {
-        dbgprint!(
-            "UsbBus::read({}-{:?}, {}) ",
-            ep_addr.index(),
-            ep_addr.direction(),
-            buf.len()
-        );
+        //dbgprint!(
+        //"UsbBus::read({}-{:?}, {}) ",
+        //ep_addr.index(),
+        //ep_addr.direction(),
+        //buf.len()
+        //);
 
         let ret = interrupt::free(|cs| {
             let mut inner = self.inner.borrow(cs).borrow_mut();
@@ -589,7 +591,7 @@ impl<PINS: Sync> UsbBusTrait for UsbBus<PINS> {
                             }
                         }
                         // zlp out are used by windows for early status_out in data_in.
-                        CtrlEpState::DataIn(_) | CtrlEpState::StatusOut if bytecnt == 0 => {
+                        CtrlEpState::DataIn(_) /* | CtrlEpState::StatusOut*/ if bytecnt == 0 => {
                             *state = CtrlEpState::Idle
                         }
                         _ => return Some(UsbError::InvalidState),
@@ -601,18 +603,18 @@ impl<PINS: Sync> UsbBusTrait for UsbBus<PINS> {
             Ok(&buf[..bytecnt])
         });
 
-        dbgprint!("{:x?}\n", ret);
+        //dbgprint!("{:x?}\n", ret);
         ret.map(|v| v.len())
     }
 
     // TODO: Not sure this is done correctly
     fn set_stalled(&self, ep_addr: EndpointAddress, stalled: bool) {
-        dbgprint!(
-            "UsbBus::set_stalled({}-{:?}, {})\n",
-            ep_addr.index(),
-            ep_addr.direction(),
-            stalled
-        );
+        //dbgprint!(
+        //"UsbBus::set_stalled({}-{:?}, {})\n",
+        //ep_addr.index(),
+        //ep_addr.direction(),
+        //stalled
+        //);
 
         cortex_m::interrupt::free(|cs| {
             let mut inner = self.inner.borrow(cs).borrow_mut();
@@ -656,23 +658,23 @@ impl<PINS: Sync> UsbBusTrait for UsbBus<PINS> {
         });
     }
     fn is_stalled(&self, ep_addr: EndpointAddress) -> bool {
-        dbgprint!(
-            "UsbBus::is_stalled({}-{:?})\n",
-            ep_addr.index(),
-            ep_addr.direction(),
-        );
+        //dbgprint!(
+        //"UsbBus::is_stalled({}-{:?})\n",
+        //ep_addr.index(),
+        //ep_addr.direction(),
+        //);
         let csr_val = usb().csr()[ep_addr.index()].read();
         csr_val.forcestall().bit_is_set() || csr_val.stallsent().bit_is_set()
     }
 
     fn suspend(&self) {
-        dbgprint!("UsbBus::suspend\n");
+        //dbgprint!("UsbBus::suspend\n");
         // TODO: We need to delegate that to the application as it may not allow to mess with
         // clocks
         //usb().txvc.modify(|_, w| w.txvdis().set_bit());
     }
     fn resume(&self) {
-        dbgprint!("UsbBus::resume\n");
+        //dbgprint!("UsbBus::resume\n");
         // TODO: We need to delegate that to the application as it may not allow to mess with
         // clocks
         //usb().txvc.modify(|_, w| w.txvdis().clear_bit());
@@ -738,12 +740,12 @@ impl<PINS: Sync> UsbBusTrait for UsbBus<PINS> {
                 return PollResult::None;
             }
 
-            dbgprint!(
-                "ep_out: {:b} ep_in:{:b} ep_setup: {:b}\n",
-                ep_out,
-                ep_in_complete,
-                ep_setup
-            );
+            //dbgprint!(
+            //"ep_out: {:b} ep_in:{:b} ep_setup: {:b}\n",
+            //ep_out,
+            //ep_in_complete,
+            //ep_setup
+            //);
 
             PollResult::Data {
                 ep_out,

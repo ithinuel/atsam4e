@@ -1,18 +1,52 @@
-#[doc = "Reader of register CKGR_MCFR"]
-pub type R = crate::R<u32, super::CKGR_MCFR>;
-#[doc = "Writer for register CKGR_MCFR"]
-pub type W = crate::W<u32, super::CKGR_MCFR>;
-#[doc = "Register CKGR_MCFR `reset()`'s with value 0"]
-impl crate::ResetValue for super::CKGR_MCFR {
-    type Type = u32;
+#[doc = "Register `CKGR_MCFR` reader"]
+pub struct R(crate::R<CKGR_MCFR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CKGR_MCFR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `MAINF`"]
-pub type MAINF_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `MAINF`"]
+impl core::convert::From<crate::R<CKGR_MCFR_SPEC>> for R {
+    fn from(reader: crate::R<CKGR_MCFR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CKGR_MCFR` writer"]
+pub struct W(crate::W<CKGR_MCFR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CKGR_MCFR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CKGR_MCFR_SPEC>> for W {
+    fn from(writer: crate::W<CKGR_MCFR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `MAINF` reader - Main Clock Frequency"]
+pub struct MAINF_R(crate::FieldReader<u16, u16>);
+impl MAINF_R {
+    pub(crate) fn new(bits: u16) -> Self {
+        MAINF_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for MAINF_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `MAINF` writer - Main Clock Frequency"]
 pub struct MAINF_W<'a> {
     w: &'a mut W,
 }
@@ -24,9 +58,21 @@ impl<'a> MAINF_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `MAINFRDY`"]
-pub type MAINFRDY_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `MAINFRDY`"]
+#[doc = "Field `MAINFRDY` reader - Main Clock Ready"]
+pub struct MAINFRDY_R(crate::FieldReader<bool, bool>);
+impl MAINFRDY_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        MAINFRDY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for MAINFRDY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `MAINFRDY` writer - Main Clock Ready"]
 pub struct MAINFRDY_W<'a> {
     w: &'a mut W,
 }
@@ -48,9 +94,21 @@ impl<'a> MAINFRDY_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `RCMEAS`"]
-pub type RCMEAS_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `RCMEAS`"]
+#[doc = "Field `RCMEAS` reader - RC Oscillator Frequency Measure (write-only)"]
+pub struct RCMEAS_R(crate::FieldReader<bool, bool>);
+impl RCMEAS_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RCMEAS_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RCMEAS_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RCMEAS` writer - RC Oscillator Frequency Measure (write-only)"]
 pub struct RCMEAS_W<'a> {
     w: &'a mut W,
 }
@@ -104,5 +162,30 @@ impl W {
     #[inline(always)]
     pub fn rcmeas(&mut self) -> RCMEAS_W {
         RCMEAS_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Main Clock Frequency Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ckgr_mcfr](index.html) module"]
+pub struct CKGR_MCFR_SPEC;
+impl crate::RegisterSpec for CKGR_MCFR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ckgr_mcfr::R](R) reader structure"]
+impl crate::Readable for CKGR_MCFR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [ckgr_mcfr::W](W) writer structure"]
+impl crate::Writable for CKGR_MCFR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CKGR_MCFR to value 0"]
+impl crate::Resettable for CKGR_MCFR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

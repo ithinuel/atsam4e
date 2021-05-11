@@ -1,6 +1,24 @@
-#[doc = "Writer for register IER0"]
-pub type W = crate::W<u32, super::IER0>;
-#[doc = "Write proxy for field `COVFS`"]
+#[doc = "Register `IER0` writer"]
+pub struct W(crate::W<IER0_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IER0_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IER0_SPEC>> for W {
+    fn from(writer: crate::W<IER0_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `COVFS` writer - Counter Overflow"]
 pub struct COVFS_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> COVFS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `LOVRS`"]
+#[doc = "Field `LOVRS` writer - Load Overrun"]
 pub struct LOVRS_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> LOVRS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CPAS`"]
+#[doc = "Field `CPAS` writer - RA Compare"]
 pub struct CPAS_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> CPAS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CPBS`"]
+#[doc = "Field `CPBS` writer - RB Compare"]
 pub struct CPBS_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> CPBS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CPCS`"]
+#[doc = "Field `CPCS` writer - RC Compare"]
 pub struct CPCS_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> CPCS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `LDRAS`"]
+#[doc = "Field `LDRAS` writer - RA Loading"]
 pub struct LDRAS_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> LDRAS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `LDRBS`"]
+#[doc = "Field `LDRBS` writer - RB Loading"]
 pub struct LDRBS_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> LDRBS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ETRGS`"]
+#[doc = "Field `ETRGS` writer - External Trigger"]
 pub struct ETRGS_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> ETRGS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ENDRX`"]
+#[doc = "Field `ENDRX` writer - End of Receiver Transfer"]
 pub struct ENDRX_W<'a> {
     w: &'a mut W,
 }
@@ -198,7 +216,7 @@ impl<'a> ENDRX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RXBUFF`"]
+#[doc = "Field `RXBUFF` writer - Reception Buffer Full"]
 pub struct RXBUFF_W<'a> {
     w: &'a mut W,
 }
@@ -271,4 +289,18 @@ impl W {
     pub fn rxbuff(&mut self) -> RXBUFF_W {
         RXBUFF_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Enable Register (channel = 0)\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ier0](index.html) module"]
+pub struct IER0_SPEC;
+impl crate::RegisterSpec for IER0_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [ier0::W](W) writer structure"]
+impl crate::Writable for IER0_SPEC {
+    type Writer = W;
 }

@@ -1,6 +1,24 @@
-#[doc = "Writer for register CMPVUPD3"]
-pub type W = crate::W<u32, super::CMPVUPD3>;
-#[doc = "Write proxy for field `CVUPD`"]
+#[doc = "Register `CMPVUPD3` writer"]
+pub struct W(crate::W<CMPVUPD3_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CMPVUPD3_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CMPVUPD3_SPEC>> for W {
+    fn from(writer: crate::W<CMPVUPD3_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `CVUPD` writer - Comparison x Value Update"]
 pub struct CVUPD_W<'a> {
     w: &'a mut W,
 }
@@ -12,7 +30,7 @@ impl<'a> CVUPD_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CVMUPD`"]
+#[doc = "Field `CVMUPD` writer - Comparison x Value Mode Update"]
 pub struct CVMUPD_W<'a> {
     w: &'a mut W,
 }
@@ -45,4 +63,18 @@ impl W {
     pub fn cvmupd(&mut self) -> CVMUPD_W {
         CVMUPD_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PWM Comparison 3 Value Update Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cmpvupd3](index.html) module"]
+pub struct CMPVUPD3_SPEC;
+impl crate::RegisterSpec for CMPVUPD3_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [cmpvupd3::W](W) writer structure"]
+impl crate::Writable for CMPVUPD3_SPEC {
+    type Writer = W;
 }

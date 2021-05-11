@@ -1,6 +1,24 @@
-#[doc = "Writer for register IDR"]
-pub type W = crate::W<u32, super::IDR>;
-#[doc = "Write proxy for field `MFS`"]
+#[doc = "Register `IDR` writer"]
+pub struct W(crate::W<IDR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IDR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IDR_SPEC>> for W {
+    fn from(writer: crate::W<IDR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `MFS` writer - Management Frame Sent"]
 pub struct MFS_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> MFS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RCOMP`"]
+#[doc = "Field `RCOMP` writer - Receive Complete"]
 pub struct RCOMP_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> RCOMP_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RXUBR`"]
+#[doc = "Field `RXUBR` writer - RX Used Bit Read"]
 pub struct RXUBR_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> RXUBR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TXUBR`"]
+#[doc = "Field `TXUBR` writer - TX Used Bit Read"]
 pub struct TXUBR_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> TXUBR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TUR`"]
+#[doc = "Field `TUR` writer - Transmit Under Run"]
 pub struct TUR_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> TUR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RLEX`"]
+#[doc = "Field `RLEX` writer - Retry Limit Exceeded or Late Collision"]
 pub struct RLEX_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> RLEX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TFC`"]
+#[doc = "Field `TFC` writer - Transmit Frame Corruption due to AHB error"]
 pub struct TFC_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> TFC_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TCOMP`"]
+#[doc = "Field `TCOMP` writer - Transmit Complete"]
 pub struct TCOMP_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> TCOMP_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ROVR`"]
+#[doc = "Field `ROVR` writer - Receive Overrun"]
 pub struct ROVR_W<'a> {
     w: &'a mut W,
 }
@@ -198,7 +216,7 @@ impl<'a> ROVR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `HRESP`"]
+#[doc = "Field `HRESP` writer - HRESP Not OK"]
 pub struct HRESP_W<'a> {
     w: &'a mut W,
 }
@@ -220,7 +238,7 @@ impl<'a> HRESP_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PFNZ`"]
+#[doc = "Field `PFNZ` writer - Pause Frame with Non-zero Pause Quantum Received"]
 pub struct PFNZ_W<'a> {
     w: &'a mut W,
 }
@@ -242,7 +260,7 @@ impl<'a> PFNZ_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PTZ`"]
+#[doc = "Field `PTZ` writer - Pause Time Zero"]
 pub struct PTZ_W<'a> {
     w: &'a mut W,
 }
@@ -264,7 +282,7 @@ impl<'a> PTZ_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PFTR`"]
+#[doc = "Field `PFTR` writer - Pause Frame Transmitted"]
 pub struct PFTR_W<'a> {
     w: &'a mut W,
 }
@@ -286,7 +304,7 @@ impl<'a> PFTR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EXINT`"]
+#[doc = "Field `EXINT` writer - External Interrupt"]
 pub struct EXINT_W<'a> {
     w: &'a mut W,
 }
@@ -308,7 +326,7 @@ impl<'a> EXINT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `DRQFR`"]
+#[doc = "Field `DRQFR` writer - PTP Delay Request Frame Received"]
 pub struct DRQFR_W<'a> {
     w: &'a mut W,
 }
@@ -330,7 +348,7 @@ impl<'a> DRQFR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `SFR`"]
+#[doc = "Field `SFR` writer - PTP Sync Frame Received"]
 pub struct SFR_W<'a> {
     w: &'a mut W,
 }
@@ -352,7 +370,7 @@ impl<'a> SFR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `DRQFT`"]
+#[doc = "Field `DRQFT` writer - PTP Delay Request Frame Transmitted"]
 pub struct DRQFT_W<'a> {
     w: &'a mut W,
 }
@@ -374,7 +392,7 @@ impl<'a> DRQFT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `SFT`"]
+#[doc = "Field `SFT` writer - PTP Sync Frame Transmitted"]
 pub struct SFT_W<'a> {
     w: &'a mut W,
 }
@@ -396,7 +414,7 @@ impl<'a> SFT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PDRQFR`"]
+#[doc = "Field `PDRQFR` writer - PDelay Request Frame Received"]
 pub struct PDRQFR_W<'a> {
     w: &'a mut W,
 }
@@ -418,7 +436,7 @@ impl<'a> PDRQFR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PDRSFR`"]
+#[doc = "Field `PDRSFR` writer - PDelay Response Frame Received"]
 pub struct PDRSFR_W<'a> {
     w: &'a mut W,
 }
@@ -440,7 +458,7 @@ impl<'a> PDRSFR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PDRQFT`"]
+#[doc = "Field `PDRQFT` writer - PDelay Request Frame Transmitted"]
 pub struct PDRQFT_W<'a> {
     w: &'a mut W,
 }
@@ -462,7 +480,7 @@ impl<'a> PDRQFT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PDRSFT`"]
+#[doc = "Field `PDRSFT` writer - PDelay Response Frame Transmitted"]
 pub struct PDRSFT_W<'a> {
     w: &'a mut W,
 }
@@ -484,7 +502,7 @@ impl<'a> PDRSFT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `SRI`"]
+#[doc = "Field `SRI` writer - TSU Seconds Register Increment"]
 pub struct SRI_W<'a> {
     w: &'a mut W,
 }
@@ -506,7 +524,7 @@ impl<'a> SRI_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `WOL`"]
+#[doc = "Field `WOL` writer - Wake On LAN"]
 pub struct WOL_W<'a> {
     w: &'a mut W,
 }
@@ -649,4 +667,18 @@ impl W {
     pub fn wol(&mut self) -> WOL_W {
         WOL_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Disable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [idr](index.html) module"]
+pub struct IDR_SPEC;
+impl crate::RegisterSpec for IDR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [idr::W](W) writer structure"]
+impl crate::Writable for IDR_SPEC {
+    type Writer = W;
 }

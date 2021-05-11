@@ -1,6 +1,24 @@
-#[doc = "Writer for register IVR%s"]
-pub type W = crate::W<u32, super::IVR>;
-#[doc = "Write proxy for field `IV`"]
+#[doc = "Register `IVR%s` writer"]
+pub struct W(crate::W<IVR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IVR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IVR_SPEC>> for W {
+    fn from(writer: crate::W<IVR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `IV` writer - Initialization Vector"]
 pub struct IV_W<'a> {
     w: &'a mut W,
 }
@@ -18,4 +36,18 @@ impl W {
     pub fn iv(&mut self) -> IV_W {
         IV_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Initialization Vector Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ivr](index.html) module"]
+pub struct IVR_SPEC;
+impl crate::RegisterSpec for IVR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [ivr::W](W) writer structure"]
+impl crate::Writable for IVR_SPEC {
+    type Writer = W;
 }

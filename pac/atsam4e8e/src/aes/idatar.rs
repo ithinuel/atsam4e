@@ -1,6 +1,24 @@
-#[doc = "Writer for register IDATAR%s"]
-pub type W = crate::W<u32, super::IDATAR>;
-#[doc = "Write proxy for field `IDATA`"]
+#[doc = "Register `IDATAR%s` writer"]
+pub struct W(crate::W<IDATAR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IDATAR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IDATAR_SPEC>> for W {
+    fn from(writer: crate::W<IDATAR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `IDATA` writer - Input Data Word"]
 pub struct IDATA_W<'a> {
     w: &'a mut W,
 }
@@ -18,4 +36,18 @@ impl W {
     pub fn idata(&mut self) -> IDATA_W {
         IDATA_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Input Data Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [idatar](index.html) module"]
+pub struct IDATAR_SPEC;
+impl crate::RegisterSpec for IDATAR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [idatar::W](W) writer structure"]
+impl crate::Writable for IDATAR_SPEC {
+    type Writer = W;
 }

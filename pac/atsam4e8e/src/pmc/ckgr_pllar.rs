@@ -1,18 +1,52 @@
-#[doc = "Reader of register CKGR_PLLAR"]
-pub type R = crate::R<u32, super::CKGR_PLLAR>;
-#[doc = "Writer for register CKGR_PLLAR"]
-pub type W = crate::W<u32, super::CKGR_PLLAR>;
-#[doc = "Register CKGR_PLLAR `reset()`'s with value 0x3f00"]
-impl crate::ResetValue for super::CKGR_PLLAR {
-    type Type = u32;
+#[doc = "Register `CKGR_PLLAR` reader"]
+pub struct R(crate::R<CKGR_PLLAR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CKGR_PLLAR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x3f00
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `DIVA`"]
-pub type DIVA_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `DIVA`"]
+impl core::convert::From<crate::R<CKGR_PLLAR_SPEC>> for R {
+    fn from(reader: crate::R<CKGR_PLLAR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CKGR_PLLAR` writer"]
+pub struct W(crate::W<CKGR_PLLAR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CKGR_PLLAR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CKGR_PLLAR_SPEC>> for W {
+    fn from(writer: crate::W<CKGR_PLLAR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `DIVA` reader - Divider"]
+pub struct DIVA_R(crate::FieldReader<u8, u8>);
+impl DIVA_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DIVA_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIVA_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIVA` writer - Divider"]
 pub struct DIVA_W<'a> {
     w: &'a mut W,
 }
@@ -24,9 +58,21 @@ impl<'a> DIVA_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `PLLACOUNT`"]
-pub type PLLACOUNT_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `PLLACOUNT`"]
+#[doc = "Field `PLLACOUNT` reader - PLLA Counter"]
+pub struct PLLACOUNT_R(crate::FieldReader<u8, u8>);
+impl PLLACOUNT_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        PLLACOUNT_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for PLLACOUNT_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `PLLACOUNT` writer - PLLA Counter"]
 pub struct PLLACOUNT_W<'a> {
     w: &'a mut W,
 }
@@ -38,9 +84,21 @@ impl<'a> PLLACOUNT_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `MULA`"]
-pub type MULA_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `MULA`"]
+#[doc = "Field `MULA` reader - PLLA Multiplier"]
+pub struct MULA_R(crate::FieldReader<u16, u16>);
+impl MULA_R {
+    pub(crate) fn new(bits: u16) -> Self {
+        MULA_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for MULA_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `MULA` writer - PLLA Multiplier"]
 pub struct MULA_W<'a> {
     w: &'a mut W,
 }
@@ -52,9 +110,21 @@ impl<'a> MULA_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `ONE`"]
-pub type ONE_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `ONE`"]
+#[doc = "Field `ONE` reader - Must Be Set to 1"]
+pub struct ONE_R(crate::FieldReader<bool, bool>);
+impl ONE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        ONE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for ONE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ONE` writer - Must Be Set to 1"]
 pub struct ONE_W<'a> {
     w: &'a mut W,
 }
@@ -118,5 +188,30 @@ impl W {
     #[inline(always)]
     pub fn one(&mut self) -> ONE_W {
         ONE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PLLA Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ckgr_pllar](index.html) module"]
+pub struct CKGR_PLLAR_SPEC;
+impl crate::RegisterSpec for CKGR_PLLAR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ckgr_pllar::R](R) reader structure"]
+impl crate::Readable for CKGR_PLLAR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [ckgr_pllar::W](W) writer structure"]
+impl crate::Writable for CKGR_PLLAR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CKGR_PLLAR to value 0x3f00"]
+impl crate::Resettable for CKGR_PLLAR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x3f00
     }
 }

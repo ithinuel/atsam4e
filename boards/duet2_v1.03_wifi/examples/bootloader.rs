@@ -5,7 +5,9 @@
 
 #![no_std]
 #![no_main]
+#![feature(alloc_error_handler)]
 
+use alloc_cortex_m::CortexMHeap;
 use atsam4e_hal::pmc::{MainClock, PmcExt};
 use atsam4e_hal::time::U32Ext;
 use cortex_m::peripheral::syst::SystClkSource;
@@ -15,6 +17,14 @@ use atsam4e_hal::usb::*;
 use usb_device::prelude::*;
 use usbd_dfu::mode::DFUModeClass;
 use usbd_dfu_demo::DFUModeImpl;
+
+#[global_allocator]
+static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
+
+#[alloc_error_handler]
+fn oom(_: core::alloc::Layout) -> ! {
+    loop {}
+}
 
 #[cortex_m_rt::entry]
 fn main() -> ! {
@@ -35,6 +45,11 @@ fn main() -> ! {
         .use_usb()
         .freeze();
 
+    // Initialize the allocator BEFORE you use it
+    let start = cortex_m_rt::heap_start() as usize;
+    let size = 1024; // in bytes
+    unsafe { ALLOCATOR.init(start, size) }
+    //
     // Configures Systick to wrap every millisecond.
     cp.SYST.set_clock_source(SystClkSource::External);
     cp.SYST.set_reload(clocks.master_clock.0 / (8 * 1_000)); // systick has a /8 clock divider

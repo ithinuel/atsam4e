@@ -8,14 +8,15 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/atsamd-rs/atsamd"
 readme = "README.md"
 documentation = "https://atsamd-rs.github.io/atsamd/atsam4e8e/atsam4e8e/"
+edition = "2018"
 
 [dependencies]
 bare-metal = "~0.2"
-cortex-m = "~0.6"
+cortex-m = "~0.7"
 vcell = "~0.1"
 
 [dependencies.cortex-m-rt]
-version = "~0.6.12"
+version = "~0.6.13"
 optional = true
 
 [features]

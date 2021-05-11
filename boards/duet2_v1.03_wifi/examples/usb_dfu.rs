@@ -5,28 +5,94 @@
 
 #![no_std]
 #![no_main]
+#![feature(alloc_error_handler)]
+#![feature(maybe_uninit_ref)]
+#![feature(panic_info_message)]
 
+extern crate alloc;
+
+use alloc_cortex_m::CortexMHeap;
+use atsam4e_hal::dbgprint;
 use atsam4e_hal::gpio::GpioExt;
 use atsam4e_hal::pmc::{MainClock, PmcExt};
 use atsam4e_hal::time::U32Ext;
 use atsam4e_hal::usb::*;
 use cortex_m::peripheral::syst::SystClkSource;
+use cortex_m_rt::exception;
 use embedded_hal::digital::v2::OutputPin;
 use usb_device::prelude::*;
 use usbd_dfu::runtime::DFURuntimeClass;
 use usbd_dfu_demo::DFURuntimeImpl;
 use usbd_serial::{SerialPort, /* CDC_SUBCLASS_ACM,*/ USB_CLASS_CDC};
 
-#[cfg(not(feature = "debug_on_uart0"))]
-use panic_halt as _;
-#[cfg(feature = "debug_on_uart0")]
+fn reset() -> ! {
+    let rstc = unsafe { &*atsam4e_hal::pac::RSTC::ptr() };
+    rstc.cr.write_with_zero(|w| {
+        w.procrst()
+            .set_bit()
+            .perrst()
+            .set_bit()
+            .key()
+            .variant(atsam4e_hal::pac::rstc::cr::KEY_AW::PASSWD)
+    });
+    loop {
+        cortex_m::asm::nop();
+    }
+}
 #[panic_handler]
 fn on_panic(info: &core::panic::PanicInfo) -> ! {
-    atsam4e_hal::dbgprint!("Woops: {:?}", info);
-    loop {}
+    unsafe {
+        use core::fmt::Write;
+        let err = ERROR.assume_init_mut();
+        if let Some(msg) = info.message() {
+            let _ = write!(err, "{}", msg);
+        } else {
+            let _ = write!(err, "Woops {:#?}", info);
+        }
+        reset();
+    }
 }
-#[cfg(feature = "debug_on_uart0")]
-use atsam4e_hal::serial::*;
+#[alloc_error_handler]
+fn oom(layout: core::alloc::Layout) -> ! {
+    panic!(
+        "oom with: {:?}\r\nused: {}\r\nfree: {}\r\n",
+        layout,
+        ALLOCATOR.used(),
+        ALLOCATOR.free()
+    );
+}
+#[global_allocator]
+static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
+
+#[exception]
+#[allow(non_snake_case)]
+fn HardFault(ef: &cortex_m_rt::ExceptionFrame) -> ! {
+    panic!("HardFault: {:#?}", ef);
+}
+
+#[exception]
+#[allow(non_snake_case)]
+unsafe fn DefaultHandler(irqn: i16) {
+    panic!("DefaultHandler: {}", irqn);
+}
+
+struct LastPanicMessage {
+    len: usize,
+    buffer: [u8; 1024],
+}
+impl core::fmt::Write for LastPanicMessage {
+    fn write_str(&mut self, s: &str) -> core::fmt::Result {
+        let len = core::cmp::min(s.len(), self.buffer.len());
+        let start = self.len;
+        let end = start + len;
+        self.buffer[start..end].copy_from_slice(&s.as_bytes()[..len]);
+        self.len = end;
+        Ok(())
+    }
+}
+
+#[link_section = ".uninit"]
+static mut ERROR: core::mem::MaybeUninit<LastPanicMessage> = core::mem::MaybeUninit::uninit();
 
 #[cortex_m_rt::entry]
 fn main() -> ! {
@@ -47,24 +113,12 @@ fn main() -> ! {
         .use_usb()
         .freeze();
 
+    // Initialize the allocator BEFORE you use it
+    let start = cortex_m_rt::heap_start() as usize;
+    let size = 80 * 1024; // in bytes
+    unsafe { ALLOCATOR.init(start, size) };
+
     let mut led = p.PIOC.split().pc16.into_push_pull_output(false);
-
-    #[cfg(feature = "debug_on_uart0")]
-    {
-        let ioa = p.PIOA.split();
-
-        let tx = ioa.pa10.into_function_a();
-        let (tx, _) = Serial::uart0(
-            p.UART0,
-            (tx, NoRx),
-            config::Config::default().baudrate(3_750_000.bps()),
-            clocks,
-        )
-        .map(Serial::<atsam4e_hal::pac::UART0, _>::split)
-        .unwrap_or_else(|_| unreachable!());
-
-        atsam4e_hal::debug::wire_uart(tx);
-    }
 
     cp.SYST.set_clock_source(SystClkSource::External);
     cp.SYST.set_reload(clocks.master_clock.0 / (8 * 1_000));
@@ -72,7 +126,11 @@ fn main() -> ! {
     cp.SYST.enable_counter();
 
     let usb_bus = usb_device::bus::UsbBusAllocator::new(UsbBus::new(p.UDP, (DDP, DDM), clocks));
-    let mut serial = SerialPort::new(&usb_bus);
+    let mut serial = SerialPort::new_with_store(
+        &usb_bus,
+        unsafe { core::mem::MaybeUninit::<[u8; 128]>::uninit().assume_init() },
+        unsafe { core::mem::MaybeUninit::<[u8; 1024]>::uninit().assume_init() },
+    );
     let mut dfu = DFURuntimeClass::new(&usb_bus, DFURuntimeImpl);
     let mut usb_dev = UsbDeviceBuilder::new(&usb_bus, UsbVidPid(0x16c0, 0x27dd))
         .manufacturer("Fake company")
@@ -86,29 +144,68 @@ fn main() -> ! {
         .device_protocol(0)
         .build();
 
-    loop {
-        if cp.SYST.has_wrapped() {
-            dfu.poll(1);
-        }
+    let mut efc = p.EFC;
+    let mut timestamp = 0u64;
+    let mut prev_ts = 0;
 
-        if !usb_dev.poll(&mut [&mut serial, &mut dfu]) {
-            continue;
-        }
-
-        let mut buf = [0u8; 64];
-
-        let _ = serial.read(&mut buf).map(|count| {
-            if count == 0 {
-                return;
+    duet2_v1_03_wifi::executor::block_on(async move {
+        loop {
+            if cp.SYST.has_wrapped() {
+                dfu.poll(1);
+                timestamp += 1;
             }
-            let _ = led.set_low(); // Turn on
 
-            // Echo back in upper case
-            buf.iter_mut().take(count).for_each(|c| {
-                if let 0x61..=0x7a = *c {
-                    *c &= !0x20;
+            usb_dev.poll(&mut [&mut serial, &mut dfu]);
+            let mut buf = [0u8; 256];
+
+            let mut count = match serial.read(&mut buf) {
+                Ok(count) => {
+                    let _ = led.set_low(); // Turn on
+
+                    // Echo back in upper case
+                    buf.iter_mut().take(count).for_each(|c| {
+                        if let 0x61..=0x7a = *c {
+                            *c &= !0x20;
+                        }
+                    });
+                    count
                 }
+                _ => 0,
+            };
+
+            if let &[0x0D, ..] = &buf {
+                // read flash desc
+                let info = usbd_dfu_demo::FlashInfo::read(&mut efc).await;
+                dbgprint!("{:#?}", info);
+            }
+            if prev_ts != timestamp {
+                prev_ts = timestamp;
+                if (timestamp % 1000) == 0 {
+                    dbgprint!("{}\r\n", timestamp / 1000);
+                    if timestamp == 2000 {
+                        unsafe {
+                            let err = ERROR.assume_init_mut();
+                            if err.len > 0 {
+                                dbgprint!(
+                                    "{} \"{}\"\r\n",
+                                    err.len,
+                                    core::str::from_utf8_unchecked(&err.buffer[..err.len])
+                                );
+                                err.len = 0;
+                            }
+                        };
+                    }
+                }
+            }
+            atsam4e_hal::debug_on_buffer::consume(|dbg| {
+                let len = core::cmp::min(dbg.len(), buf.len() - count);
+                buf[count..count + len].copy_from_slice(&dbg[..len]);
+                count += len;
+                len
             });
+            if count == 0 {
+                continue;
+            }
 
             let mut wr_ptr = &buf[..count];
             while !wr_ptr.is_empty() {
@@ -116,8 +213,9 @@ fn main() -> ! {
                     wr_ptr = &wr_ptr[len..];
                 });
             }
-        });
 
-        let _ = led.set_high(); // Turn off
-    }
+            let _ = led.set_high(); // Turn off
+        }
+    });
+    unreachable!();
 }

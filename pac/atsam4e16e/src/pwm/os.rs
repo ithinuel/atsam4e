@@ -1,18 +1,52 @@
-#[doc = "Reader of register OS"]
-pub type R = crate::R<u32, super::OS>;
-#[doc = "Writer for register OS"]
-pub type W = crate::W<u32, super::OS>;
-#[doc = "Register OS `reset()`'s with value 0"]
-impl crate::ResetValue for super::OS {
-    type Type = u32;
+#[doc = "Register `OS` reader"]
+pub struct R(crate::R<OS_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<OS_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `OSH0`"]
-pub type OSH0_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OSH0`"]
+impl core::convert::From<crate::R<OS_SPEC>> for R {
+    fn from(reader: crate::R<OS_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `OS` writer"]
+pub struct W(crate::W<OS_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<OS_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<OS_SPEC>> for W {
+    fn from(writer: crate::W<OS_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `OSH0` reader - Output Selection for PWMH output of the channel 0"]
+pub struct OSH0_R(crate::FieldReader<bool, bool>);
+impl OSH0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OSH0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OSH0_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OSH0` writer - Output Selection for PWMH output of the channel 0"]
 pub struct OSH0_W<'a> {
     w: &'a mut W,
 }
@@ -34,9 +68,21 @@ impl<'a> OSH0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OSH1`"]
-pub type OSH1_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OSH1`"]
+#[doc = "Field `OSH1` reader - Output Selection for PWMH output of the channel 1"]
+pub struct OSH1_R(crate::FieldReader<bool, bool>);
+impl OSH1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OSH1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OSH1_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OSH1` writer - Output Selection for PWMH output of the channel 1"]
 pub struct OSH1_W<'a> {
     w: &'a mut W,
 }
@@ -58,9 +104,21 @@ impl<'a> OSH1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OSH2`"]
-pub type OSH2_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OSH2`"]
+#[doc = "Field `OSH2` reader - Output Selection for PWMH output of the channel 2"]
+pub struct OSH2_R(crate::FieldReader<bool, bool>);
+impl OSH2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OSH2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OSH2_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OSH2` writer - Output Selection for PWMH output of the channel 2"]
 pub struct OSH2_W<'a> {
     w: &'a mut W,
 }
@@ -82,9 +140,21 @@ impl<'a> OSH2_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OSH3`"]
-pub type OSH3_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OSH3`"]
+#[doc = "Field `OSH3` reader - Output Selection for PWMH output of the channel 3"]
+pub struct OSH3_R(crate::FieldReader<bool, bool>);
+impl OSH3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OSH3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OSH3_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OSH3` writer - Output Selection for PWMH output of the channel 3"]
 pub struct OSH3_W<'a> {
     w: &'a mut W,
 }
@@ -106,9 +176,21 @@ impl<'a> OSH3_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OSL0`"]
-pub type OSL0_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OSL0`"]
+#[doc = "Field `OSL0` reader - Output Selection for PWML output of the channel 0"]
+pub struct OSL0_R(crate::FieldReader<bool, bool>);
+impl OSL0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OSL0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OSL0_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OSL0` writer - Output Selection for PWML output of the channel 0"]
 pub struct OSL0_W<'a> {
     w: &'a mut W,
 }
@@ -130,9 +212,21 @@ impl<'a> OSL0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OSL1`"]
-pub type OSL1_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OSL1`"]
+#[doc = "Field `OSL1` reader - Output Selection for PWML output of the channel 1"]
+pub struct OSL1_R(crate::FieldReader<bool, bool>);
+impl OSL1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OSL1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OSL1_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OSL1` writer - Output Selection for PWML output of the channel 1"]
 pub struct OSL1_W<'a> {
     w: &'a mut W,
 }
@@ -154,9 +248,21 @@ impl<'a> OSL1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OSL2`"]
-pub type OSL2_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OSL2`"]
+#[doc = "Field `OSL2` reader - Output Selection for PWML output of the channel 2"]
+pub struct OSL2_R(crate::FieldReader<bool, bool>);
+impl OSL2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OSL2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OSL2_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OSL2` writer - Output Selection for PWML output of the channel 2"]
 pub struct OSL2_W<'a> {
     w: &'a mut W,
 }
@@ -178,9 +284,21 @@ impl<'a> OSL2_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OSL3`"]
-pub type OSL3_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OSL3`"]
+#[doc = "Field `OSL3` reader - Output Selection for PWML output of the channel 3"]
+pub struct OSL3_R(crate::FieldReader<bool, bool>);
+impl OSL3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OSL3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OSL3_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OSL3` writer - Output Selection for PWML output of the channel 3"]
 pub struct OSL3_W<'a> {
     w: &'a mut W,
 }
@@ -284,5 +402,30 @@ impl W {
     #[inline(always)]
     pub fn osl3(&mut self) -> OSL3_W {
         OSL3_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PWM Output Selection Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [os](index.html) module"]
+pub struct OS_SPEC;
+impl crate::RegisterSpec for OS_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [os::R](R) reader structure"]
+impl crate::Readable for OS_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [os::W](W) writer structure"]
+impl crate::Writable for OS_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets OS to value 0"]
+impl crate::Resettable for OS_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

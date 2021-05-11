@@ -1,10 +1,52 @@
-#[doc = "Reader of register CSR0_ISOENDPT"]
-pub type R = crate::R<u32, super::CSR0_ISOENDPT>;
-#[doc = "Writer for register CSR0_ISOENDPT"]
-pub type W = crate::W<u32, super::CSR0_ISOENDPT>;
-#[doc = "Reader of field `TXCOMP`"]
-pub type TXCOMP_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `TXCOMP`"]
+#[doc = "Register `CSR0_ISOENDPT` reader"]
+pub struct R(crate::R<CSR0_ISOENDPT_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CSR0_ISOENDPT_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<CSR0_ISOENDPT_SPEC>> for R {
+    fn from(reader: crate::R<CSR0_ISOENDPT_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CSR0_ISOENDPT` writer"]
+pub struct W(crate::W<CSR0_ISOENDPT_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CSR0_ISOENDPT_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CSR0_ISOENDPT_SPEC>> for W {
+    fn from(writer: crate::W<CSR0_ISOENDPT_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `TXCOMP` reader - Generates an IN Packet with Data Previously Written in the DPR"]
+pub struct TXCOMP_R(crate::FieldReader<bool, bool>);
+impl TXCOMP_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TXCOMP_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for TXCOMP_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TXCOMP` writer - Generates an IN Packet with Data Previously Written in the DPR"]
 pub struct TXCOMP_W<'a> {
     w: &'a mut W,
 }
@@ -26,9 +68,21 @@ impl<'a> TXCOMP_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `RX_DATA_BK0`"]
-pub type RX_DATA_BK0_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `RX_DATA_BK0`"]
+#[doc = "Field `RX_DATA_BK0` reader - Receive Data Bank 0"]
+pub struct RX_DATA_BK0_R(crate::FieldReader<bool, bool>);
+impl RX_DATA_BK0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RX_DATA_BK0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RX_DATA_BK0_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RX_DATA_BK0` writer - Receive Data Bank 0"]
 pub struct RX_DATA_BK0_W<'a> {
     w: &'a mut W,
 }
@@ -50,9 +104,21 @@ impl<'a> RX_DATA_BK0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `RXSETUP`"]
-pub type RXSETUP_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `RXSETUP`"]
+#[doc = "Field `RXSETUP` reader - Received Setup"]
+pub struct RXSETUP_R(crate::FieldReader<bool, bool>);
+impl RXSETUP_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RXSETUP_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RXSETUP_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RXSETUP` writer - Received Setup"]
 pub struct RXSETUP_W<'a> {
     w: &'a mut W,
 }
@@ -74,9 +140,21 @@ impl<'a> RXSETUP_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `ISOERROR`"]
-pub type ISOERROR_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `ISOERROR`"]
+#[doc = "Field `ISOERROR` reader - A CRC error has been detected in an isochronous transfer"]
+pub struct ISOERROR_R(crate::FieldReader<bool, bool>);
+impl ISOERROR_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        ISOERROR_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for ISOERROR_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ISOERROR` writer - A CRC error has been detected in an isochronous transfer"]
 pub struct ISOERROR_W<'a> {
     w: &'a mut W,
 }
@@ -98,9 +176,21 @@ impl<'a> ISOERROR_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `TXPKTRDY`"]
-pub type TXPKTRDY_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `TXPKTRDY`"]
+#[doc = "Field `TXPKTRDY` reader - Transmit Packet Ready"]
+pub struct TXPKTRDY_R(crate::FieldReader<bool, bool>);
+impl TXPKTRDY_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TXPKTRDY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for TXPKTRDY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TXPKTRDY` writer - Transmit Packet Ready"]
 pub struct TXPKTRDY_W<'a> {
     w: &'a mut W,
 }
@@ -122,9 +212,21 @@ impl<'a> TXPKTRDY_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FORCESTALL`"]
-pub type FORCESTALL_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FORCESTALL`"]
+#[doc = "Field `FORCESTALL` reader - Force Stall (used by Control, Bulk and Isochronous Endpoints)"]
+pub struct FORCESTALL_R(crate::FieldReader<bool, bool>);
+impl FORCESTALL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FORCESTALL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FORCESTALL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FORCESTALL` writer - Force Stall (used by Control, Bulk and Isochronous Endpoints)"]
 pub struct FORCESTALL_W<'a> {
     w: &'a mut W,
 }
@@ -146,9 +248,21 @@ impl<'a> FORCESTALL_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `RX_DATA_BK1`"]
-pub type RX_DATA_BK1_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `RX_DATA_BK1`"]
+#[doc = "Field `RX_DATA_BK1` reader - Receive Data Bank 1 (only used by endpoints with ping-pong attributes)"]
+pub struct RX_DATA_BK1_R(crate::FieldReader<bool, bool>);
+impl RX_DATA_BK1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RX_DATA_BK1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RX_DATA_BK1_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RX_DATA_BK1` writer - Receive Data Bank 1 (only used by endpoints with ping-pong attributes)"]
 pub struct RX_DATA_BK1_W<'a> {
     w: &'a mut W,
 }
@@ -170,9 +284,21 @@ impl<'a> RX_DATA_BK1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIR`"]
-pub type DIR_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIR`"]
+#[doc = "Field `DIR` reader - Transfer Direction (only available for control endpoints)"]
+pub struct DIR_R(crate::FieldReader<bool, bool>);
+impl DIR_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIR_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIR_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIR` writer - Transfer Direction (only available for control endpoints)"]
 pub struct DIR_W<'a> {
     w: &'a mut W,
 }
@@ -219,9 +345,12 @@ impl From<EPTYPE_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `EPTYPE`"]
-pub type EPTYPE_R = crate::R<u8, EPTYPE_A>;
+#[doc = "Field `EPTYPE` reader - Endpoint Type"]
+pub struct EPTYPE_R(crate::FieldReader<u8, EPTYPE_A>);
 impl EPTYPE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        EPTYPE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, EPTYPE_A> {
@@ -240,40 +369,47 @@ impl EPTYPE_R {
     #[doc = "Checks if the value of the field is `CTRL`"]
     #[inline(always)]
     pub fn is_ctrl(&self) -> bool {
-        *self == EPTYPE_A::CTRL
+        **self == EPTYPE_A::CTRL
     }
     #[doc = "Checks if the value of the field is `ISO_OUT`"]
     #[inline(always)]
     pub fn is_iso_out(&self) -> bool {
-        *self == EPTYPE_A::ISO_OUT
+        **self == EPTYPE_A::ISO_OUT
     }
     #[doc = "Checks if the value of the field is `ISO_IN`"]
     #[inline(always)]
     pub fn is_iso_in(&self) -> bool {
-        *self == EPTYPE_A::ISO_IN
+        **self == EPTYPE_A::ISO_IN
     }
     #[doc = "Checks if the value of the field is `BULK_OUT`"]
     #[inline(always)]
     pub fn is_bulk_out(&self) -> bool {
-        *self == EPTYPE_A::BULK_OUT
+        **self == EPTYPE_A::BULK_OUT
     }
     #[doc = "Checks if the value of the field is `BULK_IN`"]
     #[inline(always)]
     pub fn is_bulk_in(&self) -> bool {
-        *self == EPTYPE_A::BULK_IN
+        **self == EPTYPE_A::BULK_IN
     }
     #[doc = "Checks if the value of the field is `INT_OUT`"]
     #[inline(always)]
     pub fn is_int_out(&self) -> bool {
-        *self == EPTYPE_A::INT_OUT
+        **self == EPTYPE_A::INT_OUT
     }
     #[doc = "Checks if the value of the field is `INT_IN`"]
     #[inline(always)]
     pub fn is_int_in(&self) -> bool {
-        *self == EPTYPE_A::INT_IN
+        **self == EPTYPE_A::INT_IN
     }
 }
-#[doc = "Write proxy for field `EPTYPE`"]
+impl core::ops::Deref for EPTYPE_R {
+    type Target = crate::FieldReader<u8, EPTYPE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `EPTYPE` writer - Endpoint Type"]
 pub struct EPTYPE_W<'a> {
     w: &'a mut W,
 }
@@ -325,9 +461,21 @@ impl<'a> EPTYPE_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DTGLE`"]
-pub type DTGLE_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DTGLE`"]
+#[doc = "Field `DTGLE` reader - Data Toggle"]
+pub struct DTGLE_R(crate::FieldReader<bool, bool>);
+impl DTGLE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DTGLE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DTGLE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DTGLE` writer - Data Toggle"]
 pub struct DTGLE_W<'a> {
     w: &'a mut W,
 }
@@ -349,9 +497,21 @@ impl<'a> DTGLE_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `EPEDS`"]
-pub type EPEDS_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `EPEDS`"]
+#[doc = "Field `EPEDS` reader - Endpoint Enable Disable"]
+pub struct EPEDS_R(crate::FieldReader<bool, bool>);
+impl EPEDS_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        EPEDS_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for EPEDS_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `EPEDS` writer - Endpoint Enable Disable"]
 pub struct EPEDS_W<'a> {
     w: &'a mut W,
 }
@@ -373,9 +533,21 @@ impl<'a> EPEDS_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `RXBYTECNT`"]
-pub type RXBYTECNT_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `RXBYTECNT`"]
+#[doc = "Field `RXBYTECNT` reader - Number of Bytes Available in the FIFO"]
+pub struct RXBYTECNT_R(crate::FieldReader<u16, u16>);
+impl RXBYTECNT_R {
+    pub(crate) fn new(bits: u16) -> Self {
+        RXBYTECNT_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RXBYTECNT_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RXBYTECNT` writer - Number of Bytes Available in the FIFO"]
 pub struct RXBYTECNT_W<'a> {
     w: &'a mut W,
 }
@@ -510,4 +682,22 @@ impl W {
     pub fn rxbytecnt(&mut self) -> RXBYTECNT_W {
         RXBYTECNT_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Endpoint Control and Status Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [csr0_isoendpt](index.html) module"]
+pub struct CSR0_ISOENDPT_SPEC;
+impl crate::RegisterSpec for CSR0_ISOENDPT_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [csr0_isoendpt::R](R) reader structure"]
+impl crate::Readable for CSR0_ISOENDPT_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [csr0_isoendpt::W](W) writer structure"]
+impl crate::Writable for CSR0_ISOENDPT_SPEC {
+    type Writer = W;
 }

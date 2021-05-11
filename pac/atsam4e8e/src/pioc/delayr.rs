@@ -1,18 +1,52 @@
-#[doc = "Reader of register DELAYR"]
-pub type R = crate::R<u32, super::DELAYR>;
-#[doc = "Writer for register DELAYR"]
-pub type W = crate::W<u32, super::DELAYR>;
-#[doc = "Register DELAYR `reset()`'s with value 0"]
-impl crate::ResetValue for super::DELAYR {
-    type Type = u32;
+#[doc = "Register `DELAYR` reader"]
+pub struct R(crate::R<DELAYR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DELAYR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `Delay0`"]
-pub type DELAY0_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `Delay0`"]
+impl core::convert::From<crate::R<DELAYR_SPEC>> for R {
+    fn from(reader: crate::R<DELAYR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `DELAYR` writer"]
+pub struct W(crate::W<DELAYR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DELAYR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<DELAYR_SPEC>> for W {
+    fn from(writer: crate::W<DELAYR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `Delay0` reader - "]
+pub struct DELAY0_R(crate::FieldReader<u8, u8>);
+impl DELAY0_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DELAY0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DELAY0_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `Delay0` writer - "]
 pub struct DELAY0_W<'a> {
     w: &'a mut W,
 }
@@ -24,9 +58,21 @@ impl<'a> DELAY0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `Delay1`"]
-pub type DELAY1_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `Delay1`"]
+#[doc = "Field `Delay1` reader - "]
+pub struct DELAY1_R(crate::FieldReader<u8, u8>);
+impl DELAY1_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DELAY1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DELAY1_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `Delay1` writer - "]
 pub struct DELAY1_W<'a> {
     w: &'a mut W,
 }
@@ -38,9 +84,21 @@ impl<'a> DELAY1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `Delay2`"]
-pub type DELAY2_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `Delay2`"]
+#[doc = "Field `Delay2` reader - "]
+pub struct DELAY2_R(crate::FieldReader<u8, u8>);
+impl DELAY2_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DELAY2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DELAY2_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `Delay2` writer - "]
 pub struct DELAY2_W<'a> {
     w: &'a mut W,
 }
@@ -52,9 +110,21 @@ impl<'a> DELAY2_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `Delay3`"]
-pub type DELAY3_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `Delay3`"]
+#[doc = "Field `Delay3` reader - "]
+pub struct DELAY3_R(crate::FieldReader<u8, u8>);
+impl DELAY3_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DELAY3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DELAY3_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `Delay3` writer - "]
 pub struct DELAY3_W<'a> {
     w: &'a mut W,
 }
@@ -66,9 +136,21 @@ impl<'a> DELAY3_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `Delay4`"]
-pub type DELAY4_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `Delay4`"]
+#[doc = "Field `Delay4` reader - "]
+pub struct DELAY4_R(crate::FieldReader<u8, u8>);
+impl DELAY4_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DELAY4_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DELAY4_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `Delay4` writer - "]
 pub struct DELAY4_W<'a> {
     w: &'a mut W,
 }
@@ -80,9 +162,21 @@ impl<'a> DELAY4_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `Delay5`"]
-pub type DELAY5_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `Delay5`"]
+#[doc = "Field `Delay5` reader - "]
+pub struct DELAY5_R(crate::FieldReader<u8, u8>);
+impl DELAY5_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DELAY5_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DELAY5_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `Delay5` writer - "]
 pub struct DELAY5_W<'a> {
     w: &'a mut W,
 }
@@ -94,9 +188,21 @@ impl<'a> DELAY5_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `Delay6`"]
-pub type DELAY6_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `Delay6`"]
+#[doc = "Field `Delay6` reader - "]
+pub struct DELAY6_R(crate::FieldReader<u8, u8>);
+impl DELAY6_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DELAY6_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DELAY6_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `Delay6` writer - "]
 pub struct DELAY6_W<'a> {
     w: &'a mut W,
 }
@@ -108,9 +214,21 @@ impl<'a> DELAY6_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `Delay7`"]
-pub type DELAY7_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `Delay7`"]
+#[doc = "Field `Delay7` reader - "]
+pub struct DELAY7_R(crate::FieldReader<u8, u8>);
+impl DELAY7_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DELAY7_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DELAY7_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `Delay7` writer - "]
 pub struct DELAY7_W<'a> {
     w: &'a mut W,
 }
@@ -204,5 +322,30 @@ impl W {
     #[inline(always)]
     pub fn delay7(&mut self) -> DELAY7_W {
         DELAY7_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "IO Delay Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [delayr](index.html) module"]
+pub struct DELAYR_SPEC;
+impl crate::RegisterSpec for DELAYR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [delayr::R](R) reader structure"]
+impl crate::Readable for DELAYR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [delayr::W](W) writer structure"]
+impl crate::Writable for DELAYR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets DELAYR to value 0"]
+impl crate::Resettable for DELAYR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

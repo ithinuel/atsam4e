@@ -1,18 +1,52 @@
-#[doc = "Reader of register SCM"]
-pub type R = crate::R<u32, super::SCM>;
-#[doc = "Writer for register SCM"]
-pub type W = crate::W<u32, super::SCM>;
-#[doc = "Register SCM `reset()`'s with value 0"]
-impl crate::ResetValue for super::SCM {
-    type Type = u32;
+#[doc = "Register `SCM` reader"]
+pub struct R(crate::R<SCM_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<SCM_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `SYNC0`"]
-pub type SYNC0_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `SYNC0`"]
+impl core::convert::From<crate::R<SCM_SPEC>> for R {
+    fn from(reader: crate::R<SCM_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `SCM` writer"]
+pub struct W(crate::W<SCM_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<SCM_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<SCM_SPEC>> for W {
+    fn from(writer: crate::W<SCM_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `SYNC0` reader - Synchronous Channel 0"]
+pub struct SYNC0_R(crate::FieldReader<bool, bool>);
+impl SYNC0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SYNC0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SYNC0_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SYNC0` writer - Synchronous Channel 0"]
 pub struct SYNC0_W<'a> {
     w: &'a mut W,
 }
@@ -34,9 +68,21 @@ impl<'a> SYNC0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `SYNC1`"]
-pub type SYNC1_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `SYNC1`"]
+#[doc = "Field `SYNC1` reader - Synchronous Channel 1"]
+pub struct SYNC1_R(crate::FieldReader<bool, bool>);
+impl SYNC1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SYNC1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SYNC1_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SYNC1` writer - Synchronous Channel 1"]
 pub struct SYNC1_W<'a> {
     w: &'a mut W,
 }
@@ -58,9 +104,21 @@ impl<'a> SYNC1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `SYNC2`"]
-pub type SYNC2_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `SYNC2`"]
+#[doc = "Field `SYNC2` reader - Synchronous Channel 2"]
+pub struct SYNC2_R(crate::FieldReader<bool, bool>);
+impl SYNC2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SYNC2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SYNC2_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SYNC2` writer - Synchronous Channel 2"]
 pub struct SYNC2_W<'a> {
     w: &'a mut W,
 }
@@ -82,9 +140,21 @@ impl<'a> SYNC2_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `SYNC3`"]
-pub type SYNC3_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `SYNC3`"]
+#[doc = "Field `SYNC3` reader - Synchronous Channel 3"]
+pub struct SYNC3_R(crate::FieldReader<bool, bool>);
+impl SYNC3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SYNC3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SYNC3_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SYNC3` writer - Synchronous Channel 3"]
 pub struct SYNC3_W<'a> {
     w: &'a mut W,
 }
@@ -123,9 +193,12 @@ impl From<UPDM_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `UPDM`"]
-pub type UPDM_R = crate::R<u8, UPDM_A>;
+#[doc = "Field `UPDM` reader - Synchronous Channels Update Mode"]
+pub struct UPDM_R(crate::FieldReader<u8, UPDM_A>);
 impl UPDM_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        UPDM_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, UPDM_A> {
@@ -140,20 +213,27 @@ impl UPDM_R {
     #[doc = "Checks if the value of the field is `MODE0`"]
     #[inline(always)]
     pub fn is_mode0(&self) -> bool {
-        *self == UPDM_A::MODE0
+        **self == UPDM_A::MODE0
     }
     #[doc = "Checks if the value of the field is `MODE1`"]
     #[inline(always)]
     pub fn is_mode1(&self) -> bool {
-        *self == UPDM_A::MODE1
+        **self == UPDM_A::MODE1
     }
     #[doc = "Checks if the value of the field is `MODE2`"]
     #[inline(always)]
     pub fn is_mode2(&self) -> bool {
-        *self == UPDM_A::MODE2
+        **self == UPDM_A::MODE2
     }
 }
-#[doc = "Write proxy for field `UPDM`"]
+impl core::ops::Deref for UPDM_R {
+    type Target = crate::FieldReader<u8, UPDM_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `UPDM` writer - Synchronous Channels Update Mode"]
 pub struct UPDM_W<'a> {
     w: &'a mut W,
 }
@@ -185,9 +265,21 @@ impl<'a> UPDM_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `PTRM`"]
-pub type PTRM_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `PTRM`"]
+#[doc = "Field `PTRM` reader - PDC Transfer Request Mode"]
+pub struct PTRM_R(crate::FieldReader<bool, bool>);
+impl PTRM_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        PTRM_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for PTRM_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `PTRM` writer - PDC Transfer Request Mode"]
 pub struct PTRM_W<'a> {
     w: &'a mut W,
 }
@@ -209,9 +301,21 @@ impl<'a> PTRM_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `PTRCS`"]
-pub type PTRCS_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `PTRCS`"]
+#[doc = "Field `PTRCS` reader - PDC Transfer Request Comparison Selection"]
+pub struct PTRCS_R(crate::FieldReader<u8, u8>);
+impl PTRCS_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        PTRCS_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for PTRCS_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `PTRCS` writer - PDC Transfer Request Comparison Selection"]
 pub struct PTRCS_W<'a> {
     w: &'a mut W,
 }
@@ -295,5 +399,30 @@ impl W {
     #[inline(always)]
     pub fn ptrcs(&mut self) -> PTRCS_W {
         PTRCS_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PWM Sync Channels Mode Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [scm](index.html) module"]
+pub struct SCM_SPEC;
+impl crate::RegisterSpec for SCM_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [scm::R](R) reader structure"]
+impl crate::Readable for SCM_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [scm::W](W) writer structure"]
+impl crate::Writable for SCM_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets SCM to value 0"]
+impl crate::Resettable for SCM_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

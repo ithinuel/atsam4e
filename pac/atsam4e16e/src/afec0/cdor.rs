@@ -1,18 +1,52 @@
-#[doc = "Reader of register CDOR"]
-pub type R = crate::R<u32, super::CDOR>;
-#[doc = "Writer for register CDOR"]
-pub type W = crate::W<u32, super::CDOR>;
-#[doc = "Register CDOR `reset()`'s with value 0"]
-impl crate::ResetValue for super::CDOR {
-    type Type = u32;
+#[doc = "Register `CDOR` reader"]
+pub struct R(crate::R<CDOR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CDOR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `OFF0`"]
-pub type OFF0_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF0`"]
+impl core::convert::From<crate::R<CDOR_SPEC>> for R {
+    fn from(reader: crate::R<CDOR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CDOR` writer"]
+pub struct W(crate::W<CDOR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CDOR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CDOR_SPEC>> for W {
+    fn from(writer: crate::W<CDOR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `OFF0` reader - Offset for channel 0"]
+pub struct OFF0_R(crate::FieldReader<bool, bool>);
+impl OFF0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF0_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF0` writer - Offset for channel 0"]
 pub struct OFF0_W<'a> {
     w: &'a mut W,
 }
@@ -34,9 +68,21 @@ impl<'a> OFF0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF1`"]
-pub type OFF1_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF1`"]
+#[doc = "Field `OFF1` reader - Offset for channel 1"]
+pub struct OFF1_R(crate::FieldReader<bool, bool>);
+impl OFF1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF1_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF1` writer - Offset for channel 1"]
 pub struct OFF1_W<'a> {
     w: &'a mut W,
 }
@@ -58,9 +104,21 @@ impl<'a> OFF1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF2`"]
-pub type OFF2_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF2`"]
+#[doc = "Field `OFF2` reader - Offset for channel 2"]
+pub struct OFF2_R(crate::FieldReader<bool, bool>);
+impl OFF2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF2_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF2` writer - Offset for channel 2"]
 pub struct OFF2_W<'a> {
     w: &'a mut W,
 }
@@ -82,9 +140,21 @@ impl<'a> OFF2_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF3`"]
-pub type OFF3_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF3`"]
+#[doc = "Field `OFF3` reader - Offset for channel 3"]
+pub struct OFF3_R(crate::FieldReader<bool, bool>);
+impl OFF3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF3_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF3` writer - Offset for channel 3"]
 pub struct OFF3_W<'a> {
     w: &'a mut W,
 }
@@ -106,9 +176,21 @@ impl<'a> OFF3_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF4`"]
-pub type OFF4_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF4`"]
+#[doc = "Field `OFF4` reader - Offset for channel 4"]
+pub struct OFF4_R(crate::FieldReader<bool, bool>);
+impl OFF4_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF4_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF4_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF4` writer - Offset for channel 4"]
 pub struct OFF4_W<'a> {
     w: &'a mut W,
 }
@@ -130,9 +212,21 @@ impl<'a> OFF4_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF5`"]
-pub type OFF5_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF5`"]
+#[doc = "Field `OFF5` reader - Offset for channel 5"]
+pub struct OFF5_R(crate::FieldReader<bool, bool>);
+impl OFF5_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF5_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF5_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF5` writer - Offset for channel 5"]
 pub struct OFF5_W<'a> {
     w: &'a mut W,
 }
@@ -154,9 +248,21 @@ impl<'a> OFF5_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF6`"]
-pub type OFF6_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF6`"]
+#[doc = "Field `OFF6` reader - Offset for channel 6"]
+pub struct OFF6_R(crate::FieldReader<bool, bool>);
+impl OFF6_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF6_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF6_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF6` writer - Offset for channel 6"]
 pub struct OFF6_W<'a> {
     w: &'a mut W,
 }
@@ -178,9 +284,21 @@ impl<'a> OFF6_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF7`"]
-pub type OFF7_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF7`"]
+#[doc = "Field `OFF7` reader - Offset for channel 7"]
+pub struct OFF7_R(crate::FieldReader<bool, bool>);
+impl OFF7_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF7_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF7_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF7` writer - Offset for channel 7"]
 pub struct OFF7_W<'a> {
     w: &'a mut W,
 }
@@ -202,9 +320,21 @@ impl<'a> OFF7_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF8`"]
-pub type OFF8_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF8`"]
+#[doc = "Field `OFF8` reader - Offset for channel 8"]
+pub struct OFF8_R(crate::FieldReader<bool, bool>);
+impl OFF8_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF8_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF8_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF8` writer - Offset for channel 8"]
 pub struct OFF8_W<'a> {
     w: &'a mut W,
 }
@@ -226,9 +356,21 @@ impl<'a> OFF8_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF9`"]
-pub type OFF9_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF9`"]
+#[doc = "Field `OFF9` reader - Offset for channel 9"]
+pub struct OFF9_R(crate::FieldReader<bool, bool>);
+impl OFF9_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF9_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF9_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF9` writer - Offset for channel 9"]
 pub struct OFF9_W<'a> {
     w: &'a mut W,
 }
@@ -250,9 +392,21 @@ impl<'a> OFF9_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF10`"]
-pub type OFF10_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF10`"]
+#[doc = "Field `OFF10` reader - Offset for channel 10"]
+pub struct OFF10_R(crate::FieldReader<bool, bool>);
+impl OFF10_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF10_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF10_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF10` writer - Offset for channel 10"]
 pub struct OFF10_W<'a> {
     w: &'a mut W,
 }
@@ -274,9 +428,21 @@ impl<'a> OFF10_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF11`"]
-pub type OFF11_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF11`"]
+#[doc = "Field `OFF11` reader - Offset for channel 11"]
+pub struct OFF11_R(crate::FieldReader<bool, bool>);
+impl OFF11_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF11_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF11_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF11` writer - Offset for channel 11"]
 pub struct OFF11_W<'a> {
     w: &'a mut W,
 }
@@ -298,9 +464,21 @@ impl<'a> OFF11_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF12`"]
-pub type OFF12_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF12`"]
+#[doc = "Field `OFF12` reader - Offset for channel 12"]
+pub struct OFF12_R(crate::FieldReader<bool, bool>);
+impl OFF12_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF12_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF12_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF12` writer - Offset for channel 12"]
 pub struct OFF12_W<'a> {
     w: &'a mut W,
 }
@@ -322,9 +500,21 @@ impl<'a> OFF12_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF13`"]
-pub type OFF13_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF13`"]
+#[doc = "Field `OFF13` reader - Offset for channel 13"]
+pub struct OFF13_R(crate::FieldReader<bool, bool>);
+impl OFF13_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF13_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF13_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF13` writer - Offset for channel 13"]
 pub struct OFF13_W<'a> {
     w: &'a mut W,
 }
@@ -346,9 +536,21 @@ impl<'a> OFF13_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF14`"]
-pub type OFF14_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF14`"]
+#[doc = "Field `OFF14` reader - Offset for channel 14"]
+pub struct OFF14_R(crate::FieldReader<bool, bool>);
+impl OFF14_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF14_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF14_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF14` writer - Offset for channel 14"]
 pub struct OFF14_W<'a> {
     w: &'a mut W,
 }
@@ -370,9 +572,21 @@ impl<'a> OFF14_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF15`"]
-pub type OFF15_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF15`"]
+#[doc = "Field `OFF15` reader - Offset for channel 15"]
+pub struct OFF15_R(crate::FieldReader<bool, bool>);
+impl OFF15_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF15_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF15_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF15` writer - Offset for channel 15"]
 pub struct OFF15_W<'a> {
     w: &'a mut W,
 }
@@ -394,9 +608,21 @@ impl<'a> OFF15_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OVRE16`"]
-pub type OVRE16_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OVRE16`"]
+#[doc = "Field `OVRE16` reader - "]
+pub struct OVRE16_R(crate::FieldReader<bool, bool>);
+impl OVRE16_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OVRE16_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OVRE16_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OVRE16` writer - "]
 pub struct OVRE16_W<'a> {
     w: &'a mut W,
 }
@@ -418,9 +644,21 @@ impl<'a> OVRE16_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OVRE17`"]
-pub type OVRE17_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OVRE17`"]
+#[doc = "Field `OVRE17` reader - "]
+pub struct OVRE17_R(crate::FieldReader<bool, bool>);
+impl OVRE17_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OVRE17_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OVRE17_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OVRE17` writer - "]
 pub struct OVRE17_W<'a> {
     w: &'a mut W,
 }
@@ -442,9 +680,21 @@ impl<'a> OVRE17_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF18`"]
-pub type OFF18_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF18`"]
+#[doc = "Field `OFF18` reader - Offset for channel 18"]
+pub struct OFF18_R(crate::FieldReader<bool, bool>);
+impl OFF18_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF18_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF18_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF18` writer - Offset for channel 18"]
 pub struct OFF18_W<'a> {
     w: &'a mut W,
 }
@@ -466,9 +716,21 @@ impl<'a> OFF18_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF19`"]
-pub type OFF19_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF19`"]
+#[doc = "Field `OFF19` reader - Offset for channel 19"]
+pub struct OFF19_R(crate::FieldReader<bool, bool>);
+impl OFF19_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF19_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF19_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF19` writer - Offset for channel 19"]
 pub struct OFF19_W<'a> {
     w: &'a mut W,
 }
@@ -490,9 +752,21 @@ impl<'a> OFF19_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF20`"]
-pub type OFF20_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF20`"]
+#[doc = "Field `OFF20` reader - Offset for channel 20"]
+pub struct OFF20_R(crate::FieldReader<bool, bool>);
+impl OFF20_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF20_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF20_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF20` writer - Offset for channel 20"]
 pub struct OFF20_W<'a> {
     w: &'a mut W,
 }
@@ -514,9 +788,21 @@ impl<'a> OFF20_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF21`"]
-pub type OFF21_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF21`"]
+#[doc = "Field `OFF21` reader - Offset for channel 21"]
+pub struct OFF21_R(crate::FieldReader<bool, bool>);
+impl OFF21_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF21_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF21_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF21` writer - Offset for channel 21"]
 pub struct OFF21_W<'a> {
     w: &'a mut W,
 }
@@ -538,9 +824,21 @@ impl<'a> OFF21_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF22`"]
-pub type OFF22_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF22`"]
+#[doc = "Field `OFF22` reader - Offset for channel 22"]
+pub struct OFF22_R(crate::FieldReader<bool, bool>);
+impl OFF22_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF22_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF22_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF22` writer - Offset for channel 22"]
 pub struct OFF22_W<'a> {
     w: &'a mut W,
 }
@@ -562,9 +860,21 @@ impl<'a> OFF22_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `OFF23`"]
-pub type OFF23_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `OFF23`"]
+#[doc = "Field `OFF23` reader - Offset for channel 23"]
+pub struct OFF23_R(crate::FieldReader<bool, bool>);
+impl OFF23_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OFF23_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OFF23_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OFF23` writer - Offset for channel 23"]
 pub struct OFF23_W<'a> {
     w: &'a mut W,
 }
@@ -828,5 +1138,30 @@ impl W {
     #[inline(always)]
     pub fn off23(&mut self) -> OFF23_W {
         OFF23_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Channel DC Offset Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cdor](index.html) module"]
+pub struct CDOR_SPEC;
+impl crate::RegisterSpec for CDOR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [cdor::R](R) reader structure"]
+impl crate::Readable for CDOR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [cdor::W](W) writer structure"]
+impl crate::Writable for CDOR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CDOR to value 0"]
+impl crate::Resettable for CDOR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

@@ -1,6 +1,24 @@
-#[doc = "Writer for register WPCR"]
-pub type W = crate::W<u32, super::WPCR>;
-#[doc = "Write proxy for field `WPCMD`"]
+#[doc = "Register `WPCR` writer"]
+pub struct W(crate::W<WPCR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<WPCR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<WPCR_SPEC>> for W {
+    fn from(writer: crate::W<WPCR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `WPCMD` writer - Write Protect Command"]
 pub struct WPCMD_W<'a> {
     w: &'a mut W,
 }
@@ -12,7 +30,7 @@ impl<'a> WPCMD_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `WPRG0`"]
+#[doc = "Field `WPRG0` writer - Write Protect Register Group 0"]
 pub struct WPRG0_W<'a> {
     w: &'a mut W,
 }
@@ -34,7 +52,7 @@ impl<'a> WPRG0_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `WPRG1`"]
+#[doc = "Field `WPRG1` writer - Write Protect Register Group 1"]
 pub struct WPRG1_W<'a> {
     w: &'a mut W,
 }
@@ -56,7 +74,7 @@ impl<'a> WPRG1_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `WPRG2`"]
+#[doc = "Field `WPRG2` writer - Write Protect Register Group 2"]
 pub struct WPRG2_W<'a> {
     w: &'a mut W,
 }
@@ -78,7 +96,7 @@ impl<'a> WPRG2_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `WPRG3`"]
+#[doc = "Field `WPRG3` writer - Write Protect Register Group 3"]
 pub struct WPRG3_W<'a> {
     w: &'a mut W,
 }
@@ -100,7 +118,7 @@ impl<'a> WPRG3_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `WPRG4`"]
+#[doc = "Field `WPRG4` writer - Write Protect Register Group 4"]
 pub struct WPRG4_W<'a> {
     w: &'a mut W,
 }
@@ -122,7 +140,7 @@ impl<'a> WPRG4_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `WPRG5`"]
+#[doc = "Field `WPRG5` writer - Write Protect Register Group 5"]
 pub struct WPRG5_W<'a> {
     w: &'a mut W,
 }
@@ -144,7 +162,7 @@ impl<'a> WPRG5_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `WPKEY`"]
+#[doc = "Field `WPKEY` writer - Write Protect Key"]
 pub struct WPKEY_W<'a> {
     w: &'a mut W,
 }
@@ -197,4 +215,18 @@ impl W {
     pub fn wpkey(&mut self) -> WPKEY_W {
         WPKEY_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PWM Write Protect Control Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [wpcr](index.html) module"]
+pub struct WPCR_SPEC;
+impl crate::RegisterSpec for WPCR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [wpcr::W](W) writer structure"]
+impl crate::Writable for WPCR_SPEC {
+    type Writer = W;
 }

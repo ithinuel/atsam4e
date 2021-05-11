@@ -1,6 +1,24 @@
-#[doc = "Writer for register OSCUPD"]
-pub type W = crate::W<u32, super::OSCUPD>;
-#[doc = "Write proxy for field `OSCUPH0`"]
+#[doc = "Register `OSCUPD` writer"]
+pub struct W(crate::W<OSCUPD_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<OSCUPD_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<OSCUPD_SPEC>> for W {
+    fn from(writer: crate::W<OSCUPD_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `OSCUPH0` writer - Output Selection Clear for PWMH output of the channel 0"]
 pub struct OSCUPH0_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> OSCUPH0_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `OSCUPH1`"]
+#[doc = "Field `OSCUPH1` writer - Output Selection Clear for PWMH output of the channel 1"]
 pub struct OSCUPH1_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> OSCUPH1_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `OSCUPH2`"]
+#[doc = "Field `OSCUPH2` writer - Output Selection Clear for PWMH output of the channel 2"]
 pub struct OSCUPH2_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> OSCUPH2_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `OSCUPH3`"]
+#[doc = "Field `OSCUPH3` writer - Output Selection Clear for PWMH output of the channel 3"]
 pub struct OSCUPH3_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> OSCUPH3_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `OSCUPL0`"]
+#[doc = "Field `OSCUPL0` writer - Output Selection Clear for PWML output of the channel 0"]
 pub struct OSCUPL0_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> OSCUPL0_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `OSCUPL1`"]
+#[doc = "Field `OSCUPL1` writer - Output Selection Clear for PWML output of the channel 1"]
 pub struct OSCUPL1_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> OSCUPL1_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `OSCUPL2`"]
+#[doc = "Field `OSCUPL2` writer - Output Selection Clear for PWML output of the channel 2"]
 pub struct OSCUPL2_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> OSCUPL2_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `OSCUPL3`"]
+#[doc = "Field `OSCUPL3` writer - Output Selection Clear for PWML output of the channel 3"]
 pub struct OSCUPL3_W<'a> {
     w: &'a mut W,
 }
@@ -217,4 +235,18 @@ impl W {
     pub fn oscupl3(&mut self) -> OSCUPL3_W {
         OSCUPL3_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PWM Output Selection Clear Update Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [oscupd](index.html) module"]
+pub struct OSCUPD_SPEC;
+impl crate::RegisterSpec for OSCUPD_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [oscupd::W](W) writer structure"]
+impl crate::Writable for OSCUPD_SPEC {
+    type Writer = W;
 }

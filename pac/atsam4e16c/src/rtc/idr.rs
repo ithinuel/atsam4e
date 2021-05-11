@@ -1,6 +1,24 @@
-#[doc = "Writer for register IDR"]
-pub type W = crate::W<u32, super::IDR>;
-#[doc = "Write proxy for field `ACKDIS`"]
+#[doc = "Register `IDR` writer"]
+pub struct W(crate::W<IDR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IDR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IDR_SPEC>> for W {
+    fn from(writer: crate::W<IDR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `ACKDIS` writer - Acknowledge Update Interrupt Disable"]
 pub struct ACKDIS_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> ACKDIS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ALRDIS`"]
+#[doc = "Field `ALRDIS` writer - Alarm Interrupt Disable"]
 pub struct ALRDIS_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> ALRDIS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `SECDIS`"]
+#[doc = "Field `SECDIS` writer - Second Event Interrupt Disable"]
 pub struct SECDIS_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> SECDIS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TIMDIS`"]
+#[doc = "Field `TIMDIS` writer - Time Event Interrupt Disable"]
 pub struct TIMDIS_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> TIMDIS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CALDIS`"]
+#[doc = "Field `CALDIS` writer - Calendar Event Interrupt Disable"]
 pub struct CALDIS_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> CALDIS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TDERRDIS`"]
+#[doc = "Field `TDERRDIS` writer - Time and/or Date Error Interrupt Disable"]
 pub struct TDERRDIS_W<'a> {
     w: &'a mut W,
 }
@@ -163,4 +181,18 @@ impl W {
     pub fn tderrdis(&mut self) -> TDERRDIS_W {
         TDERRDIS_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Disable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [idr](index.html) module"]
+pub struct IDR_SPEC;
+impl crate::RegisterSpec for IDR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [idr::W](W) writer structure"]
+impl crate::Writable for IDR_SPEC {
+    type Writer = W;
 }

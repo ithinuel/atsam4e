@@ -1,6 +1,24 @@
-#[doc = "Writer for register TCR"]
-pub type W = crate::W<u32, super::TCR>;
-#[doc = "Write proxy for field `MB0`"]
+#[doc = "Register `TCR` writer"]
+pub struct W(crate::W<TCR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<TCR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<TCR_SPEC>> for W {
+    fn from(writer: crate::W<TCR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `MB0` writer - Transfer Request for Mailbox 0"]
 pub struct MB0_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> MB0_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB1`"]
+#[doc = "Field `MB1` writer - Transfer Request for Mailbox 1"]
 pub struct MB1_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> MB1_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB2`"]
+#[doc = "Field `MB2` writer - Transfer Request for Mailbox 2"]
 pub struct MB2_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> MB2_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB3`"]
+#[doc = "Field `MB3` writer - Transfer Request for Mailbox 3"]
 pub struct MB3_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> MB3_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB4`"]
+#[doc = "Field `MB4` writer - Transfer Request for Mailbox 4"]
 pub struct MB4_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> MB4_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB5`"]
+#[doc = "Field `MB5` writer - Transfer Request for Mailbox 5"]
 pub struct MB5_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> MB5_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB6`"]
+#[doc = "Field `MB6` writer - Transfer Request for Mailbox 6"]
 pub struct MB6_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> MB6_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB7`"]
+#[doc = "Field `MB7` writer - Transfer Request for Mailbox 7"]
 pub struct MB7_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> MB7_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TIMRST`"]
+#[doc = "Field `TIMRST` writer - Timer Reset"]
 pub struct TIMRST_W<'a> {
     w: &'a mut W,
 }
@@ -244,4 +262,18 @@ impl W {
     pub fn timrst(&mut self) -> TIMRST_W {
         TIMRST_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Transfer Command Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [tcr](index.html) module"]
+pub struct TCR_SPEC;
+impl crate::RegisterSpec for TCR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [tcr::W](W) writer structure"]
+impl crate::Writable for TCR_SPEC {
+    type Writer = W;
 }

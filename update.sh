@@ -4,9 +4,8 @@ set -xe
 
 # INSTALL DEPENDENCIES
 
-cargo install --git https://github.com/gkelly/svd2rust --branch \
-    bleeding-edge --rev 2bbb60590096bcb67c91f38bedd1f63f98132abe svd2rust
-cargo install --version 0.7.0 form
+cargo install svd2rust --git https://github.com/rust-embedded/svd2rust
+cargo install form
 
 # PATCH SVD FILES AND GENERATE CRATES
 

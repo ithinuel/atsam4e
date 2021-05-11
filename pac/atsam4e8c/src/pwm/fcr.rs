@@ -1,6 +1,24 @@
-#[doc = "Writer for register FCR"]
-pub type W = crate::W<u32, super::FCR>;
-#[doc = "Write proxy for field `FCLR`"]
+#[doc = "Register `FCR` writer"]
+pub struct W(crate::W<FCR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<FCR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<FCR_SPEC>> for W {
+    fn from(writer: crate::W<FCR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `FCLR` writer - Fault Clear (fault input bit varies from 0 to 7)"]
 pub struct FCLR_W<'a> {
     w: &'a mut W,
 }
@@ -18,4 +36,18 @@ impl W {
     pub fn fclr(&mut self) -> FCLR_W {
         FCLR_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PWM Fault Clear Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [fcr](index.html) module"]
+pub struct FCR_SPEC;
+impl crate::RegisterSpec for FCR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [fcr::W](W) writer structure"]
+impl crate::Writable for FCR_SPEC {
+    type Writer = W;
 }

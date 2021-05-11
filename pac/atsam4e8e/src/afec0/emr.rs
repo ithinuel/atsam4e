@@ -1,13 +1,35 @@
-#[doc = "Reader of register EMR"]
-pub type R = crate::R<u32, super::EMR>;
-#[doc = "Writer for register EMR"]
-pub type W = crate::W<u32, super::EMR>;
-#[doc = "Register EMR `reset()`'s with value 0"]
-impl crate::ResetValue for super::EMR {
-    type Type = u32;
+#[doc = "Register `EMR` reader"]
+pub struct R(crate::R<EMR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<EMR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<EMR_SPEC>> for R {
+    fn from(reader: crate::R<EMR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `EMR` writer"]
+pub struct W(crate::W<EMR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<EMR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<EMR_SPEC>> for W {
+    fn from(writer: crate::W<EMR_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Comparison Mode\n\nValue on reset: 0"]
@@ -29,9 +51,12 @@ impl From<CMPMODE_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `CMPMODE`"]
-pub type CMPMODE_R = crate::R<u8, CMPMODE_A>;
+#[doc = "Field `CMPMODE` reader - Comparison Mode"]
+pub struct CMPMODE_R(crate::FieldReader<u8, CMPMODE_A>);
 impl CMPMODE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        CMPMODE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CMPMODE_A {
@@ -46,25 +71,32 @@ impl CMPMODE_R {
     #[doc = "Checks if the value of the field is `LOW`"]
     #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == CMPMODE_A::LOW
+        **self == CMPMODE_A::LOW
     }
     #[doc = "Checks if the value of the field is `HIGH`"]
     #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == CMPMODE_A::HIGH
+        **self == CMPMODE_A::HIGH
     }
     #[doc = "Checks if the value of the field is `IN`"]
     #[inline(always)]
     pub fn is_in_(&self) -> bool {
-        *self == CMPMODE_A::IN
+        **self == CMPMODE_A::IN
     }
     #[doc = "Checks if the value of the field is `OUT`"]
     #[inline(always)]
     pub fn is_out(&self) -> bool {
-        *self == CMPMODE_A::OUT
+        **self == CMPMODE_A::OUT
     }
 }
-#[doc = "Write proxy for field `CMPMODE`"]
+impl core::ops::Deref for CMPMODE_R {
+    type Target = crate::FieldReader<u8, CMPMODE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CMPMODE` writer - Comparison Mode"]
 pub struct CMPMODE_W<'a> {
     w: &'a mut W,
 }
@@ -72,9 +104,7 @@ impl<'a> CMPMODE_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CMPMODE_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
+        self.bits(variant.into())
     }
     #[doc = "Generates an event when the converted data is lower than the low threshold of the window."]
     #[inline(always)]
@@ -103,9 +133,21 @@ impl<'a> CMPMODE_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `CMPSEL`"]
-pub type CMPSEL_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `CMPSEL`"]
+#[doc = "Field `CMPSEL` reader - Comparison Selected Channel"]
+pub struct CMPSEL_R(crate::FieldReader<u8, u8>);
+impl CMPSEL_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        CMPSEL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CMPSEL_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CMPSEL` writer - Comparison Selected Channel"]
 pub struct CMPSEL_W<'a> {
     w: &'a mut W,
 }
@@ -117,9 +159,21 @@ impl<'a> CMPSEL_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `CMPALL`"]
-pub type CMPALL_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CMPALL`"]
+#[doc = "Field `CMPALL` reader - Compare All Channels"]
+pub struct CMPALL_R(crate::FieldReader<bool, bool>);
+impl CMPALL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CMPALL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CMPALL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CMPALL` writer - Compare All Channels"]
 pub struct CMPALL_W<'a> {
     w: &'a mut W,
 }
@@ -141,9 +195,21 @@ impl<'a> CMPALL_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `CMPFILTER`"]
-pub type CMPFILTER_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `CMPFILTER`"]
+#[doc = "Field `CMPFILTER` reader - Compare Event Filtering"]
+pub struct CMPFILTER_R(crate::FieldReader<u8, u8>);
+impl CMPFILTER_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        CMPFILTER_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CMPFILTER_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CMPFILTER` writer - Compare Event Filtering"]
 pub struct CMPFILTER_W<'a> {
     w: &'a mut W,
 }
@@ -178,9 +244,12 @@ impl From<RES_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `RES`"]
-pub type RES_R = crate::R<u8, RES_A>;
+#[doc = "Field `RES` reader - Resolution"]
+pub struct RES_R(crate::FieldReader<u8, RES_A>);
 impl RES_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        RES_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, RES_A> {
@@ -198,35 +267,42 @@ impl RES_R {
     #[doc = "Checks if the value of the field is `NO_AVERAGE`"]
     #[inline(always)]
     pub fn is_no_average(&self) -> bool {
-        *self == RES_A::NO_AVERAGE
+        **self == RES_A::NO_AVERAGE
     }
     #[doc = "Checks if the value of the field is `LOW_RES`"]
     #[inline(always)]
     pub fn is_low_res(&self) -> bool {
-        *self == RES_A::LOW_RES
+        **self == RES_A::LOW_RES
     }
     #[doc = "Checks if the value of the field is `OSR4`"]
     #[inline(always)]
     pub fn is_osr4(&self) -> bool {
-        *self == RES_A::OSR4
+        **self == RES_A::OSR4
     }
     #[doc = "Checks if the value of the field is `OSR16`"]
     #[inline(always)]
     pub fn is_osr16(&self) -> bool {
-        *self == RES_A::OSR16
+        **self == RES_A::OSR16
     }
     #[doc = "Checks if the value of the field is `OSR64`"]
     #[inline(always)]
     pub fn is_osr64(&self) -> bool {
-        *self == RES_A::OSR64
+        **self == RES_A::OSR64
     }
     #[doc = "Checks if the value of the field is `OSR256`"]
     #[inline(always)]
     pub fn is_osr256(&self) -> bool {
-        *self == RES_A::OSR256
+        **self == RES_A::OSR256
     }
 }
-#[doc = "Write proxy for field `RES`"]
+impl core::ops::Deref for RES_R {
+    type Target = crate::FieldReader<u8, RES_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RES` writer - Resolution"]
 pub struct RES_W<'a> {
     w: &'a mut W,
 }
@@ -273,9 +349,21 @@ impl<'a> RES_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `TAG`"]
-pub type TAG_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `TAG`"]
+#[doc = "Field `TAG` reader - TAG of AFE_LDCR register"]
+pub struct TAG_R(crate::FieldReader<bool, bool>);
+impl TAG_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TAG_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for TAG_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TAG` writer - TAG of AFE_LDCR register"]
 pub struct TAG_W<'a> {
     w: &'a mut W,
 }
@@ -297,9 +385,21 @@ impl<'a> TAG_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `STM`"]
-pub type STM_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `STM`"]
+#[doc = "Field `STM` reader - Single Trigger Mode"]
+pub struct STM_R(crate::FieldReader<bool, bool>);
+impl STM_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        STM_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for STM_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `STM` writer - Single Trigger Mode"]
 pub struct STM_W<'a> {
     w: &'a mut W,
 }
@@ -393,5 +493,30 @@ impl W {
     #[inline(always)]
     pub fn stm(&mut self) -> STM_W {
         STM_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Extended Mode Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [emr](index.html) module"]
+pub struct EMR_SPEC;
+impl crate::RegisterSpec for EMR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [emr::R](R) reader structure"]
+impl crate::Readable for EMR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [emr::W](W) writer structure"]
+impl crate::Writable for EMR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets EMR to value 0"]
+impl crate::Resettable for EMR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

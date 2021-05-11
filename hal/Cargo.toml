@@ -16,12 +16,14 @@ sam4e16c = ["atsam4e16c/rt"]
 sam4e16e = ["atsam4e16e/rt"]
 
 debug_on_uart0 = []
+debug_on_buffer = []
 
 [dependencies]
 paste = "1"
 cortex-m = "0.6"
 embedded-hal = { version = "0.2", features = ['unproven'] }
 usb-device = "*"
+usbd-serial = { version = "*", optional = true }
 nb = "*"
 
 [dependencies.atsam4e8c]

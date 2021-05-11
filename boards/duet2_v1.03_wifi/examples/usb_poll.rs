@@ -60,7 +60,7 @@ fn main() -> ! {
         .map(Serial::<atsam4e_hal::pac::UART0, _>::split)
         .unwrap_or_else(|_| unreachable!());
 
-        atsam4e_hal::debug::wire_uart(tx);
+        atsam4e_hal::debug_on_uart::wire_uart(tx);
     }
 
     let usb_bus = usb_device::bus::UsbBusAllocator::new(UsbBus::new(p.UDP, (DDP, DDM), clocks));

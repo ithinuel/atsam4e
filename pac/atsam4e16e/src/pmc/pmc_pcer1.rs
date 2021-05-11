@@ -1,6 +1,24 @@
-#[doc = "Writer for register PMC_PCER1"]
-pub type W = crate::W<u32, super::PMC_PCER1>;
-#[doc = "Write proxy for field `PID32`"]
+#[doc = "Register `PMC_PCER1` writer"]
+pub struct W(crate::W<PMC_PCER1_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<PMC_PCER1_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<PMC_PCER1_SPEC>> for W {
+    fn from(writer: crate::W<PMC_PCER1_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `PID32` writer - Peripheral Clock 32 Enable"]
 pub struct PID32_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> PID32_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID33`"]
+#[doc = "Field `PID33` writer - Peripheral Clock 33 Enable"]
 pub struct PID33_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> PID33_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID34`"]
+#[doc = "Field `PID34` writer - Peripheral Clock 34 Enable"]
 pub struct PID34_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> PID34_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID35`"]
+#[doc = "Field `PID35` writer - Peripheral Clock 35 Enable"]
 pub struct PID35_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> PID35_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID36`"]
+#[doc = "Field `PID36` writer - Peripheral Clock 36 Enable"]
 pub struct PID36_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> PID36_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID37`"]
+#[doc = "Field `PID37` writer - Peripheral Clock 37 Enable"]
 pub struct PID37_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> PID37_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID38`"]
+#[doc = "Field `PID38` writer - Peripheral Clock 38 Enable"]
 pub struct PID38_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> PID38_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID39`"]
+#[doc = "Field `PID39` writer - Peripheral Clock 39 Enable"]
 pub struct PID39_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> PID39_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID40`"]
+#[doc = "Field `PID40` writer - Peripheral Clock 40 Enable"]
 pub struct PID40_W<'a> {
     w: &'a mut W,
 }
@@ -198,7 +216,7 @@ impl<'a> PID40_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID41`"]
+#[doc = "Field `PID41` writer - Peripheral Clock 41 Enable"]
 pub struct PID41_W<'a> {
     w: &'a mut W,
 }
@@ -220,7 +238,7 @@ impl<'a> PID41_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID42`"]
+#[doc = "Field `PID42` writer - Peripheral Clock 42 Enable"]
 pub struct PID42_W<'a> {
     w: &'a mut W,
 }
@@ -242,7 +260,7 @@ impl<'a> PID42_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID43`"]
+#[doc = "Field `PID43` writer - Peripheral Clock 43 Enable"]
 pub struct PID43_W<'a> {
     w: &'a mut W,
 }
@@ -264,7 +282,7 @@ impl<'a> PID43_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID44`"]
+#[doc = "Field `PID44` writer - Peripheral Clock 44 Enable"]
 pub struct PID44_W<'a> {
     w: &'a mut W,
 }
@@ -286,7 +304,7 @@ impl<'a> PID44_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID45`"]
+#[doc = "Field `PID45` writer - Peripheral Clock 45 Enable"]
 pub struct PID45_W<'a> {
     w: &'a mut W,
 }
@@ -308,7 +326,7 @@ impl<'a> PID45_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID46`"]
+#[doc = "Field `PID46` writer - Peripheral Clock 46 Enable"]
 pub struct PID46_W<'a> {
     w: &'a mut W,
 }
@@ -330,7 +348,7 @@ impl<'a> PID46_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PID47`"]
+#[doc = "Field `PID47` writer - Peripheral Clock 47 Enable"]
 pub struct PID47_W<'a> {
     w: &'a mut W,
 }
@@ -433,4 +451,18 @@ impl W {
     pub fn pid47(&mut self) -> PID47_W {
         PID47_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Peripheral Clock Enable Register 1\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pmc_pcer1](index.html) module"]
+pub struct PMC_PCER1_SPEC;
+impl crate::RegisterSpec for PMC_PCER1_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [pmc_pcer1::W](W) writer structure"]
+impl crate::Writable for PMC_PCER1_SPEC {
+    type Writer = W;
 }

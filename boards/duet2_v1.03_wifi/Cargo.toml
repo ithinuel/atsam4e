@@ -13,9 +13,13 @@ keywords = ["no-std", "arm", "cortex-m", "embedded-hal"]
 bootloader = []
 application = []
 debug_on_uart0 = ["atsam4e-hal/debug_on_uart0"]
+debug_on_buffer = ["atsam4e-hal/debug_on_buffer"]
 
 [dependencies]
 atsam4e-hal = { version = "*", features = ["sam4e8e"] }
+pin-utils = "*"
+
+[dev-dependencies]
 cortex-m-rt = "*"
 cortex-m = "*"
 embedded-hal = "*"
@@ -23,5 +27,9 @@ panic-halt = "*"
 usb-device = "*"
 usbd-serial = {version = "*"}
 usbd-dfu = {version = "*"}
-usbd-dfu-demo = {version = "*"}
+usbd-dfu-demo = {version = "*", features = ['alloc', 'future']}
+alloc-cortex-m = "*"
 
+[[example]]
+name = "usb_dfu"
+required-features = ["debug_on_buffer"]

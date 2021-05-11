@@ -1,6 +1,24 @@
-#[doc = "Writer for register CMDR"]
-pub type W = crate::W<u32, super::CMDR>;
-#[doc = "Write proxy for field `CMDNB`"]
+#[doc = "Register `CMDR` writer"]
+pub struct W(crate::W<CMDR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CMDR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CMDR_SPEC>> for W {
+    fn from(writer: crate::W<CMDR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `CMDNB` writer - Command Number"]
 pub struct CMDNB_W<'a> {
     w: &'a mut W,
 }
@@ -31,7 +49,7 @@ impl From<RSPTYP_AW> for u8 {
         variant as _
     }
 }
-#[doc = "Write proxy for field `RSPTYP`"]
+#[doc = "Field `RSPTYP` writer - Response Type"]
 pub struct RSPTYP_W<'a> {
     w: &'a mut W,
 }
@@ -39,9 +57,7 @@ impl<'a> RSPTYP_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: RSPTYP_AW) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
+        self.bits(variant.into())
     }
     #[doc = "No response."]
     #[inline(always)]
@@ -97,7 +113,7 @@ impl From<SPCMD_AW> for u8 {
         variant as _
     }
 }
-#[doc = "Write proxy for field `SPCMD`"]
+#[doc = "Field `SPCMD` writer - Special Command"]
 pub struct SPCMD_W<'a> {
     w: &'a mut W,
 }
@@ -105,9 +121,7 @@ impl<'a> SPCMD_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: SPCMD_AW) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
+        self.bits(variant.into())
     }
     #[doc = "Not a special CMD."]
     #[inline(always)]
@@ -170,7 +184,7 @@ impl From<OPDCMD_AW> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `OPDCMD`"]
+#[doc = "Field `OPDCMD` writer - Open Drain Command"]
 pub struct OPDCMD_W<'a> {
     w: &'a mut W,
 }
@@ -178,9 +192,7 @@ impl<'a> OPDCMD_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: OPDCMD_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Push pull command."]
     #[inline(always)]
@@ -223,7 +235,7 @@ impl From<MAXLAT_AW> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `MAXLAT`"]
+#[doc = "Field `MAXLAT` writer - Max Latency for Command to Response"]
 pub struct MAXLAT_W<'a> {
     w: &'a mut W,
 }
@@ -231,9 +243,7 @@ impl<'a> MAXLAT_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: MAXLAT_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "5-cycle max latency."]
     #[inline(always)]
@@ -279,7 +289,7 @@ impl From<TRCMD_AW> for u8 {
         variant as _
     }
 }
-#[doc = "Write proxy for field `TRCMD`"]
+#[doc = "Field `TRCMD` writer - Transfer Command"]
 pub struct TRCMD_W<'a> {
     w: &'a mut W,
 }
@@ -325,7 +335,7 @@ impl From<TRDIR_AW> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRDIR`"]
+#[doc = "Field `TRDIR` writer - Transfer Direction"]
 pub struct TRDIR_W<'a> {
     w: &'a mut W,
 }
@@ -333,9 +343,7 @@ impl<'a> TRDIR_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRDIR_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Write."]
     #[inline(always)]
@@ -385,7 +393,7 @@ impl From<TRTYP_AW> for u8 {
         variant as _
     }
 }
-#[doc = "Write proxy for field `TRTYP`"]
+#[doc = "Field `TRTYP` writer - Transfer Type"]
 pub struct TRTYP_W<'a> {
     w: &'a mut W,
 }
@@ -444,7 +452,7 @@ impl From<IOSPCMD_AW> for u8 {
         variant as _
     }
 }
-#[doc = "Write proxy for field `IOSPCMD`"]
+#[doc = "Field `IOSPCMD` writer - SDIO Special Command"]
 pub struct IOSPCMD_W<'a> {
     w: &'a mut W,
 }
@@ -490,7 +498,7 @@ impl From<ATACS_AW> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `ATACS`"]
+#[doc = "Field `ATACS` writer - ATA with Command Completion Signal"]
 pub struct ATACS_W<'a> {
     w: &'a mut W,
 }
@@ -498,9 +506,7 @@ impl<'a> ATACS_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ATACS_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Normal operation mode."]
     #[inline(always)]
@@ -529,7 +535,7 @@ impl<'a> ATACS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `BOOT_ACK`"]
+#[doc = "Field `BOOT_ACK` writer - Boot Operation Acknowledge."]
 pub struct BOOT_ACK_W<'a> {
     w: &'a mut W,
 }
@@ -607,4 +613,18 @@ impl W {
     pub fn boot_ack(&mut self) -> BOOT_ACK_W {
         BOOT_ACK_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Command Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cmdr](index.html) module"]
+pub struct CMDR_SPEC;
+impl crate::RegisterSpec for CMDR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [cmdr::W](W) writer structure"]
+impl crate::Writable for CMDR_SPEC {
+    type Writer = W;
 }

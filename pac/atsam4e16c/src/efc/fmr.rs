@@ -1,18 +1,52 @@
-#[doc = "Reader of register FMR"]
-pub type R = crate::R<u32, super::FMR>;
-#[doc = "Writer for register FMR"]
-pub type W = crate::W<u32, super::FMR>;
-#[doc = "Register FMR `reset()`'s with value 0x0400_0000"]
-impl crate::ResetValue for super::FMR {
-    type Type = u32;
+#[doc = "Register `FMR` reader"]
+pub struct R(crate::R<FMR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<FMR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x0400_0000
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `FRDY`"]
-pub type FRDY_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FRDY`"]
+impl core::convert::From<crate::R<FMR_SPEC>> for R {
+    fn from(reader: crate::R<FMR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `FMR` writer"]
+pub struct W(crate::W<FMR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<FMR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<FMR_SPEC>> for W {
+    fn from(writer: crate::W<FMR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `FRDY` reader - Ready Interrupt Enable"]
+pub struct FRDY_R(crate::FieldReader<bool, bool>);
+impl FRDY_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FRDY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FRDY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FRDY` writer - Ready Interrupt Enable"]
 pub struct FRDY_W<'a> {
     w: &'a mut W,
 }
@@ -34,9 +68,21 @@ impl<'a> FRDY_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FWS`"]
-pub type FWS_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `FWS`"]
+#[doc = "Field `FWS` reader - Flash Wait State"]
+pub struct FWS_R(crate::FieldReader<u8, u8>);
+impl FWS_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        FWS_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FWS_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FWS` writer - Flash Wait State"]
 pub struct FWS_W<'a> {
     w: &'a mut W,
 }
@@ -48,9 +94,21 @@ impl<'a> FWS_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `SCOD`"]
-pub type SCOD_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `SCOD`"]
+#[doc = "Field `SCOD` reader - Sequential Code Optimization Disable"]
+pub struct SCOD_R(crate::FieldReader<bool, bool>);
+impl SCOD_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SCOD_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SCOD_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SCOD` writer - Sequential Code Optimization Disable"]
 pub struct SCOD_W<'a> {
     w: &'a mut W,
 }
@@ -72,9 +130,21 @@ impl<'a> SCOD_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FAM`"]
-pub type FAM_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FAM`"]
+#[doc = "Field `FAM` reader - Flash Access Mode"]
+pub struct FAM_R(crate::FieldReader<bool, bool>);
+impl FAM_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FAM_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FAM_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FAM` writer - Flash Access Mode"]
 pub struct FAM_W<'a> {
     w: &'a mut W,
 }
@@ -96,9 +166,21 @@ impl<'a> FAM_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `CLOE`"]
-pub type CLOE_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CLOE`"]
+#[doc = "Field `CLOE` reader - Code Loops Optimization Enable"]
+pub struct CLOE_R(crate::FieldReader<bool, bool>);
+impl CLOE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CLOE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CLOE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CLOE` writer - Code Loops Optimization Enable"]
 pub struct CLOE_W<'a> {
     w: &'a mut W,
 }
@@ -172,5 +254,30 @@ impl W {
     #[inline(always)]
     pub fn cloe(&mut self) -> CLOE_W {
         CLOE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "EEFC Flash Mode Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [fmr](index.html) module"]
+pub struct FMR_SPEC;
+impl crate::RegisterSpec for FMR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [fmr::R](R) reader structure"]
+impl crate::Readable for FMR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [fmr::W](W) writer structure"]
+impl crate::Writable for FMR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets FMR to value 0x0400_0000"]
+impl crate::Resettable for FMR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x0400_0000
     }
 }

@@ -1,13 +1,35 @@
-#[doc = "Reader of register EMR1"]
-pub type R = crate::R<u32, super::EMR1>;
-#[doc = "Writer for register EMR1"]
-pub type W = crate::W<u32, super::EMR1>;
-#[doc = "Register EMR1 `reset()`'s with value 0"]
-impl crate::ResetValue for super::EMR1 {
-    type Type = u32;
+#[doc = "Register `EMR1` reader"]
+pub struct R(crate::R<EMR1_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<EMR1_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<EMR1_SPEC>> for R {
+    fn from(reader: crate::R<EMR1_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `EMR1` writer"]
+pub struct W(crate::W<EMR1_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<EMR1_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<EMR1_SPEC>> for W {
+    fn from(writer: crate::W<EMR1_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "TRIGger SouRCe for input A\n\nValue on reset: 0"]
@@ -25,9 +47,12 @@ impl From<TRIGSRCA_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `TRIGSRCA`"]
-pub type TRIGSRCA_R = crate::R<u8, TRIGSRCA_A>;
+#[doc = "Field `TRIGSRCA` reader - TRIGger SouRCe for input A"]
+pub struct TRIGSRCA_R(crate::FieldReader<u8, TRIGSRCA_A>);
 impl TRIGSRCA_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        TRIGSRCA_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, TRIGSRCA_A> {
@@ -41,15 +66,22 @@ impl TRIGSRCA_R {
     #[doc = "Checks if the value of the field is `EXTERNAL_TIOAX`"]
     #[inline(always)]
     pub fn is_external_tioax(&self) -> bool {
-        *self == TRIGSRCA_A::EXTERNAL_TIOAX
+        **self == TRIGSRCA_A::EXTERNAL_TIOAX
     }
     #[doc = "Checks if the value of the field is `PWMX`"]
     #[inline(always)]
     pub fn is_pwmx(&self) -> bool {
-        *self == TRIGSRCA_A::PWMX
+        **self == TRIGSRCA_A::PWMX
     }
 }
-#[doc = "Write proxy for field `TRIGSRCA`"]
+impl core::ops::Deref for TRIGSRCA_R {
+    type Target = crate::FieldReader<u8, TRIGSRCA_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TRIGSRCA` writer - TRIGger SouRCe for input A"]
 pub struct TRIGSRCA_W<'a> {
     w: &'a mut W,
 }
@@ -91,9 +123,12 @@ impl From<TRIGSRCB_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `TRIGSRCB`"]
-pub type TRIGSRCB_R = crate::R<u8, TRIGSRCB_A>;
+#[doc = "Field `TRIGSRCB` reader - TRIGger SouRCe for input B"]
+pub struct TRIGSRCB_R(crate::FieldReader<u8, TRIGSRCB_A>);
 impl TRIGSRCB_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        TRIGSRCB_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, TRIGSRCB_A> {
@@ -107,15 +142,22 @@ impl TRIGSRCB_R {
     #[doc = "Checks if the value of the field is `EXTERNAL_TIOBX`"]
     #[inline(always)]
     pub fn is_external_tiobx(&self) -> bool {
-        *self == TRIGSRCB_A::EXTERNAL_TIOBX
+        **self == TRIGSRCB_A::EXTERNAL_TIOBX
     }
     #[doc = "Checks if the value of the field is `PWMX`"]
     #[inline(always)]
     pub fn is_pwmx(&self) -> bool {
-        *self == TRIGSRCB_A::PWMX
+        **self == TRIGSRCB_A::PWMX
     }
 }
-#[doc = "Write proxy for field `TRIGSRCB`"]
+impl core::ops::Deref for TRIGSRCB_R {
+    type Target = crate::FieldReader<u8, TRIGSRCB_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TRIGSRCB` writer - TRIGger SouRCe for input B"]
 pub struct TRIGSRCB_W<'a> {
     w: &'a mut W,
 }
@@ -142,9 +184,21 @@ impl<'a> TRIGSRCB_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `NODIVCLK`"]
-pub type NODIVCLK_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `NODIVCLK`"]
+#[doc = "Field `NODIVCLK` reader - NO DIVided CLocK"]
+pub struct NODIVCLK_R(crate::FieldReader<bool, bool>);
+impl NODIVCLK_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        NODIVCLK_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for NODIVCLK_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `NODIVCLK` writer - NO DIVided CLocK"]
 pub struct NODIVCLK_W<'a> {
     w: &'a mut W,
 }
@@ -198,5 +252,30 @@ impl W {
     #[inline(always)]
     pub fn nodivclk(&mut self) -> NODIVCLK_W {
         NODIVCLK_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Extended Mode Register (channel = 1)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [emr1](index.html) module"]
+pub struct EMR1_SPEC;
+impl crate::RegisterSpec for EMR1_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [emr1::R](R) reader structure"]
+impl crate::Readable for EMR1_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [emr1::W](W) writer structure"]
+impl crate::Writable for EMR1_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets EMR1 to value 0"]
+impl crate::Resettable for EMR1_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

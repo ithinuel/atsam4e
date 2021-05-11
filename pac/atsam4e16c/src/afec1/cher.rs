@@ -1,6 +1,24 @@
-#[doc = "Writer for register CHER"]
-pub type W = crate::W<u32, super::CHER>;
-#[doc = "Write proxy for field `CH0`"]
+#[doc = "Register `CHER` writer"]
+pub struct W(crate::W<CHER_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CHER_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CHER_SPEC>> for W {
+    fn from(writer: crate::W<CHER_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `CH0` writer - Channel 0 Enable"]
 pub struct CH0_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> CH0_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH1`"]
+#[doc = "Field `CH1` writer - Channel 1 Enable"]
 pub struct CH1_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> CH1_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH2`"]
+#[doc = "Field `CH2` writer - Channel 2 Enable"]
 pub struct CH2_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> CH2_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH3`"]
+#[doc = "Field `CH3` writer - Channel 3 Enable"]
 pub struct CH3_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> CH3_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH4`"]
+#[doc = "Field `CH4` writer - Channel 4 Enable"]
 pub struct CH4_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> CH4_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH5`"]
+#[doc = "Field `CH5` writer - Channel 5 Enable"]
 pub struct CH5_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> CH5_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH6`"]
+#[doc = "Field `CH6` writer - Channel 6 Enable"]
 pub struct CH6_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> CH6_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH7`"]
+#[doc = "Field `CH7` writer - Channel 7 Enable"]
 pub struct CH7_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> CH7_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH8`"]
+#[doc = "Field `CH8` writer - Channel 8 Enable"]
 pub struct CH8_W<'a> {
     w: &'a mut W,
 }
@@ -198,7 +216,7 @@ impl<'a> CH8_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH9`"]
+#[doc = "Field `CH9` writer - Channel 9 Enable"]
 pub struct CH9_W<'a> {
     w: &'a mut W,
 }
@@ -220,7 +238,7 @@ impl<'a> CH9_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH10`"]
+#[doc = "Field `CH10` writer - Channel 10 Enable"]
 pub struct CH10_W<'a> {
     w: &'a mut W,
 }
@@ -242,7 +260,7 @@ impl<'a> CH10_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH11`"]
+#[doc = "Field `CH11` writer - Channel 11 Enable"]
 pub struct CH11_W<'a> {
     w: &'a mut W,
 }
@@ -264,7 +282,7 @@ impl<'a> CH11_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH12`"]
+#[doc = "Field `CH12` writer - Channel 12 Enable"]
 pub struct CH12_W<'a> {
     w: &'a mut W,
 }
@@ -286,7 +304,7 @@ impl<'a> CH12_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH13`"]
+#[doc = "Field `CH13` writer - Channel 13 Enable"]
 pub struct CH13_W<'a> {
     w: &'a mut W,
 }
@@ -308,7 +326,7 @@ impl<'a> CH13_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH14`"]
+#[doc = "Field `CH14` writer - Channel 14 Enable"]
 pub struct CH14_W<'a> {
     w: &'a mut W,
 }
@@ -330,7 +348,7 @@ impl<'a> CH14_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH15`"]
+#[doc = "Field `CH15` writer - Channel 15 Enable"]
 pub struct CH15_W<'a> {
     w: &'a mut W,
 }
@@ -352,7 +370,7 @@ impl<'a> CH15_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH16`"]
+#[doc = "Field `CH16` writer - Channel 16 Enable"]
 pub struct CH16_W<'a> {
     w: &'a mut W,
 }
@@ -374,7 +392,7 @@ impl<'a> CH16_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `DIFF17`"]
+#[doc = "Field `DIFF17` writer - "]
 pub struct DIFF17_W<'a> {
     w: &'a mut W,
 }
@@ -396,7 +414,7 @@ impl<'a> DIFF17_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH18`"]
+#[doc = "Field `CH18` writer - Channel 18 Enable"]
 pub struct CH18_W<'a> {
     w: &'a mut W,
 }
@@ -418,7 +436,7 @@ impl<'a> CH18_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH19`"]
+#[doc = "Field `CH19` writer - Channel 19 Enable"]
 pub struct CH19_W<'a> {
     w: &'a mut W,
 }
@@ -440,7 +458,7 @@ impl<'a> CH19_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH20`"]
+#[doc = "Field `CH20` writer - Channel 20 Enable"]
 pub struct CH20_W<'a> {
     w: &'a mut W,
 }
@@ -462,7 +480,7 @@ impl<'a> CH20_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH21`"]
+#[doc = "Field `CH21` writer - Channel 21 Enable"]
 pub struct CH21_W<'a> {
     w: &'a mut W,
 }
@@ -484,7 +502,7 @@ impl<'a> CH21_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH22`"]
+#[doc = "Field `CH22` writer - Channel 22 Enable"]
 pub struct CH22_W<'a> {
     w: &'a mut W,
 }
@@ -506,7 +524,7 @@ impl<'a> CH22_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CH23`"]
+#[doc = "Field `CH23` writer - Channel 23 Enable"]
 pub struct CH23_W<'a> {
     w: &'a mut W,
 }
@@ -649,4 +667,18 @@ impl W {
     pub fn ch23(&mut self) -> CH23_W {
         CH23_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Channel Enable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cher](index.html) module"]
+pub struct CHER_SPEC;
+impl crate::RegisterSpec for CHER_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [cher::W](W) writer structure"]
+impl crate::Writable for CHER_SPEC {
+    type Writer = W;
 }

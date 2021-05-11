@@ -1,15 +1,87 @@
-#[doc = "Reader of register CSR_SPI_MODE"]
-pub type R = crate::R<u32, super::CSR_SPI_MODE>;
-#[doc = "Reader of field `RXRDY`"]
-pub type RXRDY_R = crate::R<bool, bool>;
-#[doc = "Reader of field `TXRDY`"]
-pub type TXRDY_R = crate::R<bool, bool>;
-#[doc = "Reader of field `OVRE`"]
-pub type OVRE_R = crate::R<bool, bool>;
-#[doc = "Reader of field `TXEMPTY`"]
-pub type TXEMPTY_R = crate::R<bool, bool>;
-#[doc = "Reader of field `UNRE`"]
-pub type UNRE_R = crate::R<bool, bool>;
+#[doc = "Register `CSR_SPI_MODE` reader"]
+pub struct R(crate::R<CSR_SPI_MODE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CSR_SPI_MODE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<CSR_SPI_MODE_SPEC>> for R {
+    fn from(reader: crate::R<CSR_SPI_MODE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Field `RXRDY` reader - Receiver Ready"]
+pub struct RXRDY_R(crate::FieldReader<bool, bool>);
+impl RXRDY_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RXRDY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RXRDY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TXRDY` reader - Transmitter Ready"]
+pub struct TXRDY_R(crate::FieldReader<bool, bool>);
+impl TXRDY_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TXRDY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for TXRDY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OVRE` reader - Overrun Error"]
+pub struct OVRE_R(crate::FieldReader<bool, bool>);
+impl OVRE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OVRE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OVRE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TXEMPTY` reader - Transmitter Empty"]
+pub struct TXEMPTY_R(crate::FieldReader<bool, bool>);
+impl TXEMPTY_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TXEMPTY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for TXEMPTY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `UNRE` reader - Underrun Error"]
+pub struct UNRE_R(crate::FieldReader<bool, bool>);
+impl UNRE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        UNRE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for UNRE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 impl R {
     #[doc = "Bit 0 - Receiver Ready"]
     #[inline(always)]
@@ -36,4 +108,13 @@ impl R {
     pub fn unre(&self) -> UNRE_R {
         UNRE_R::new(((self.bits >> 10) & 0x01) != 0)
     }
+}
+#[doc = "Channel Status Register\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [csr_spi_mode](index.html) module"]
+pub struct CSR_SPI_MODE_SPEC;
+impl crate::RegisterSpec for CSR_SPI_MODE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [csr_spi_mode::R](R) reader structure"]
+impl crate::Readable for CSR_SPI_MODE_SPEC {
+    type Reader = R;
 }

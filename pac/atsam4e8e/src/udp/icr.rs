@@ -1,6 +1,24 @@
-#[doc = "Writer for register ICR"]
-pub type W = crate::W<u32, super::ICR>;
-#[doc = "Write proxy for field `RXSUSP`"]
+#[doc = "Register `ICR` writer"]
+pub struct W(crate::W<ICR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<ICR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<ICR_SPEC>> for W {
+    fn from(writer: crate::W<ICR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `RXSUSP` writer - Clear UDP Suspend Interrupt"]
 pub struct RXSUSP_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> RXSUSP_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RXRSM`"]
+#[doc = "Field `RXRSM` writer - Clear UDP Resume Interrupt"]
 pub struct RXRSM_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> RXRSM_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EXTRSM`"]
+#[doc = "Field `EXTRSM` writer - "]
 pub struct EXTRSM_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> EXTRSM_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `SOFINT`"]
+#[doc = "Field `SOFINT` writer - Clear Start Of Frame Interrupt"]
 pub struct SOFINT_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> SOFINT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ENDBUSRES`"]
+#[doc = "Field `ENDBUSRES` writer - Clear End of Bus Reset Interrupt"]
 pub struct ENDBUSRES_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> ENDBUSRES_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `WAKEUP`"]
+#[doc = "Field `WAKEUP` writer - Clear Wakeup Interrupt"]
 pub struct WAKEUP_W<'a> {
     w: &'a mut W,
 }
@@ -163,4 +181,18 @@ impl W {
     pub fn wakeup(&mut self) -> WAKEUP_W {
         WAKEUP_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Clear Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [icr](index.html) module"]
+pub struct ICR_SPEC;
+impl crate::RegisterSpec for ICR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [icr::W](W) writer structure"]
+impl crate::Writable for ICR_SPEC {
+    type Writer = W;
 }

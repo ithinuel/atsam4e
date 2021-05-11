@@ -1,6 +1,24 @@
-#[doc = "Writer for register IER"]
-pub type W = crate::W<u32, super::IER>;
-#[doc = "Write proxy for field `RXRDY`"]
+#[doc = "Register `IER` writer"]
+pub struct W(crate::W<IER_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IER_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IER_SPEC>> for W {
+    fn from(writer: crate::W<IER_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `RXRDY` writer - RXRDY Interrupt Enable"]
 pub struct RXRDY_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> RXRDY_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TXRDY`"]
+#[doc = "Field `TXRDY` writer - TXRDY Interrupt Enable"]
 pub struct TXRDY_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> TXRDY_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RXBRK`"]
+#[doc = "Field `RXBRK` writer - Receiver Break Interrupt Enable"]
 pub struct RXBRK_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> RXBRK_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ENDRX`"]
+#[doc = "Field `ENDRX` writer - End of Receive Transfer Interrupt Enable (available in all USART modes of operation)"]
 pub struct ENDRX_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> ENDRX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ENDTX`"]
+#[doc = "Field `ENDTX` writer - End of Transmit Interrupt Enable (available in all USART modes of operation)"]
 pub struct ENDTX_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> ENDTX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `OVRE`"]
+#[doc = "Field `OVRE` writer - Overrun Error Interrupt Enable"]
 pub struct OVRE_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> OVRE_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `FRAME`"]
+#[doc = "Field `FRAME` writer - Framing Error Interrupt Enable"]
 pub struct FRAME_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> FRAME_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `PARE`"]
+#[doc = "Field `PARE` writer - Parity Error Interrupt Enable"]
 pub struct PARE_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> PARE_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TIMEOUT`"]
+#[doc = "Field `TIMEOUT` writer - Time-out Interrupt Enable"]
 pub struct TIMEOUT_W<'a> {
     w: &'a mut W,
 }
@@ -198,7 +216,7 @@ impl<'a> TIMEOUT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TXEMPTY`"]
+#[doc = "Field `TXEMPTY` writer - TXEMPTY Interrupt Enable"]
 pub struct TXEMPTY_W<'a> {
     w: &'a mut W,
 }
@@ -220,7 +238,7 @@ impl<'a> TXEMPTY_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ITER`"]
+#[doc = "Field `ITER` writer - Max number of Repetitions Reached Interrupt Enable"]
 pub struct ITER_W<'a> {
     w: &'a mut W,
 }
@@ -242,7 +260,7 @@ impl<'a> ITER_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TXBUFE`"]
+#[doc = "Field `TXBUFE` writer - Buffer Empty Interrupt Enable (available in all USART modes of operation)"]
 pub struct TXBUFE_W<'a> {
     w: &'a mut W,
 }
@@ -264,7 +282,7 @@ impl<'a> TXBUFE_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RXBUFF`"]
+#[doc = "Field `RXBUFF` writer - Buffer Full Interrupt Enable (available in all USART modes of operation)"]
 pub struct RXBUFF_W<'a> {
     w: &'a mut W,
 }
@@ -286,7 +304,7 @@ impl<'a> RXBUFF_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `NACK`"]
+#[doc = "Field `NACK` writer - Non AcknowledgeInterrupt Enable"]
 pub struct NACK_W<'a> {
     w: &'a mut W,
 }
@@ -308,7 +326,7 @@ impl<'a> NACK_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RIIC`"]
+#[doc = "Field `RIIC` writer - Ring Indicator Input Change Enable"]
 pub struct RIIC_W<'a> {
     w: &'a mut W,
 }
@@ -330,7 +348,7 @@ impl<'a> RIIC_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `DSRIC`"]
+#[doc = "Field `DSRIC` writer - Data Set Ready Input Change Enable"]
 pub struct DSRIC_W<'a> {
     w: &'a mut W,
 }
@@ -352,7 +370,7 @@ impl<'a> DSRIC_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `DCDIC`"]
+#[doc = "Field `DCDIC` writer - Data Carrier Detect Input Change Interrupt Enable"]
 pub struct DCDIC_W<'a> {
     w: &'a mut W,
 }
@@ -374,7 +392,7 @@ impl<'a> DCDIC_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CTSIC`"]
+#[doc = "Field `CTSIC` writer - Clear to Send Input Change Interrupt Enable"]
 pub struct CTSIC_W<'a> {
     w: &'a mut W,
 }
@@ -396,7 +414,7 @@ impl<'a> CTSIC_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MANE`"]
+#[doc = "Field `MANE` writer - Manchester Error Interrupt Enable"]
 pub struct MANE_W<'a> {
     w: &'a mut W,
 }
@@ -514,4 +532,18 @@ impl W {
     pub fn mane(&mut self) -> MANE_W {
         MANE_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Enable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ier](index.html) module"]
+pub struct IER_SPEC;
+impl crate::RegisterSpec for IER_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [ier::W](W) writer structure"]
+impl crate::Writable for IER_SPEC {
+    type Writer = W;
 }

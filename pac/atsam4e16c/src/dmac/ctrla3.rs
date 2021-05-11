@@ -1,18 +1,52 @@
-#[doc = "Reader of register CTRLA3"]
-pub type R = crate::R<u32, super::CTRLA3>;
-#[doc = "Writer for register CTRLA3"]
-pub type W = crate::W<u32, super::CTRLA3>;
-#[doc = "Register CTRLA3 `reset()`'s with value 0"]
-impl crate::ResetValue for super::CTRLA3 {
-    type Type = u32;
+#[doc = "Register `CTRLA3` reader"]
+pub struct R(crate::R<CTRLA3_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CTRLA3_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `BTSIZE`"]
-pub type BTSIZE_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `BTSIZE`"]
+impl core::convert::From<crate::R<CTRLA3_SPEC>> for R {
+    fn from(reader: crate::R<CTRLA3_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CTRLA3` writer"]
+pub struct W(crate::W<CTRLA3_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CTRLA3_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CTRLA3_SPEC>> for W {
+    fn from(writer: crate::W<CTRLA3_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `BTSIZE` reader - Buffer Transfer Size"]
+pub struct BTSIZE_R(crate::FieldReader<u16, u16>);
+impl BTSIZE_R {
+    pub(crate) fn new(bits: u16) -> Self {
+        BTSIZE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for BTSIZE_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `BTSIZE` writer - Buffer Transfer Size"]
 pub struct BTSIZE_W<'a> {
     w: &'a mut W,
 }
@@ -41,9 +75,12 @@ impl From<SRC_WIDTH_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `SRC_WIDTH`"]
-pub type SRC_WIDTH_R = crate::R<u8, SRC_WIDTH_A>;
+#[doc = "Field `SRC_WIDTH` reader - Transfer Width for the Source"]
+pub struct SRC_WIDTH_R(crate::FieldReader<u8, SRC_WIDTH_A>);
 impl SRC_WIDTH_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        SRC_WIDTH_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, SRC_WIDTH_A> {
@@ -58,20 +95,27 @@ impl SRC_WIDTH_R {
     #[doc = "Checks if the value of the field is `BYTE`"]
     #[inline(always)]
     pub fn is_byte(&self) -> bool {
-        *self == SRC_WIDTH_A::BYTE
+        **self == SRC_WIDTH_A::BYTE
     }
     #[doc = "Checks if the value of the field is `HALF_WORD`"]
     #[inline(always)]
     pub fn is_half_word(&self) -> bool {
-        *self == SRC_WIDTH_A::HALF_WORD
+        **self == SRC_WIDTH_A::HALF_WORD
     }
     #[doc = "Checks if the value of the field is `WORD`"]
     #[inline(always)]
     pub fn is_word(&self) -> bool {
-        *self == SRC_WIDTH_A::WORD
+        **self == SRC_WIDTH_A::WORD
     }
 }
-#[doc = "Write proxy for field `SRC_WIDTH`"]
+impl core::ops::Deref for SRC_WIDTH_R {
+    type Target = crate::FieldReader<u8, SRC_WIDTH_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SRC_WIDTH` writer - Transfer Width for the Source"]
 pub struct SRC_WIDTH_W<'a> {
     w: &'a mut W,
 }
@@ -120,9 +164,12 @@ impl From<DST_WIDTH_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `DST_WIDTH`"]
-pub type DST_WIDTH_R = crate::R<u8, DST_WIDTH_A>;
+#[doc = "Field `DST_WIDTH` reader - Transfer Width for the Destination"]
+pub struct DST_WIDTH_R(crate::FieldReader<u8, DST_WIDTH_A>);
 impl DST_WIDTH_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DST_WIDTH_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, DST_WIDTH_A> {
@@ -137,20 +184,27 @@ impl DST_WIDTH_R {
     #[doc = "Checks if the value of the field is `BYTE`"]
     #[inline(always)]
     pub fn is_byte(&self) -> bool {
-        *self == DST_WIDTH_A::BYTE
+        **self == DST_WIDTH_A::BYTE
     }
     #[doc = "Checks if the value of the field is `HALF_WORD`"]
     #[inline(always)]
     pub fn is_half_word(&self) -> bool {
-        *self == DST_WIDTH_A::HALF_WORD
+        **self == DST_WIDTH_A::HALF_WORD
     }
     #[doc = "Checks if the value of the field is `WORD`"]
     #[inline(always)]
     pub fn is_word(&self) -> bool {
-        *self == DST_WIDTH_A::WORD
+        **self == DST_WIDTH_A::WORD
     }
 }
-#[doc = "Write proxy for field `DST_WIDTH`"]
+impl core::ops::Deref for DST_WIDTH_R {
+    type Target = crate::FieldReader<u8, DST_WIDTH_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DST_WIDTH` writer - Transfer Width for the Destination"]
 pub struct DST_WIDTH_W<'a> {
     w: &'a mut W,
 }
@@ -182,9 +236,21 @@ impl<'a> DST_WIDTH_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DONE`"]
-pub type DONE_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DONE`"]
+#[doc = "Field `DONE` reader - Current Descriptor Stop Command and Transfer Completed Memory Indicator"]
+pub struct DONE_R(crate::FieldReader<bool, bool>);
+impl DONE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DONE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DONE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DONE` writer - Current Descriptor Stop Command and Transfer Completed Memory Indicator"]
 pub struct DONE_W<'a> {
     w: &'a mut W,
 }
@@ -248,5 +314,30 @@ impl W {
     #[inline(always)]
     pub fn done(&mut self) -> DONE_W {
         DONE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "DMAC Channel Control A Register (ch_num = 3)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ctrla3](index.html) module"]
+pub struct CTRLA3_SPEC;
+impl crate::RegisterSpec for CTRLA3_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ctrla3::R](R) reader structure"]
+impl crate::Readable for CTRLA3_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [ctrla3::W](W) writer structure"]
+impl crate::Writable for CTRLA3_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CTRLA3 to value 0"]
+impl crate::Resettable for CTRLA3_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

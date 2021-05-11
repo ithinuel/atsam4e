@@ -1,6 +1,24 @@
-#[doc = "Writer for register IER_SPI_MODE"]
-pub type W = crate::W<u32, super::IER_SPI_MODE>;
-#[doc = "Write proxy for field `RXRDY`"]
+#[doc = "Register `IER_SPI_MODE` writer"]
+pub struct W(crate::W<IER_SPI_MODE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IER_SPI_MODE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IER_SPI_MODE_SPEC>> for W {
+    fn from(writer: crate::W<IER_SPI_MODE_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `RXRDY` writer - RXRDY Interrupt Enable"]
 pub struct RXRDY_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> RXRDY_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TXRDY`"]
+#[doc = "Field `TXRDY` writer - TXRDY Interrupt Enable"]
 pub struct TXRDY_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> TXRDY_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `OVRE`"]
+#[doc = "Field `OVRE` writer - Overrun Error Interrupt Enable"]
 pub struct OVRE_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> OVRE_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TXEMPTY`"]
+#[doc = "Field `TXEMPTY` writer - TXEMPTY Interrupt Enable"]
 pub struct TXEMPTY_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> TXEMPTY_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `UNRE`"]
+#[doc = "Field `UNRE` writer - SPI Underrun Error Interrupt Enable"]
 pub struct UNRE_W<'a> {
     w: &'a mut W,
 }
@@ -136,4 +154,18 @@ impl W {
     pub fn unre(&mut self) -> UNRE_W {
         UNRE_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Enable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ier_spi_mode](index.html) module"]
+pub struct IER_SPI_MODE_SPEC;
+impl crate::RegisterSpec for IER_SPI_MODE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [ier_spi_mode::W](W) writer structure"]
+impl crate::Writable for IER_SPI_MODE_SPEC {
+    type Writer = W;
 }

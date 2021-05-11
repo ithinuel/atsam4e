@@ -1,18 +1,52 @@
-#[doc = "Reader of register UR"]
-pub type R = crate::R<u32, super::UR>;
-#[doc = "Writer for register UR"]
-pub type W = crate::W<u32, super::UR>;
-#[doc = "Register UR `reset()`'s with value 0"]
-impl crate::ResetValue for super::UR {
-    type Type = u32;
+#[doc = "Register `UR` reader"]
+pub struct R(crate::R<UR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<UR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `RMIIMII`"]
-pub type RMIIMII_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `RMIIMII`"]
+impl core::convert::From<crate::R<UR_SPEC>> for R {
+    fn from(reader: crate::R<UR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `UR` writer"]
+pub struct W(crate::W<UR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<UR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<UR_SPEC>> for W {
+    fn from(writer: crate::W<UR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `RMIIMII` reader - "]
+pub struct RMIIMII_R(crate::FieldReader<bool, bool>);
+impl RMIIMII_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RMIIMII_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RMIIMII_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RMIIMII` writer - "]
 pub struct RMIIMII_W<'a> {
     w: &'a mut W,
 }
@@ -34,9 +68,21 @@ impl<'a> RMIIMII_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `HDFC`"]
-pub type HDFC_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `HDFC`"]
+#[doc = "Field `HDFC` reader - Half Duplex Flow Control"]
+pub struct HDFC_R(crate::FieldReader<bool, bool>);
+impl HDFC_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        HDFC_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for HDFC_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `HDFC` writer - Half Duplex Flow Control"]
 pub struct HDFC_W<'a> {
     w: &'a mut W,
 }
@@ -58,9 +104,21 @@ impl<'a> HDFC_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `BPDG`"]
-pub type BPDG_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `BPDG`"]
+#[doc = "Field `BPDG` reader - BPDG Bypass Deglitchers"]
+pub struct BPDG_R(crate::FieldReader<bool, bool>);
+impl BPDG_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        BPDG_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for BPDG_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `BPDG` writer - BPDG Bypass Deglitchers"]
 pub struct BPDG_W<'a> {
     w: &'a mut W,
 }
@@ -114,5 +172,30 @@ impl W {
     #[inline(always)]
     pub fn bpdg(&mut self) -> BPDG_W {
         BPDG_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "User Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ur](index.html) module"]
+pub struct UR_SPEC;
+impl crate::RegisterSpec for UR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ur::R](R) reader structure"]
+impl crate::Readable for UR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [ur::W](W) writer structure"]
+impl crate::Writable for UR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets UR to value 0"]
+impl crate::Resettable for UR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

@@ -1,6 +1,24 @@
-#[doc = "Writer for register IDR2"]
-pub type W = crate::W<u32, super::IDR2>;
-#[doc = "Write proxy for field `WRDY`"]
+#[doc = "Register `IDR2` writer"]
+pub struct W(crate::W<IDR2_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IDR2_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IDR2_SPEC>> for W {
+    fn from(writer: crate::W<IDR2_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `WRDY` writer - Write Ready for Synchronous Channels Update Interrupt Disable"]
 pub struct WRDY_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> WRDY_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ENDTX`"]
+#[doc = "Field `ENDTX` writer - PDC End of TX Buffer Interrupt Disable"]
 pub struct ENDTX_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> ENDTX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TXBUFE`"]
+#[doc = "Field `TXBUFE` writer - PDC TX Buffer Empty Interrupt Disable"]
 pub struct TXBUFE_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> TXBUFE_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `UNRE`"]
+#[doc = "Field `UNRE` writer - Synchronous Channels Update Underrun Error Interrupt Disable"]
 pub struct UNRE_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> UNRE_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPM0`"]
+#[doc = "Field `CMPM0` writer - Comparison 0 Match Interrupt Disable"]
 pub struct CMPM0_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> CMPM0_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPM1`"]
+#[doc = "Field `CMPM1` writer - Comparison 1 Match Interrupt Disable"]
 pub struct CMPM1_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> CMPM1_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPM2`"]
+#[doc = "Field `CMPM2` writer - Comparison 2 Match Interrupt Disable"]
 pub struct CMPM2_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> CMPM2_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPM3`"]
+#[doc = "Field `CMPM3` writer - Comparison 3 Match Interrupt Disable"]
 pub struct CMPM3_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> CMPM3_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPM4`"]
+#[doc = "Field `CMPM4` writer - Comparison 4 Match Interrupt Disable"]
 pub struct CMPM4_W<'a> {
     w: &'a mut W,
 }
@@ -198,7 +216,7 @@ impl<'a> CMPM4_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPM5`"]
+#[doc = "Field `CMPM5` writer - Comparison 5 Match Interrupt Disable"]
 pub struct CMPM5_W<'a> {
     w: &'a mut W,
 }
@@ -220,7 +238,7 @@ impl<'a> CMPM5_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPM6`"]
+#[doc = "Field `CMPM6` writer - Comparison 6 Match Interrupt Disable"]
 pub struct CMPM6_W<'a> {
     w: &'a mut W,
 }
@@ -242,7 +260,7 @@ impl<'a> CMPM6_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPM7`"]
+#[doc = "Field `CMPM7` writer - Comparison 7 Match Interrupt Disable"]
 pub struct CMPM7_W<'a> {
     w: &'a mut W,
 }
@@ -264,7 +282,7 @@ impl<'a> CMPM7_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPU0`"]
+#[doc = "Field `CMPU0` writer - Comparison 0 Update Interrupt Disable"]
 pub struct CMPU0_W<'a> {
     w: &'a mut W,
 }
@@ -286,7 +304,7 @@ impl<'a> CMPU0_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPU1`"]
+#[doc = "Field `CMPU1` writer - Comparison 1 Update Interrupt Disable"]
 pub struct CMPU1_W<'a> {
     w: &'a mut W,
 }
@@ -308,7 +326,7 @@ impl<'a> CMPU1_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPU2`"]
+#[doc = "Field `CMPU2` writer - Comparison 2 Update Interrupt Disable"]
 pub struct CMPU2_W<'a> {
     w: &'a mut W,
 }
@@ -330,7 +348,7 @@ impl<'a> CMPU2_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPU3`"]
+#[doc = "Field `CMPU3` writer - Comparison 3 Update Interrupt Disable"]
 pub struct CMPU3_W<'a> {
     w: &'a mut W,
 }
@@ -352,7 +370,7 @@ impl<'a> CMPU3_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPU4`"]
+#[doc = "Field `CMPU4` writer - Comparison 4 Update Interrupt Disable"]
 pub struct CMPU4_W<'a> {
     w: &'a mut W,
 }
@@ -374,7 +392,7 @@ impl<'a> CMPU4_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPU5`"]
+#[doc = "Field `CMPU5` writer - Comparison 5 Update Interrupt Disable"]
 pub struct CMPU5_W<'a> {
     w: &'a mut W,
 }
@@ -396,7 +414,7 @@ impl<'a> CMPU5_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPU6`"]
+#[doc = "Field `CMPU6` writer - Comparison 6 Update Interrupt Disable"]
 pub struct CMPU6_W<'a> {
     w: &'a mut W,
 }
@@ -418,7 +436,7 @@ impl<'a> CMPU6_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CMPU7`"]
+#[doc = "Field `CMPU7` writer - Comparison 7 Update Interrupt Disable"]
 pub struct CMPU7_W<'a> {
     w: &'a mut W,
 }
@@ -541,4 +559,18 @@ impl W {
     pub fn cmpu7(&mut self) -> CMPU7_W {
         CMPU7_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PWM Interrupt Disable Register 2\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [idr2](index.html) module"]
+pub struct IDR2_SPEC;
+impl crate::RegisterSpec for IDR2_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [idr2::W](W) writer structure"]
+impl crate::Writable for IDR2_SPEC {
+    type Writer = W;
 }

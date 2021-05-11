@@ -1,18 +1,52 @@
-#[doc = "Reader of register CKGR_MOR"]
-pub type R = crate::R<u32, super::CKGR_MOR>;
-#[doc = "Writer for register CKGR_MOR"]
-pub type W = crate::W<u32, super::CKGR_MOR>;
-#[doc = "Register CKGR_MOR `reset()`'s with value 0x08"]
-impl crate::ResetValue for super::CKGR_MOR {
-    type Type = u32;
+#[doc = "Register `CKGR_MOR` reader"]
+pub struct R(crate::R<CKGR_MOR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CKGR_MOR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x08
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `MOSCXTEN`"]
-pub type MOSCXTEN_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `MOSCXTEN`"]
+impl core::convert::From<crate::R<CKGR_MOR_SPEC>> for R {
+    fn from(reader: crate::R<CKGR_MOR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CKGR_MOR` writer"]
+pub struct W(crate::W<CKGR_MOR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CKGR_MOR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CKGR_MOR_SPEC>> for W {
+    fn from(writer: crate::W<CKGR_MOR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `MOSCXTEN` reader - Main Crystal Oscillator Enable"]
+pub struct MOSCXTEN_R(crate::FieldReader<bool, bool>);
+impl MOSCXTEN_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        MOSCXTEN_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for MOSCXTEN_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `MOSCXTEN` writer - Main Crystal Oscillator Enable"]
 pub struct MOSCXTEN_W<'a> {
     w: &'a mut W,
 }
@@ -34,9 +68,21 @@ impl<'a> MOSCXTEN_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `MOSCXTBY`"]
-pub type MOSCXTBY_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `MOSCXTBY`"]
+#[doc = "Field `MOSCXTBY` reader - Main Crystal Oscillator Bypass"]
+pub struct MOSCXTBY_R(crate::FieldReader<bool, bool>);
+impl MOSCXTBY_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        MOSCXTBY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for MOSCXTBY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `MOSCXTBY` writer - Main Crystal Oscillator Bypass"]
 pub struct MOSCXTBY_W<'a> {
     w: &'a mut W,
 }
@@ -58,9 +104,21 @@ impl<'a> MOSCXTBY_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `WAITMODE`"]
-pub type WAITMODE_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `WAITMODE`"]
+#[doc = "Field `WAITMODE` reader - Wait Mode Command"]
+pub struct WAITMODE_R(crate::FieldReader<bool, bool>);
+impl WAITMODE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        WAITMODE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for WAITMODE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `WAITMODE` writer - Wait Mode Command"]
 pub struct WAITMODE_W<'a> {
     w: &'a mut W,
 }
@@ -82,9 +140,21 @@ impl<'a> WAITMODE_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `MOSCRCEN`"]
-pub type MOSCRCEN_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `MOSCRCEN`"]
+#[doc = "Field `MOSCRCEN` reader - Main On-Chip RC Oscillator Enable"]
+pub struct MOSCRCEN_R(crate::FieldReader<bool, bool>);
+impl MOSCRCEN_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        MOSCRCEN_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for MOSCRCEN_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `MOSCRCEN` writer - Main On-Chip RC Oscillator Enable"]
 pub struct MOSCRCEN_W<'a> {
     w: &'a mut W,
 }
@@ -123,9 +193,12 @@ impl From<MOSCRCF_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `MOSCRCF`"]
-pub type MOSCRCF_R = crate::R<u8, MOSCRCF_A>;
+#[doc = "Field `MOSCRCF` reader - Main On-Chip RC Oscillator Frequency Selection"]
+pub struct MOSCRCF_R(crate::FieldReader<u8, MOSCRCF_A>);
 impl MOSCRCF_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        MOSCRCF_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, MOSCRCF_A> {
@@ -140,20 +213,27 @@ impl MOSCRCF_R {
     #[doc = "Checks if the value of the field is `_4_MHZ`"]
     #[inline(always)]
     pub fn is_4_mhz(&self) -> bool {
-        *self == MOSCRCF_A::_4_MHZ
+        **self == MOSCRCF_A::_4_MHZ
     }
     #[doc = "Checks if the value of the field is `_8_MHZ`"]
     #[inline(always)]
     pub fn is_8_mhz(&self) -> bool {
-        *self == MOSCRCF_A::_8_MHZ
+        **self == MOSCRCF_A::_8_MHZ
     }
     #[doc = "Checks if the value of the field is `_12_MHZ`"]
     #[inline(always)]
     pub fn is_12_mhz(&self) -> bool {
-        *self == MOSCRCF_A::_12_MHZ
+        **self == MOSCRCF_A::_12_MHZ
     }
 }
-#[doc = "Write proxy for field `MOSCRCF`"]
+impl core::ops::Deref for MOSCRCF_R {
+    type Target = crate::FieldReader<u8, MOSCRCF_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `MOSCRCF` writer - Main On-Chip RC Oscillator Frequency Selection"]
 pub struct MOSCRCF_W<'a> {
     w: &'a mut W,
 }
@@ -185,9 +265,21 @@ impl<'a> MOSCRCF_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `MOSCXTST`"]
-pub type MOSCXTST_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `MOSCXTST`"]
+#[doc = "Field `MOSCXTST` reader - Main Crystal Oscillator Start-up Time"]
+pub struct MOSCXTST_R(crate::FieldReader<u8, u8>);
+impl MOSCXTST_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        MOSCXTST_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for MOSCXTST_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `MOSCXTST` writer - Main Crystal Oscillator Start-up Time"]
 pub struct MOSCXTST_W<'a> {
     w: &'a mut W,
 }
@@ -212,9 +304,12 @@ impl From<KEY_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `KEY`"]
-pub type KEY_R = crate::R<u8, KEY_A>;
+#[doc = "Field `KEY` reader - Password"]
+pub struct KEY_R(crate::FieldReader<u8, KEY_A>);
 impl KEY_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        KEY_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, KEY_A> {
@@ -227,10 +322,17 @@ impl KEY_R {
     #[doc = "Checks if the value of the field is `PASSWD`"]
     #[inline(always)]
     pub fn is_passwd(&self) -> bool {
-        *self == KEY_A::PASSWD
+        **self == KEY_A::PASSWD
     }
 }
-#[doc = "Write proxy for field `KEY`"]
+impl core::ops::Deref for KEY_R {
+    type Target = crate::FieldReader<u8, KEY_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `KEY` writer - Password"]
 pub struct KEY_W<'a> {
     w: &'a mut W,
 }
@@ -252,9 +354,21 @@ impl<'a> KEY_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `MOSCSEL`"]
-pub type MOSCSEL_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `MOSCSEL`"]
+#[doc = "Field `MOSCSEL` reader - Main Oscillator Selection"]
+pub struct MOSCSEL_R(crate::FieldReader<bool, bool>);
+impl MOSCSEL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        MOSCSEL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for MOSCSEL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `MOSCSEL` writer - Main Oscillator Selection"]
 pub struct MOSCSEL_W<'a> {
     w: &'a mut W,
 }
@@ -276,9 +390,21 @@ impl<'a> MOSCSEL_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `CFDEN`"]
-pub type CFDEN_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CFDEN`"]
+#[doc = "Field `CFDEN` reader - Clock Failure Detector Enable"]
+pub struct CFDEN_R(crate::FieldReader<bool, bool>);
+impl CFDEN_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CFDEN_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CFDEN_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CFDEN` writer - Clock Failure Detector Enable"]
 pub struct CFDEN_W<'a> {
     w: &'a mut W,
 }
@@ -392,5 +518,30 @@ impl W {
     #[inline(always)]
     pub fn cfden(&mut self) -> CFDEN_W {
         CFDEN_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Main Oscillator Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ckgr_mor](index.html) module"]
+pub struct CKGR_MOR_SPEC;
+impl crate::RegisterSpec for CKGR_MOR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ckgr_mor::R](R) reader structure"]
+impl crate::Readable for CKGR_MOR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [ckgr_mor::W](W) writer structure"]
+impl crate::Writable for CKGR_MOR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CKGR_MOR to value 0x08"]
+impl crate::Resettable for CKGR_MOR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x08
     }
 }

@@ -1,18 +1,52 @@
-#[doc = "Reader of register CREQ"]
-pub type R = crate::R<u32, super::CREQ>;
-#[doc = "Writer for register CREQ"]
-pub type W = crate::W<u32, super::CREQ>;
-#[doc = "Register CREQ `reset()`'s with value 0"]
-impl crate::ResetValue for super::CREQ {
-    type Type = u32;
+#[doc = "Register `CREQ` reader"]
+pub struct R(crate::R<CREQ_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CREQ_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `SCREQ0`"]
-pub type SCREQ0_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `SCREQ0`"]
+impl core::convert::From<crate::R<CREQ_SPEC>> for R {
+    fn from(reader: crate::R<CREQ_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CREQ` writer"]
+pub struct W(crate::W<CREQ_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CREQ_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CREQ_SPEC>> for W {
+    fn from(writer: crate::W<CREQ_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `SCREQ0` reader - Source Chunk Request"]
+pub struct SCREQ0_R(crate::FieldReader<bool, bool>);
+impl SCREQ0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SCREQ0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SCREQ0_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SCREQ0` writer - Source Chunk Request"]
 pub struct SCREQ0_W<'a> {
     w: &'a mut W,
 }
@@ -34,9 +68,21 @@ impl<'a> SCREQ0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DCREQ0`"]
-pub type DCREQ0_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DCREQ0`"]
+#[doc = "Field `DCREQ0` reader - Destination Chunk Request"]
+pub struct DCREQ0_R(crate::FieldReader<bool, bool>);
+impl DCREQ0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DCREQ0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DCREQ0_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DCREQ0` writer - Destination Chunk Request"]
 pub struct DCREQ0_W<'a> {
     w: &'a mut W,
 }
@@ -58,9 +104,21 @@ impl<'a> DCREQ0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `SCREQ1`"]
-pub type SCREQ1_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `SCREQ1`"]
+#[doc = "Field `SCREQ1` reader - Source Chunk Request"]
+pub struct SCREQ1_R(crate::FieldReader<bool, bool>);
+impl SCREQ1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SCREQ1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SCREQ1_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SCREQ1` writer - Source Chunk Request"]
 pub struct SCREQ1_W<'a> {
     w: &'a mut W,
 }
@@ -82,9 +140,21 @@ impl<'a> SCREQ1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DCREQ1`"]
-pub type DCREQ1_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DCREQ1`"]
+#[doc = "Field `DCREQ1` reader - Destination Chunk Request"]
+pub struct DCREQ1_R(crate::FieldReader<bool, bool>);
+impl DCREQ1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DCREQ1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DCREQ1_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DCREQ1` writer - Destination Chunk Request"]
 pub struct DCREQ1_W<'a> {
     w: &'a mut W,
 }
@@ -106,9 +176,21 @@ impl<'a> DCREQ1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `SCREQ2`"]
-pub type SCREQ2_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `SCREQ2`"]
+#[doc = "Field `SCREQ2` reader - Source Chunk Request"]
+pub struct SCREQ2_R(crate::FieldReader<bool, bool>);
+impl SCREQ2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SCREQ2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SCREQ2_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SCREQ2` writer - Source Chunk Request"]
 pub struct SCREQ2_W<'a> {
     w: &'a mut W,
 }
@@ -130,9 +212,21 @@ impl<'a> SCREQ2_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DCREQ2`"]
-pub type DCREQ2_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DCREQ2`"]
+#[doc = "Field `DCREQ2` reader - Destination Chunk Request"]
+pub struct DCREQ2_R(crate::FieldReader<bool, bool>);
+impl DCREQ2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DCREQ2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DCREQ2_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DCREQ2` writer - Destination Chunk Request"]
 pub struct DCREQ2_W<'a> {
     w: &'a mut W,
 }
@@ -154,9 +248,21 @@ impl<'a> DCREQ2_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `SCREQ3`"]
-pub type SCREQ3_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `SCREQ3`"]
+#[doc = "Field `SCREQ3` reader - Source Chunk Request"]
+pub struct SCREQ3_R(crate::FieldReader<bool, bool>);
+impl SCREQ3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SCREQ3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SCREQ3_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SCREQ3` writer - Source Chunk Request"]
 pub struct SCREQ3_W<'a> {
     w: &'a mut W,
 }
@@ -178,9 +284,21 @@ impl<'a> SCREQ3_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DCREQ3`"]
-pub type DCREQ3_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DCREQ3`"]
+#[doc = "Field `DCREQ3` reader - Destination Chunk Request"]
+pub struct DCREQ3_R(crate::FieldReader<bool, bool>);
+impl DCREQ3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DCREQ3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DCREQ3_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DCREQ3` writer - Destination Chunk Request"]
 pub struct DCREQ3_W<'a> {
     w: &'a mut W,
 }
@@ -284,5 +402,30 @@ impl W {
     #[inline(always)]
     pub fn dcreq3(&mut self) -> DCREQ3_W {
         DCREQ3_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "DMAC Software Chunk Transfer Request Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [creq](index.html) module"]
+pub struct CREQ_SPEC;
+impl crate::RegisterSpec for CREQ_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [creq::R](R) reader structure"]
+impl crate::Readable for CREQ_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [creq::W](W) writer structure"]
+impl crate::Writable for CREQ_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CREQ to value 0"]
+impl crate::Resettable for CREQ_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

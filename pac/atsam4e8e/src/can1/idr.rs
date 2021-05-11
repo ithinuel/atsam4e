@@ -1,6 +1,24 @@
-#[doc = "Writer for register IDR"]
-pub type W = crate::W<u32, super::IDR>;
-#[doc = "Write proxy for field `MB0`"]
+#[doc = "Register `IDR` writer"]
+pub struct W(crate::W<IDR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IDR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IDR_SPEC>> for W {
+    fn from(writer: crate::W<IDR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `MB0` writer - Mailbox 0 Interrupt Disable"]
 pub struct MB0_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> MB0_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB1`"]
+#[doc = "Field `MB1` writer - Mailbox 1 Interrupt Disable"]
 pub struct MB1_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> MB1_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB2`"]
+#[doc = "Field `MB2` writer - Mailbox 2 Interrupt Disable"]
 pub struct MB2_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> MB2_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB3`"]
+#[doc = "Field `MB3` writer - Mailbox 3 Interrupt Disable"]
 pub struct MB3_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> MB3_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB4`"]
+#[doc = "Field `MB4` writer - Mailbox 4 Interrupt Disable"]
 pub struct MB4_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> MB4_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB5`"]
+#[doc = "Field `MB5` writer - Mailbox 5 Interrupt Disable"]
 pub struct MB5_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> MB5_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB6`"]
+#[doc = "Field `MB6` writer - Mailbox 6 Interrupt Disable"]
 pub struct MB6_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> MB6_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MB7`"]
+#[doc = "Field `MB7` writer - Mailbox 7 Interrupt Disable"]
 pub struct MB7_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> MB7_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ERRA`"]
+#[doc = "Field `ERRA` writer - Error Active Mode Interrupt Disable"]
 pub struct ERRA_W<'a> {
     w: &'a mut W,
 }
@@ -198,7 +216,7 @@ impl<'a> ERRA_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `WARN`"]
+#[doc = "Field `WARN` writer - Warning Limit Interrupt Disable"]
 pub struct WARN_W<'a> {
     w: &'a mut W,
 }
@@ -220,7 +238,7 @@ impl<'a> WARN_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ERRP`"]
+#[doc = "Field `ERRP` writer - Error Passive Mode Interrupt Disable"]
 pub struct ERRP_W<'a> {
     w: &'a mut W,
 }
@@ -242,7 +260,7 @@ impl<'a> ERRP_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `BOFF`"]
+#[doc = "Field `BOFF` writer - Bus Off Mode Interrupt Disable"]
 pub struct BOFF_W<'a> {
     w: &'a mut W,
 }
@@ -264,7 +282,7 @@ impl<'a> BOFF_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `SLEEP`"]
+#[doc = "Field `SLEEP` writer - Sleep Interrupt Disable"]
 pub struct SLEEP_W<'a> {
     w: &'a mut W,
 }
@@ -286,7 +304,7 @@ impl<'a> SLEEP_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `WAKEUP`"]
+#[doc = "Field `WAKEUP` writer - Wakeup Interrupt Disable"]
 pub struct WAKEUP_W<'a> {
     w: &'a mut W,
 }
@@ -308,7 +326,7 @@ impl<'a> WAKEUP_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TOVF`"]
+#[doc = "Field `TOVF` writer - Timer Overflow Interrupt"]
 pub struct TOVF_W<'a> {
     w: &'a mut W,
 }
@@ -330,7 +348,7 @@ impl<'a> TOVF_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TSTP`"]
+#[doc = "Field `TSTP` writer - TimeStamp Interrupt Disable"]
 pub struct TSTP_W<'a> {
     w: &'a mut W,
 }
@@ -352,7 +370,7 @@ impl<'a> TSTP_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `CERR`"]
+#[doc = "Field `CERR` writer - CRC Error Interrupt Disable"]
 pub struct CERR_W<'a> {
     w: &'a mut W,
 }
@@ -374,7 +392,7 @@ impl<'a> CERR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `SERR`"]
+#[doc = "Field `SERR` writer - Stuffing Error Interrupt Disable"]
 pub struct SERR_W<'a> {
     w: &'a mut W,
 }
@@ -396,7 +414,7 @@ impl<'a> SERR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `AERR`"]
+#[doc = "Field `AERR` writer - Acknowledgment Error Interrupt Disable"]
 pub struct AERR_W<'a> {
     w: &'a mut W,
 }
@@ -418,7 +436,7 @@ impl<'a> AERR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `FERR`"]
+#[doc = "Field `FERR` writer - Form Error Interrupt Disable"]
 pub struct FERR_W<'a> {
     w: &'a mut W,
 }
@@ -440,7 +458,7 @@ impl<'a> FERR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `BERR`"]
+#[doc = "Field `BERR` writer - Bit Error Interrupt Disable"]
 pub struct BERR_W<'a> {
     w: &'a mut W,
 }
@@ -568,4 +586,18 @@ impl W {
     pub fn berr(&mut self) -> BERR_W {
         BERR_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Disable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [idr](index.html) module"]
+pub struct IDR_SPEC;
+impl crate::RegisterSpec for IDR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [idr::W](W) writer structure"]
+impl crate::Writable for IDR_SPEC {
+    type Writer = W;
 }

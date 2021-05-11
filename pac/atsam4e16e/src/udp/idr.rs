@@ -1,6 +1,24 @@
-#[doc = "Writer for register IDR"]
-pub type W = crate::W<u32, super::IDR>;
-#[doc = "Write proxy for field `EP0INT`"]
+#[doc = "Register `IDR` writer"]
+pub struct W(crate::W<IDR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IDR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IDR_SPEC>> for W {
+    fn from(writer: crate::W<IDR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `EP0INT` writer - Disable Endpoint 0 Interrupt"]
 pub struct EP0INT_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> EP0INT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EP1INT`"]
+#[doc = "Field `EP1INT` writer - Disable Endpoint 1 Interrupt"]
 pub struct EP1INT_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> EP1INT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EP2INT`"]
+#[doc = "Field `EP2INT` writer - Disable Endpoint 2 Interrupt"]
 pub struct EP2INT_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> EP2INT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EP3INT`"]
+#[doc = "Field `EP3INT` writer - Disable Endpoint 3 Interrupt"]
 pub struct EP3INT_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> EP3INT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EP4INT`"]
+#[doc = "Field `EP4INT` writer - Disable Endpoint 4 Interrupt"]
 pub struct EP4INT_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> EP4INT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EP5INT`"]
+#[doc = "Field `EP5INT` writer - Disable Endpoint 5 Interrupt"]
 pub struct EP5INT_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> EP5INT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EP6INT`"]
+#[doc = "Field `EP6INT` writer - Disable Endpoint 6 Interrupt"]
 pub struct EP6INT_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> EP6INT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EP7INT`"]
+#[doc = "Field `EP7INT` writer - Disable Endpoint 7 Interrupt"]
 pub struct EP7INT_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> EP7INT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RXSUSP`"]
+#[doc = "Field `RXSUSP` writer - Disable UDP Suspend Interrupt"]
 pub struct RXSUSP_W<'a> {
     w: &'a mut W,
 }
@@ -198,7 +216,7 @@ impl<'a> RXSUSP_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RXRSM`"]
+#[doc = "Field `RXRSM` writer - Disable UDP Resume Interrupt"]
 pub struct RXRSM_W<'a> {
     w: &'a mut W,
 }
@@ -220,7 +238,7 @@ impl<'a> RXRSM_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EXTRSM`"]
+#[doc = "Field `EXTRSM` writer - "]
 pub struct EXTRSM_W<'a> {
     w: &'a mut W,
 }
@@ -242,7 +260,7 @@ impl<'a> EXTRSM_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `SOFINT`"]
+#[doc = "Field `SOFINT` writer - Disable Start Of Frame Interrupt"]
 pub struct SOFINT_W<'a> {
     w: &'a mut W,
 }
@@ -264,7 +282,7 @@ impl<'a> SOFINT_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `WAKEUP`"]
+#[doc = "Field `WAKEUP` writer - Disable USB Bus Interrupt"]
 pub struct WAKEUP_W<'a> {
     w: &'a mut W,
 }
@@ -352,4 +370,18 @@ impl W {
     pub fn wakeup(&mut self) -> WAKEUP_W {
         WAKEUP_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Disable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [idr](index.html) module"]
+pub struct IDR_SPEC;
+impl crate::RegisterSpec for IDR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [idr::W](W) writer structure"]
+impl crate::Writable for IDR_SPEC {
+    type Writer = W;
 }

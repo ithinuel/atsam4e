@@ -1,6 +1,24 @@
-#[doc = "Writer for register QIER"]
-pub type W = crate::W<u32, super::QIER>;
-#[doc = "Write proxy for field `IDX`"]
+#[doc = "Register `QIER` writer"]
+pub struct W(crate::W<QIER_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<QIER_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<QIER_SPEC>> for W {
+    fn from(writer: crate::W<QIER_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `IDX` writer - InDeX"]
 pub struct IDX_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> IDX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `DIRCHG`"]
+#[doc = "Field `DIRCHG` writer - DIRection CHanGe"]
 pub struct DIRCHG_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> DIRCHG_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `QERR`"]
+#[doc = "Field `QERR` writer - Quadrature ERRor"]
 pub struct QERR_W<'a> {
     w: &'a mut W,
 }
@@ -82,4 +100,18 @@ impl W {
     pub fn qerr(&mut self) -> QERR_W {
         QERR_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "QDEC Interrupt Enable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [qier](index.html) module"]
+pub struct QIER_SPEC;
+impl crate::RegisterSpec for QIER_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [qier::W](W) writer structure"]
+impl crate::Writable for QIER_SPEC {
+    type Writer = W;
 }

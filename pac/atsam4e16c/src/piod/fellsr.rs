@@ -1,6 +1,24 @@
-#[doc = "Writer for register FELLSR"]
-pub type W = crate::W<u32, super::FELLSR>;
-#[doc = "Write proxy for field `P0`"]
+#[doc = "Register `FELLSR` writer"]
+pub struct W(crate::W<FELLSR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<FELLSR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<FELLSR_SPEC>> for W {
+    fn from(writer: crate::W<FELLSR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `P0` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P0_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> P0_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P1`"]
+#[doc = "Field `P1` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P1_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> P1_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P2`"]
+#[doc = "Field `P2` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P2_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> P2_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P3`"]
+#[doc = "Field `P3` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P3_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> P3_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P4`"]
+#[doc = "Field `P4` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P4_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> P4_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P5`"]
+#[doc = "Field `P5` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P5_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> P5_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P6`"]
+#[doc = "Field `P6` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P6_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> P6_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P7`"]
+#[doc = "Field `P7` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P7_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> P7_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P8`"]
+#[doc = "Field `P8` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P8_W<'a> {
     w: &'a mut W,
 }
@@ -198,7 +216,7 @@ impl<'a> P8_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P9`"]
+#[doc = "Field `P9` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P9_W<'a> {
     w: &'a mut W,
 }
@@ -220,7 +238,7 @@ impl<'a> P9_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P10`"]
+#[doc = "Field `P10` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P10_W<'a> {
     w: &'a mut W,
 }
@@ -242,7 +260,7 @@ impl<'a> P10_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P11`"]
+#[doc = "Field `P11` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P11_W<'a> {
     w: &'a mut W,
 }
@@ -264,7 +282,7 @@ impl<'a> P11_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P12`"]
+#[doc = "Field `P12` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P12_W<'a> {
     w: &'a mut W,
 }
@@ -286,7 +304,7 @@ impl<'a> P12_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P13`"]
+#[doc = "Field `P13` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P13_W<'a> {
     w: &'a mut W,
 }
@@ -308,7 +326,7 @@ impl<'a> P13_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P14`"]
+#[doc = "Field `P14` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P14_W<'a> {
     w: &'a mut W,
 }
@@ -330,7 +348,7 @@ impl<'a> P14_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P15`"]
+#[doc = "Field `P15` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P15_W<'a> {
     w: &'a mut W,
 }
@@ -352,7 +370,7 @@ impl<'a> P15_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P16`"]
+#[doc = "Field `P16` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P16_W<'a> {
     w: &'a mut W,
 }
@@ -374,7 +392,7 @@ impl<'a> P16_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P17`"]
+#[doc = "Field `P17` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P17_W<'a> {
     w: &'a mut W,
 }
@@ -396,7 +414,7 @@ impl<'a> P17_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P18`"]
+#[doc = "Field `P18` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P18_W<'a> {
     w: &'a mut W,
 }
@@ -418,7 +436,7 @@ impl<'a> P18_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P19`"]
+#[doc = "Field `P19` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P19_W<'a> {
     w: &'a mut W,
 }
@@ -440,7 +458,7 @@ impl<'a> P19_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P20`"]
+#[doc = "Field `P20` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P20_W<'a> {
     w: &'a mut W,
 }
@@ -462,7 +480,7 @@ impl<'a> P20_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P21`"]
+#[doc = "Field `P21` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P21_W<'a> {
     w: &'a mut W,
 }
@@ -484,7 +502,7 @@ impl<'a> P21_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P22`"]
+#[doc = "Field `P22` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P22_W<'a> {
     w: &'a mut W,
 }
@@ -506,7 +524,7 @@ impl<'a> P22_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P23`"]
+#[doc = "Field `P23` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P23_W<'a> {
     w: &'a mut W,
 }
@@ -528,7 +546,7 @@ impl<'a> P23_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P24`"]
+#[doc = "Field `P24` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P24_W<'a> {
     w: &'a mut W,
 }
@@ -550,7 +568,7 @@ impl<'a> P24_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P25`"]
+#[doc = "Field `P25` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P25_W<'a> {
     w: &'a mut W,
 }
@@ -572,7 +590,7 @@ impl<'a> P25_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P26`"]
+#[doc = "Field `P26` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P26_W<'a> {
     w: &'a mut W,
 }
@@ -594,7 +612,7 @@ impl<'a> P26_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P27`"]
+#[doc = "Field `P27` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P27_W<'a> {
     w: &'a mut W,
 }
@@ -616,7 +634,7 @@ impl<'a> P27_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P28`"]
+#[doc = "Field `P28` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P28_W<'a> {
     w: &'a mut W,
 }
@@ -638,7 +656,7 @@ impl<'a> P28_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P29`"]
+#[doc = "Field `P29` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P29_W<'a> {
     w: &'a mut W,
 }
@@ -660,7 +678,7 @@ impl<'a> P29_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P30`"]
+#[doc = "Field `P30` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P30_W<'a> {
     w: &'a mut W,
 }
@@ -682,7 +700,7 @@ impl<'a> P30_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `P31`"]
+#[doc = "Field `P31` writer - Falling Edge/Low Level Interrupt Selection."]
 pub struct P31_W<'a> {
     w: &'a mut W,
 }
@@ -865,4 +883,18 @@ impl W {
     pub fn p31(&mut self) -> P31_W {
         P31_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Falling Edge/Low Level Select Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [fellsr](index.html) module"]
+pub struct FELLSR_SPEC;
+impl crate::RegisterSpec for FELLSR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [fellsr::W](W) writer structure"]
+impl crate::Writable for FELLSR_SPEC {
+    type Writer = W;
 }

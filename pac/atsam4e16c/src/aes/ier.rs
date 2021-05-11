@@ -1,6 +1,24 @@
-#[doc = "Writer for register IER"]
-pub type W = crate::W<u32, super::IER>;
-#[doc = "Write proxy for field `DATRDY`"]
+#[doc = "Register `IER` writer"]
+pub struct W(crate::W<IER_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IER_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IER_SPEC>> for W {
+    fn from(writer: crate::W<IER_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `DATRDY` writer - Data Ready Interrupt Enable"]
 pub struct DATRDY_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> DATRDY_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ENDRX`"]
+#[doc = "Field `ENDRX` writer - End of Receive Buffer Interrupt Enable"]
 pub struct ENDRX_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> ENDRX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ENDTX`"]
+#[doc = "Field `ENDTX` writer - End of Transmit Buffer Interrupt Enable"]
 pub struct ENDTX_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> ENDTX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RXBUFF`"]
+#[doc = "Field `RXBUFF` writer - Receive Buffer Full Interrupt Enable"]
 pub struct RXBUFF_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> RXBUFF_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TXBUFE`"]
+#[doc = "Field `TXBUFE` writer - Transmit Buffer Empty Interrupt Enable"]
 pub struct TXBUFE_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> TXBUFE_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `URAD`"]
+#[doc = "Field `URAD` writer - Unspecified Register Access Detection Interrupt Enable"]
 pub struct URAD_W<'a> {
     w: &'a mut W,
 }
@@ -163,4 +181,18 @@ impl W {
     pub fn urad(&mut self) -> URAD_W {
         URAD_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Enable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ier](index.html) module"]
+pub struct IER_SPEC;
+impl crate::RegisterSpec for IER_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [ier::W](W) writer structure"]
+impl crate::Writable for IER_SPEC {
+    type Writer = W;
 }

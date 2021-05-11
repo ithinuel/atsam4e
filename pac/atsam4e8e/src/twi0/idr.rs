@@ -1,6 +1,24 @@
-#[doc = "Writer for register IDR"]
-pub type W = crate::W<u32, super::IDR>;
-#[doc = "Write proxy for field `TXCOMP`"]
+#[doc = "Register `IDR` writer"]
+pub struct W(crate::W<IDR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IDR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IDR_SPEC>> for W {
+    fn from(writer: crate::W<IDR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `TXCOMP` writer - Transmission Completed Interrupt Disable"]
 pub struct TXCOMP_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> TXCOMP_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RXRDY`"]
+#[doc = "Field `RXRDY` writer - Receive Holding Register Ready Interrupt Disable"]
 pub struct RXRDY_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> RXRDY_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TXRDY`"]
+#[doc = "Field `TXRDY` writer - Transmit Holding Register Ready Interrupt Disable"]
 pub struct TXRDY_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> TXRDY_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `SVACC`"]
+#[doc = "Field `SVACC` writer - Slave Access Interrupt Disable"]
 pub struct SVACC_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> SVACC_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `GACC`"]
+#[doc = "Field `GACC` writer - General Call Access Interrupt Disable"]
 pub struct GACC_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> GACC_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `OVRE`"]
+#[doc = "Field `OVRE` writer - Overrun Error Interrupt Disable"]
 pub struct OVRE_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> OVRE_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `NACK`"]
+#[doc = "Field `NACK` writer - Not Acknowledge Interrupt Disable"]
 pub struct NACK_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> NACK_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ARBLST`"]
+#[doc = "Field `ARBLST` writer - Arbitration Lost Interrupt Disable"]
 pub struct ARBLST_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> ARBLST_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `SCL_WS`"]
+#[doc = "Field `SCL_WS` writer - Clock Wait State Interrupt Disable"]
 pub struct SCL_WS_W<'a> {
     w: &'a mut W,
 }
@@ -198,7 +216,7 @@ impl<'a> SCL_WS_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `EOSACC`"]
+#[doc = "Field `EOSACC` writer - End Of Slave Access Interrupt Disable"]
 pub struct EOSACC_W<'a> {
     w: &'a mut W,
 }
@@ -220,7 +238,7 @@ impl<'a> EOSACC_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ENDRX`"]
+#[doc = "Field `ENDRX` writer - End of Receive Buffer Interrupt Disable"]
 pub struct ENDRX_W<'a> {
     w: &'a mut W,
 }
@@ -242,7 +260,7 @@ impl<'a> ENDRX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ENDTX`"]
+#[doc = "Field `ENDTX` writer - End of Transmit Buffer Interrupt Disable"]
 pub struct ENDTX_W<'a> {
     w: &'a mut W,
 }
@@ -264,7 +282,7 @@ impl<'a> ENDTX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RXBUFF`"]
+#[doc = "Field `RXBUFF` writer - Receive Buffer Full Interrupt Disable"]
 pub struct RXBUFF_W<'a> {
     w: &'a mut W,
 }
@@ -286,7 +304,7 @@ impl<'a> RXBUFF_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TXBUFE`"]
+#[doc = "Field `TXBUFE` writer - Transmit Buffer Empty Interrupt Disable"]
 pub struct TXBUFE_W<'a> {
     w: &'a mut W,
 }
@@ -379,4 +397,18 @@ impl W {
     pub fn txbufe(&mut self) -> TXBUFE_W {
         TXBUFE_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Disable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [idr](index.html) module"]
+pub struct IDR_SPEC;
+impl crate::RegisterSpec for IDR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [idr::W](W) writer structure"]
+impl crate::Writable for IDR_SPEC {
+    type Writer = W;
 }

@@ -1,6 +1,24 @@
-#[doc = "Writer for register IDR"]
-pub type W = crate::W<u32, super::IDR>;
-#[doc = "Write proxy for field `RDRF`"]
+#[doc = "Register `IDR` writer"]
+pub struct W(crate::W<IDR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IDR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IDR_SPEC>> for W {
+    fn from(writer: crate::W<IDR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `RDRF` writer - Receive Data Register Full Interrupt Disable"]
 pub struct RDRF_W<'a> {
     w: &'a mut W,
 }
@@ -22,7 +40,7 @@ impl<'a> RDRF_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TDRE`"]
+#[doc = "Field `TDRE` writer - SPI Transmit Data Register Empty Interrupt Disable"]
 pub struct TDRE_W<'a> {
     w: &'a mut W,
 }
@@ -44,7 +62,7 @@ impl<'a> TDRE_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `MODF`"]
+#[doc = "Field `MODF` writer - Mode Fault Error Interrupt Disable"]
 pub struct MODF_W<'a> {
     w: &'a mut W,
 }
@@ -66,7 +84,7 @@ impl<'a> MODF_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `OVRES`"]
+#[doc = "Field `OVRES` writer - Overrun Error Interrupt Disable"]
 pub struct OVRES_W<'a> {
     w: &'a mut W,
 }
@@ -88,7 +106,7 @@ impl<'a> OVRES_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ENDRX`"]
+#[doc = "Field `ENDRX` writer - End of Receive Buffer Interrupt Disable"]
 pub struct ENDRX_W<'a> {
     w: &'a mut W,
 }
@@ -110,7 +128,7 @@ impl<'a> ENDRX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `ENDTX`"]
+#[doc = "Field `ENDTX` writer - End of Transmit Buffer Interrupt Disable"]
 pub struct ENDTX_W<'a> {
     w: &'a mut W,
 }
@@ -132,7 +150,7 @@ impl<'a> ENDTX_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `RXBUFF`"]
+#[doc = "Field `RXBUFF` writer - Receive Buffer Full Interrupt Disable"]
 pub struct RXBUFF_W<'a> {
     w: &'a mut W,
 }
@@ -154,7 +172,7 @@ impl<'a> RXBUFF_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TXBUFE`"]
+#[doc = "Field `TXBUFE` writer - Transmit Buffer Empty Interrupt Disable"]
 pub struct TXBUFE_W<'a> {
     w: &'a mut W,
 }
@@ -176,7 +194,7 @@ impl<'a> TXBUFE_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `NSSR`"]
+#[doc = "Field `NSSR` writer - NSS Rising Interrupt Disable"]
 pub struct NSSR_W<'a> {
     w: &'a mut W,
 }
@@ -198,7 +216,7 @@ impl<'a> NSSR_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `TXEMPTY`"]
+#[doc = "Field `TXEMPTY` writer - Transmission Registers Empty Disable"]
 pub struct TXEMPTY_W<'a> {
     w: &'a mut W,
 }
@@ -220,7 +238,7 @@ impl<'a> TXEMPTY_W<'a> {
         self.w
     }
 }
-#[doc = "Write proxy for field `UNDES`"]
+#[doc = "Field `UNDES` writer - Underrun Error Interrupt Disable"]
 pub struct UNDES_W<'a> {
     w: &'a mut W,
 }
@@ -298,4 +316,18 @@ impl W {
     pub fn undes(&mut self) -> UNDES_W {
         UNDES_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Disable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [idr](index.html) module"]
+pub struct IDR_SPEC;
+impl crate::RegisterSpec for IDR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [idr::W](W) writer structure"]
+impl crate::Writable for IDR_SPEC {
+    type Writer = W;
 }

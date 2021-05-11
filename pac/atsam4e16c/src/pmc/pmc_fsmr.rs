@@ -1,18 +1,52 @@
-#[doc = "Reader of register PMC_FSMR"]
-pub type R = crate::R<u32, super::PMC_FSMR>;
-#[doc = "Writer for register PMC_FSMR"]
-pub type W = crate::W<u32, super::PMC_FSMR>;
-#[doc = "Register PMC_FSMR `reset()`'s with value 0"]
-impl crate::ResetValue for super::PMC_FSMR {
-    type Type = u32;
+#[doc = "Register `PMC_FSMR` reader"]
+pub struct R(crate::R<PMC_FSMR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<PMC_FSMR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `FSTT0`"]
-pub type FSTT0_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT0`"]
+impl core::convert::From<crate::R<PMC_FSMR_SPEC>> for R {
+    fn from(reader: crate::R<PMC_FSMR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `PMC_FSMR` writer"]
+pub struct W(crate::W<PMC_FSMR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<PMC_FSMR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<PMC_FSMR_SPEC>> for W {
+    fn from(writer: crate::W<PMC_FSMR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `FSTT0` reader - Fast Startup Input Enable 0"]
+pub struct FSTT0_R(crate::FieldReader<bool, bool>);
+impl FSTT0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT0_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT0` writer - Fast Startup Input Enable 0"]
 pub struct FSTT0_W<'a> {
     w: &'a mut W,
 }
@@ -34,9 +68,21 @@ impl<'a> FSTT0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT1`"]
-pub type FSTT1_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT1`"]
+#[doc = "Field `FSTT1` reader - Fast Startup Input Enable 1"]
+pub struct FSTT1_R(crate::FieldReader<bool, bool>);
+impl FSTT1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT1_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT1` writer - Fast Startup Input Enable 1"]
 pub struct FSTT1_W<'a> {
     w: &'a mut W,
 }
@@ -58,9 +104,21 @@ impl<'a> FSTT1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT2`"]
-pub type FSTT2_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT2`"]
+#[doc = "Field `FSTT2` reader - Fast Startup Input Enable 2"]
+pub struct FSTT2_R(crate::FieldReader<bool, bool>);
+impl FSTT2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT2_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT2` writer - Fast Startup Input Enable 2"]
 pub struct FSTT2_W<'a> {
     w: &'a mut W,
 }
@@ -82,9 +140,21 @@ impl<'a> FSTT2_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT3`"]
-pub type FSTT3_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT3`"]
+#[doc = "Field `FSTT3` reader - Fast Startup Input Enable 3"]
+pub struct FSTT3_R(crate::FieldReader<bool, bool>);
+impl FSTT3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT3_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT3` writer - Fast Startup Input Enable 3"]
 pub struct FSTT3_W<'a> {
     w: &'a mut W,
 }
@@ -106,9 +176,21 @@ impl<'a> FSTT3_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT4`"]
-pub type FSTT4_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT4`"]
+#[doc = "Field `FSTT4` reader - Fast Startup Input Enable 4"]
+pub struct FSTT4_R(crate::FieldReader<bool, bool>);
+impl FSTT4_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT4_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT4_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT4` writer - Fast Startup Input Enable 4"]
 pub struct FSTT4_W<'a> {
     w: &'a mut W,
 }
@@ -130,9 +212,21 @@ impl<'a> FSTT4_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT5`"]
-pub type FSTT5_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT5`"]
+#[doc = "Field `FSTT5` reader - Fast Startup Input Enable 5"]
+pub struct FSTT5_R(crate::FieldReader<bool, bool>);
+impl FSTT5_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT5_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT5_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT5` writer - Fast Startup Input Enable 5"]
 pub struct FSTT5_W<'a> {
     w: &'a mut W,
 }
@@ -154,9 +248,21 @@ impl<'a> FSTT5_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT6`"]
-pub type FSTT6_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT6`"]
+#[doc = "Field `FSTT6` reader - Fast Startup Input Enable 6"]
+pub struct FSTT6_R(crate::FieldReader<bool, bool>);
+impl FSTT6_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT6_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT6_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT6` writer - Fast Startup Input Enable 6"]
 pub struct FSTT6_W<'a> {
     w: &'a mut W,
 }
@@ -178,9 +284,21 @@ impl<'a> FSTT6_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT7`"]
-pub type FSTT7_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT7`"]
+#[doc = "Field `FSTT7` reader - Fast Startup Input Enable 7"]
+pub struct FSTT7_R(crate::FieldReader<bool, bool>);
+impl FSTT7_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT7_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT7_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT7` writer - Fast Startup Input Enable 7"]
 pub struct FSTT7_W<'a> {
     w: &'a mut W,
 }
@@ -202,9 +320,21 @@ impl<'a> FSTT7_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT8`"]
-pub type FSTT8_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT8`"]
+#[doc = "Field `FSTT8` reader - Fast Startup Input Enable 8"]
+pub struct FSTT8_R(crate::FieldReader<bool, bool>);
+impl FSTT8_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT8_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT8_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT8` writer - Fast Startup Input Enable 8"]
 pub struct FSTT8_W<'a> {
     w: &'a mut W,
 }
@@ -226,9 +356,21 @@ impl<'a> FSTT8_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT9`"]
-pub type FSTT9_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT9`"]
+#[doc = "Field `FSTT9` reader - Fast Startup Input Enable 9"]
+pub struct FSTT9_R(crate::FieldReader<bool, bool>);
+impl FSTT9_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT9_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT9_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT9` writer - Fast Startup Input Enable 9"]
 pub struct FSTT9_W<'a> {
     w: &'a mut W,
 }
@@ -250,9 +392,21 @@ impl<'a> FSTT9_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT10`"]
-pub type FSTT10_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT10`"]
+#[doc = "Field `FSTT10` reader - Fast Startup Input Enable 10"]
+pub struct FSTT10_R(crate::FieldReader<bool, bool>);
+impl FSTT10_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT10_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT10_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT10` writer - Fast Startup Input Enable 10"]
 pub struct FSTT10_W<'a> {
     w: &'a mut W,
 }
@@ -274,9 +428,21 @@ impl<'a> FSTT10_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT11`"]
-pub type FSTT11_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT11`"]
+#[doc = "Field `FSTT11` reader - Fast Startup Input Enable 11"]
+pub struct FSTT11_R(crate::FieldReader<bool, bool>);
+impl FSTT11_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT11_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT11_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT11` writer - Fast Startup Input Enable 11"]
 pub struct FSTT11_W<'a> {
     w: &'a mut W,
 }
@@ -298,9 +464,21 @@ impl<'a> FSTT11_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT12`"]
-pub type FSTT12_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT12`"]
+#[doc = "Field `FSTT12` reader - Fast Startup Input Enable 12"]
+pub struct FSTT12_R(crate::FieldReader<bool, bool>);
+impl FSTT12_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT12_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT12_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT12` writer - Fast Startup Input Enable 12"]
 pub struct FSTT12_W<'a> {
     w: &'a mut W,
 }
@@ -322,9 +500,21 @@ impl<'a> FSTT12_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT13`"]
-pub type FSTT13_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT13`"]
+#[doc = "Field `FSTT13` reader - Fast Startup Input Enable 13"]
+pub struct FSTT13_R(crate::FieldReader<bool, bool>);
+impl FSTT13_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT13_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT13_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT13` writer - Fast Startup Input Enable 13"]
 pub struct FSTT13_W<'a> {
     w: &'a mut W,
 }
@@ -346,9 +536,21 @@ impl<'a> FSTT13_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT14`"]
-pub type FSTT14_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT14`"]
+#[doc = "Field `FSTT14` reader - Fast Startup Input Enable 14"]
+pub struct FSTT14_R(crate::FieldReader<bool, bool>);
+impl FSTT14_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT14_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT14_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT14` writer - Fast Startup Input Enable 14"]
 pub struct FSTT14_W<'a> {
     w: &'a mut W,
 }
@@ -370,9 +572,21 @@ impl<'a> FSTT14_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FSTT15`"]
-pub type FSTT15_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FSTT15`"]
+#[doc = "Field `FSTT15` reader - Fast Startup Input Enable 15"]
+pub struct FSTT15_R(crate::FieldReader<bool, bool>);
+impl FSTT15_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSTT15_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTT15_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FSTT15` writer - Fast Startup Input Enable 15"]
 pub struct FSTT15_W<'a> {
     w: &'a mut W,
 }
@@ -394,9 +608,21 @@ impl<'a> FSTT15_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `RTTAL`"]
-pub type RTTAL_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `RTTAL`"]
+#[doc = "Field `RTTAL` reader - RTT Alarm Enable"]
+pub struct RTTAL_R(crate::FieldReader<bool, bool>);
+impl RTTAL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RTTAL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RTTAL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RTTAL` writer - RTT Alarm Enable"]
 pub struct RTTAL_W<'a> {
     w: &'a mut W,
 }
@@ -418,9 +644,21 @@ impl<'a> RTTAL_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `RTCAL`"]
-pub type RTCAL_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `RTCAL`"]
+#[doc = "Field `RTCAL` reader - RTC Alarm Enable"]
+pub struct RTCAL_R(crate::FieldReader<bool, bool>);
+impl RTCAL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RTCAL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RTCAL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RTCAL` writer - RTC Alarm Enable"]
 pub struct RTCAL_W<'a> {
     w: &'a mut W,
 }
@@ -442,9 +680,21 @@ impl<'a> RTCAL_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `USBAL`"]
-pub type USBAL_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `USBAL`"]
+#[doc = "Field `USBAL` reader - USB Alarm Enable"]
+pub struct USBAL_R(crate::FieldReader<bool, bool>);
+impl USBAL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        USBAL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for USBAL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `USBAL` writer - USB Alarm Enable"]
 pub struct USBAL_W<'a> {
     w: &'a mut W,
 }
@@ -466,9 +716,21 @@ impl<'a> USBAL_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `FLPM`"]
-pub type FLPM_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `FLPM`"]
+#[doc = "Field `FLPM` reader - Flash Low Power Mode"]
+pub struct FLPM_R(crate::FieldReader<u8, u8>);
+impl FLPM_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        FLPM_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FLPM_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FLPM` writer - Flash Low Power Mode"]
 pub struct FLPM_W<'a> {
     w: &'a mut W,
 }
@@ -682,5 +944,30 @@ impl W {
     #[inline(always)]
     pub fn flpm(&mut self) -> FLPM_W {
         FLPM_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Fast Startup Mode Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pmc_fsmr](index.html) module"]
+pub struct PMC_FSMR_SPEC;
+impl crate::RegisterSpec for PMC_FSMR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [pmc_fsmr::R](R) reader structure"]
+impl crate::Readable for PMC_FSMR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [pmc_fsmr::W](W) writer structure"]
+impl crate::Writable for PMC_FSMR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets PMC_FSMR to value 0"]
+impl crate::Resettable for PMC_FSMR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

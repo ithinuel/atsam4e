@@ -1,6 +1,24 @@
-#[doc = "Writer for register CAEUPD0"]
-pub type W = crate::W<u32, super::CAEUPD0>;
-#[doc = "Write proxy for field `ADEDGVUP`"]
+#[doc = "Register `CAEUPD0` writer"]
+pub struct W(crate::W<CAEUPD0_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CAEUPD0_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CAEUPD0_SPEC>> for W {
+    fn from(writer: crate::W<CAEUPD0_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `ADEDGVUP` writer - Channel Additional Edge Value Update"]
 pub struct ADEDGVUP_W<'a> {
     w: &'a mut W,
 }
@@ -29,7 +47,7 @@ impl From<ADEDGMUP_AW> for u8 {
         variant as _
     }
 }
-#[doc = "Write proxy for field `ADEDGMUP`"]
+#[doc = "Field `ADEDGMUP` writer - Channel Additional Edge Mode Update"]
 pub struct ADEDGMUP_W<'a> {
     w: &'a mut W,
 }
@@ -72,4 +90,18 @@ impl W {
     pub fn adedgmup(&mut self) -> ADEDGMUP_W {
         ADEDGMUP_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PWM Channel Additional Edge Update Register (ch_num = 0)\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [caeupd0](index.html) module"]
+pub struct CAEUPD0_SPEC;
+impl crate::RegisterSpec for CAEUPD0_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [caeupd0::W](W) writer structure"]
+impl crate::Writable for CAEUPD0_SPEC {
+    type Writer = W;
 }

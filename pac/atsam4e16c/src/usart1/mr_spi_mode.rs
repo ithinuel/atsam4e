@@ -1,7 +1,37 @@
-#[doc = "Reader of register MR_SPI_MODE"]
-pub type R = crate::R<u32, super::MR_SPI_MODE>;
-#[doc = "Writer for register MR_SPI_MODE"]
-pub type W = crate::W<u32, super::MR_SPI_MODE>;
+#[doc = "Register `MR_SPI_MODE` reader"]
+pub struct R(crate::R<MR_SPI_MODE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MR_SPI_MODE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<MR_SPI_MODE_SPEC>> for R {
+    fn from(reader: crate::R<MR_SPI_MODE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `MR_SPI_MODE` writer"]
+pub struct W(crate::W<MR_SPI_MODE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<MR_SPI_MODE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<MR_SPI_MODE_SPEC>> for W {
+    fn from(writer: crate::W<MR_SPI_MODE_SPEC>) -> Self {
+        W(writer)
+    }
+}
 #[doc = "USART Mode of Operation"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 #[repr(u8)]
@@ -17,9 +47,12 @@ impl From<USART_MODE_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `USART_MODE`"]
-pub type USART_MODE_R = crate::R<u8, USART_MODE_A>;
+#[doc = "Field `USART_MODE` reader - USART Mode of Operation"]
+pub struct USART_MODE_R(crate::FieldReader<u8, USART_MODE_A>);
 impl USART_MODE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        USART_MODE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, USART_MODE_A> {
@@ -33,15 +66,22 @@ impl USART_MODE_R {
     #[doc = "Checks if the value of the field is `SPI_MASTER`"]
     #[inline(always)]
     pub fn is_spi_master(&self) -> bool {
-        *self == USART_MODE_A::SPI_MASTER
+        **self == USART_MODE_A::SPI_MASTER
     }
     #[doc = "Checks if the value of the field is `SPI_SLAVE`"]
     #[inline(always)]
     pub fn is_spi_slave(&self) -> bool {
-        *self == USART_MODE_A::SPI_SLAVE
+        **self == USART_MODE_A::SPI_SLAVE
     }
 }
-#[doc = "Write proxy for field `USART_MODE`"]
+impl core::ops::Deref for USART_MODE_R {
+    type Target = crate::FieldReader<u8, USART_MODE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `USART_MODE` writer - USART Mode of Operation"]
 pub struct USART_MODE_W<'a> {
     w: &'a mut W,
 }
@@ -85,9 +125,12 @@ impl From<USCLKS_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `USCLKS`"]
-pub type USCLKS_R = crate::R<u8, USCLKS_A>;
+#[doc = "Field `USCLKS` reader - Clock Selection"]
+pub struct USCLKS_R(crate::FieldReader<u8, USCLKS_A>);
 impl USCLKS_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        USCLKS_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, USCLKS_A> {
@@ -102,20 +145,27 @@ impl USCLKS_R {
     #[doc = "Checks if the value of the field is `MCK`"]
     #[inline(always)]
     pub fn is_mck(&self) -> bool {
-        *self == USCLKS_A::MCK
+        **self == USCLKS_A::MCK
     }
     #[doc = "Checks if the value of the field is `DIV`"]
     #[inline(always)]
     pub fn is_div(&self) -> bool {
-        *self == USCLKS_A::DIV
+        **self == USCLKS_A::DIV
     }
     #[doc = "Checks if the value of the field is `SCK`"]
     #[inline(always)]
     pub fn is_sck(&self) -> bool {
-        *self == USCLKS_A::SCK
+        **self == USCLKS_A::SCK
     }
 }
-#[doc = "Write proxy for field `USCLKS`"]
+impl core::ops::Deref for USCLKS_R {
+    type Target = crate::FieldReader<u8, USCLKS_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `USCLKS` writer - Clock Selection"]
 pub struct USCLKS_W<'a> {
     w: &'a mut W,
 }
@@ -160,9 +210,12 @@ impl From<CHRL_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `CHRL`"]
-pub type CHRL_R = crate::R<u8, CHRL_A>;
+#[doc = "Field `CHRL` reader - Character Length."]
+pub struct CHRL_R(crate::FieldReader<u8, CHRL_A>);
 impl CHRL_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        CHRL_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, CHRL_A> {
@@ -175,10 +228,17 @@ impl CHRL_R {
     #[doc = "Checks if the value of the field is `_8_BIT`"]
     #[inline(always)]
     pub fn is_8_bit(&self) -> bool {
-        *self == CHRL_A::_8_BIT
+        **self == CHRL_A::_8_BIT
     }
 }
-#[doc = "Write proxy for field `CHRL`"]
+impl core::ops::Deref for CHRL_R {
+    type Target = crate::FieldReader<u8, CHRL_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHRL` writer - Character Length."]
 pub struct CHRL_W<'a> {
     w: &'a mut W,
 }
@@ -200,9 +260,21 @@ impl<'a> CHRL_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `CPHA`"]
-pub type CPHA_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CPHA`"]
+#[doc = "Field `CPHA` reader - SPI Clock Phase"]
+pub struct CPHA_R(crate::FieldReader<bool, bool>);
+impl CPHA_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CPHA_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CPHA_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CPHA` writer - SPI Clock Phase"]
 pub struct CPHA_W<'a> {
     w: &'a mut W,
 }
@@ -224,9 +296,21 @@ impl<'a> CPHA_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `CPOL`"]
-pub type CPOL_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CPOL`"]
+#[doc = "Field `CPOL` reader - SPI Clock Polarity"]
+pub struct CPOL_R(crate::FieldReader<bool, bool>);
+impl CPOL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CPOL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CPOL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CPOL` writer - SPI Clock Polarity"]
 pub struct CPOL_W<'a> {
     w: &'a mut W,
 }
@@ -248,9 +332,21 @@ impl<'a> CPOL_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `WRDBT`"]
-pub type WRDBT_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `WRDBT`"]
+#[doc = "Field `WRDBT` reader - Wait Read Data Before Transfer"]
+pub struct WRDBT_R(crate::FieldReader<bool, bool>);
+impl WRDBT_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        WRDBT_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for WRDBT_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `WRDBT` writer - Wait Read Data Before Transfer"]
 pub struct WRDBT_W<'a> {
     w: &'a mut W,
 }
@@ -335,4 +431,22 @@ impl W {
     pub fn wrdbt(&mut self) -> WRDBT_W {
         WRDBT_W { w: self }
     }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Mode Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mr_spi_mode](index.html) module"]
+pub struct MR_SPI_MODE_SPEC;
+impl crate::RegisterSpec for MR_SPI_MODE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [mr_spi_mode::R](R) reader structure"]
+impl crate::Readable for MR_SPI_MODE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [mr_spi_mode::W](W) writer structure"]
+impl crate::Writable for MR_SPI_MODE_SPEC {
+    type Writer = W;
 }

@@ -1,18 +1,52 @@
-#[doc = "Reader of register DIFFR"]
-pub type R = crate::R<u32, super::DIFFR>;
-#[doc = "Writer for register DIFFR"]
-pub type W = crate::W<u32, super::DIFFR>;
-#[doc = "Register DIFFR `reset()`'s with value 0"]
-impl crate::ResetValue for super::DIFFR {
-    type Type = u32;
+#[doc = "Register `DIFFR` reader"]
+pub struct R(crate::R<DIFFR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DIFFR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `DIFF0`"]
-pub type DIFF0_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF0`"]
+impl core::convert::From<crate::R<DIFFR_SPEC>> for R {
+    fn from(reader: crate::R<DIFFR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `DIFFR` writer"]
+pub struct W(crate::W<DIFFR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DIFFR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<DIFFR_SPEC>> for W {
+    fn from(writer: crate::W<DIFFR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `DIFF0` reader - Differential inputs for channel 0"]
+pub struct DIFF0_R(crate::FieldReader<bool, bool>);
+impl DIFF0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF0_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF0` writer - Differential inputs for channel 0"]
 pub struct DIFF0_W<'a> {
     w: &'a mut W,
 }
@@ -34,9 +68,21 @@ impl<'a> DIFF0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF1`"]
-pub type DIFF1_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF1`"]
+#[doc = "Field `DIFF1` reader - Differential inputs for channel 1"]
+pub struct DIFF1_R(crate::FieldReader<bool, bool>);
+impl DIFF1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF1_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF1` writer - Differential inputs for channel 1"]
 pub struct DIFF1_W<'a> {
     w: &'a mut W,
 }
@@ -58,9 +104,21 @@ impl<'a> DIFF1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF2`"]
-pub type DIFF2_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF2`"]
+#[doc = "Field `DIFF2` reader - Differential inputs for channel 2"]
+pub struct DIFF2_R(crate::FieldReader<bool, bool>);
+impl DIFF2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF2_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF2` writer - Differential inputs for channel 2"]
 pub struct DIFF2_W<'a> {
     w: &'a mut W,
 }
@@ -82,9 +140,21 @@ impl<'a> DIFF2_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF3`"]
-pub type DIFF3_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF3`"]
+#[doc = "Field `DIFF3` reader - Differential inputs for channel 3"]
+pub struct DIFF3_R(crate::FieldReader<bool, bool>);
+impl DIFF3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF3_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF3` writer - Differential inputs for channel 3"]
 pub struct DIFF3_W<'a> {
     w: &'a mut W,
 }
@@ -106,9 +176,21 @@ impl<'a> DIFF3_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF4`"]
-pub type DIFF4_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF4`"]
+#[doc = "Field `DIFF4` reader - Differential inputs for channel 4"]
+pub struct DIFF4_R(crate::FieldReader<bool, bool>);
+impl DIFF4_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF4_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF4_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF4` writer - Differential inputs for channel 4"]
 pub struct DIFF4_W<'a> {
     w: &'a mut W,
 }
@@ -130,9 +212,21 @@ impl<'a> DIFF4_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF5`"]
-pub type DIFF5_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF5`"]
+#[doc = "Field `DIFF5` reader - Differential inputs for channel 5"]
+pub struct DIFF5_R(crate::FieldReader<bool, bool>);
+impl DIFF5_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF5_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF5_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF5` writer - Differential inputs for channel 5"]
 pub struct DIFF5_W<'a> {
     w: &'a mut W,
 }
@@ -154,9 +248,21 @@ impl<'a> DIFF5_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF6`"]
-pub type DIFF6_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF6`"]
+#[doc = "Field `DIFF6` reader - Differential inputs for channel 6"]
+pub struct DIFF6_R(crate::FieldReader<bool, bool>);
+impl DIFF6_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF6_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF6_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF6` writer - Differential inputs for channel 6"]
 pub struct DIFF6_W<'a> {
     w: &'a mut W,
 }
@@ -178,9 +284,21 @@ impl<'a> DIFF6_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF7`"]
-pub type DIFF7_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF7`"]
+#[doc = "Field `DIFF7` reader - Differential inputs for channel 7"]
+pub struct DIFF7_R(crate::FieldReader<bool, bool>);
+impl DIFF7_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF7_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF7_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF7` writer - Differential inputs for channel 7"]
 pub struct DIFF7_W<'a> {
     w: &'a mut W,
 }
@@ -202,9 +320,21 @@ impl<'a> DIFF7_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF8`"]
-pub type DIFF8_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF8`"]
+#[doc = "Field `DIFF8` reader - Differential inputs for channel 8"]
+pub struct DIFF8_R(crate::FieldReader<bool, bool>);
+impl DIFF8_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF8_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF8_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF8` writer - Differential inputs for channel 8"]
 pub struct DIFF8_W<'a> {
     w: &'a mut W,
 }
@@ -226,9 +356,21 @@ impl<'a> DIFF8_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF9`"]
-pub type DIFF9_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF9`"]
+#[doc = "Field `DIFF9` reader - Differential inputs for channel 9"]
+pub struct DIFF9_R(crate::FieldReader<bool, bool>);
+impl DIFF9_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF9_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF9_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF9` writer - Differential inputs for channel 9"]
 pub struct DIFF9_W<'a> {
     w: &'a mut W,
 }
@@ -250,9 +392,21 @@ impl<'a> DIFF9_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF10`"]
-pub type DIFF10_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF10`"]
+#[doc = "Field `DIFF10` reader - Differential inputs for channel 10"]
+pub struct DIFF10_R(crate::FieldReader<bool, bool>);
+impl DIFF10_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF10_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF10_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF10` writer - Differential inputs for channel 10"]
 pub struct DIFF10_W<'a> {
     w: &'a mut W,
 }
@@ -274,9 +428,21 @@ impl<'a> DIFF10_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF11`"]
-pub type DIFF11_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF11`"]
+#[doc = "Field `DIFF11` reader - Differential inputs for channel 11"]
+pub struct DIFF11_R(crate::FieldReader<bool, bool>);
+impl DIFF11_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF11_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF11_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF11` writer - Differential inputs for channel 11"]
 pub struct DIFF11_W<'a> {
     w: &'a mut W,
 }
@@ -298,9 +464,21 @@ impl<'a> DIFF11_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF12`"]
-pub type DIFF12_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF12`"]
+#[doc = "Field `DIFF12` reader - Differential inputs for channel 12"]
+pub struct DIFF12_R(crate::FieldReader<bool, bool>);
+impl DIFF12_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF12_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF12_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF12` writer - Differential inputs for channel 12"]
 pub struct DIFF12_W<'a> {
     w: &'a mut W,
 }
@@ -322,9 +500,21 @@ impl<'a> DIFF12_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF13`"]
-pub type DIFF13_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF13`"]
+#[doc = "Field `DIFF13` reader - Differential inputs for channel 13"]
+pub struct DIFF13_R(crate::FieldReader<bool, bool>);
+impl DIFF13_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF13_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF13_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF13` writer - Differential inputs for channel 13"]
 pub struct DIFF13_W<'a> {
     w: &'a mut W,
 }
@@ -346,9 +536,21 @@ impl<'a> DIFF13_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF14`"]
-pub type DIFF14_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF14`"]
+#[doc = "Field `DIFF14` reader - Differential inputs for channel 14"]
+pub struct DIFF14_R(crate::FieldReader<bool, bool>);
+impl DIFF14_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF14_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF14_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF14` writer - Differential inputs for channel 14"]
 pub struct DIFF14_W<'a> {
     w: &'a mut W,
 }
@@ -370,9 +572,21 @@ impl<'a> DIFF14_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF15`"]
-pub type DIFF15_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF15`"]
+#[doc = "Field `DIFF15` reader - Differential inputs for channel 15"]
+pub struct DIFF15_R(crate::FieldReader<bool, bool>);
+impl DIFF15_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF15_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF15_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF15` writer - Differential inputs for channel 15"]
 pub struct DIFF15_W<'a> {
     w: &'a mut W,
 }
@@ -394,9 +608,21 @@ impl<'a> DIFF15_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF16`"]
-pub type DIFF16_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF16`"]
+#[doc = "Field `DIFF16` reader - Differential inputs for channel 16"]
+pub struct DIFF16_R(crate::FieldReader<bool, bool>);
+impl DIFF16_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF16_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF16_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF16` writer - Differential inputs for channel 16"]
 pub struct DIFF16_W<'a> {
     w: &'a mut W,
 }
@@ -418,9 +644,21 @@ impl<'a> DIFF16_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF17`"]
-pub type DIFF17_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF17`"]
+#[doc = "Field `DIFF17` reader - Differential inputs for channel 17"]
+pub struct DIFF17_R(crate::FieldReader<bool, bool>);
+impl DIFF17_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF17_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF17_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF17` writer - Differential inputs for channel 17"]
 pub struct DIFF17_W<'a> {
     w: &'a mut W,
 }
@@ -442,9 +680,21 @@ impl<'a> DIFF17_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF18`"]
-pub type DIFF18_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF18`"]
+#[doc = "Field `DIFF18` reader - Differential inputs for channel 18"]
+pub struct DIFF18_R(crate::FieldReader<bool, bool>);
+impl DIFF18_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF18_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF18_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF18` writer - Differential inputs for channel 18"]
 pub struct DIFF18_W<'a> {
     w: &'a mut W,
 }
@@ -466,9 +716,21 @@ impl<'a> DIFF18_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF19`"]
-pub type DIFF19_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF19`"]
+#[doc = "Field `DIFF19` reader - Differential inputs for channel 19"]
+pub struct DIFF19_R(crate::FieldReader<bool, bool>);
+impl DIFF19_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF19_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF19_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF19` writer - Differential inputs for channel 19"]
 pub struct DIFF19_W<'a> {
     w: &'a mut W,
 }
@@ -490,9 +752,21 @@ impl<'a> DIFF19_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF20`"]
-pub type DIFF20_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF20`"]
+#[doc = "Field `DIFF20` reader - Differential inputs for channel 20"]
+pub struct DIFF20_R(crate::FieldReader<bool, bool>);
+impl DIFF20_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF20_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF20_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF20` writer - Differential inputs for channel 20"]
 pub struct DIFF20_W<'a> {
     w: &'a mut W,
 }
@@ -514,9 +788,21 @@ impl<'a> DIFF20_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF21`"]
-pub type DIFF21_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF21`"]
+#[doc = "Field `DIFF21` reader - Differential inputs for channel 21"]
+pub struct DIFF21_R(crate::FieldReader<bool, bool>);
+impl DIFF21_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF21_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF21_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF21` writer - Differential inputs for channel 21"]
 pub struct DIFF21_W<'a> {
     w: &'a mut W,
 }
@@ -538,9 +824,21 @@ impl<'a> DIFF21_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF22`"]
-pub type DIFF22_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF22`"]
+#[doc = "Field `DIFF22` reader - Differential inputs for channel 22"]
+pub struct DIFF22_R(crate::FieldReader<bool, bool>);
+impl DIFF22_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF22_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF22_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF22` writer - Differential inputs for channel 22"]
 pub struct DIFF22_W<'a> {
     w: &'a mut W,
 }
@@ -562,9 +860,21 @@ impl<'a> DIFF22_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `DIFF23`"]
-pub type DIFF23_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DIFF23`"]
+#[doc = "Field `DIFF23` reader - Differential inputs for channel 23"]
+pub struct DIFF23_R(crate::FieldReader<bool, bool>);
+impl DIFF23_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIFF23_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF23_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DIFF23` writer - Differential inputs for channel 23"]
 pub struct DIFF23_W<'a> {
     w: &'a mut W,
 }
@@ -828,5 +1138,30 @@ impl W {
     #[inline(always)]
     pub fn diff23(&mut self) -> DIFF23_W {
         DIFF23_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Channel Differential Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [diffr](index.html) module"]
+pub struct DIFFR_SPEC;
+impl crate::RegisterSpec for DIFFR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [diffr::R](R) reader structure"]
+impl crate::Readable for DIFFR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [diffr::W](W) writer structure"]
+impl crate::Writable for DIFFR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets DIFFR to value 0"]
+impl crate::Resettable for DIFFR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }
