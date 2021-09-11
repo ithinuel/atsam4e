@@ -69,8 +69,7 @@ fn main() -> ! {
         .manufacturer("Fake company")
         .product("Serial port")
         .serial_number("TEST")
-        .max_packet_size_0(64)
-        .device_class(USB_CLASS_CDC)
+        //.device_class(USB_CLASS_CDC)
         //.device_class(CDC_SUBCLASS_ACM)
         .device_class(2)
         .build();

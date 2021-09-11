@@ -2,12 +2,11 @@ use core::convert::TryInto;
 use core::fmt;
 use core::marker::PhantomData;
 
-use embedded_hal::serial;
+use embedded_hal::serial::{self, Read, Write};
 use nb::block;
 
 pub mod config;
 
-use crate::hal::serial::*;
 use crate::pac::{UART0, UART1, USART0, USART1};
 use crate::pmc::Clocks;
 

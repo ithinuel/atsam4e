@@ -27,7 +27,6 @@ panic-halt = "*"
 usb-device = "*"
 usbd-serial = {version = "*"}
 usbd-dfu = {version = "*"}
-usbd-dfu-demo = {version = "*", features = ['alloc', 'future']}
 alloc-cortex-m = "*"
 
 [[example]]

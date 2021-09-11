@@ -374,7 +374,7 @@ impl<PINS: Sync> UsbBusTrait for UsbBus<PINS> {
                 None => inner
                     .endpoints
                     .find_free(ep_dir, ep_type, max_packet_size)?,
-                Some(addr) => EndpointAddress::from(addr),
+                Some(addr) => addr,
             };
 
             inner
